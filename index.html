@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Propuesta Web SIG - Innovación Territorial</title>
+    <title>Propuesta Web SIG - Innovación Territorial 2026</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -22,217 +24,204 @@
             }
         }
     </script>
+
     <style>
+        /* Suavizado de scroll */
+        html { scroll-behavior: smooth; }
+
+        /* Patrón técnico para el fondo del Hero */
         .hero-pattern {
             background-image: radial-gradient(circle at 2px 2px, #333 1px, transparent 0);
             background-size: 40px 40px;
         }
-        .logo-grid img {
-            filter: grayscale(100%);
-            transition: all 0.3s ease;
+
+        /* TRATAMIENTO DE ESCUDOS BLANCOS */
+        .shield-logo {
+            /* Al ser blancos, los oscurecemos a gris oscuro para que se vean en el fondo claro */
+            filter: brightness(0) opacity(0.25);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: 65px;
+            width: auto;
         }
-        .logo-grid img:hover {
-            filter: grayscale(0%);
-            transform: scale(1.1);
+
+        /* Efecto Hover: Transición al naranja corporativo #f46600 */
+        .group:hover .shield-logo {
+            /* Este filtro transforma el blanco/gris en el naranja corporativo */
+            filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(98%) contrast(105%);
+            opacity: 1;
+            transform: scale(1.1) translateY(-5px);
         }
+
+        /* Animación sutil para el Hero */
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.1; }
+        }
+        .animate-pulse-soft { animation: pulse-soft 3s infinite; }
     </style>
 </head>
 <body class="bg-brandLight text-brandDark antialiased font-sans">
 
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 py-4 px-8 flex justify-between items-center">
         <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-brandOrange rounded-md flex items-center justify-center text-white font-bold italic">G</div>
-            <span class="text-xl font-extrabold tracking-tight uppercase">Geonet <span class="text-brandOrange">SIG</span></span>
+            <div class="w-9 h-9 bg-brandOrange rounded-lg flex items-center justify-center text-white font-extrabold italic shadow-lg shadow-brandOrange/20">G</div>
+            <span class="text-xl font-extrabold tracking-tighter uppercase">Geonet <span class="text-brandOrange">SIG</span></span>
         </div>
         
-        <div class="hidden md:flex gap-8 font-semibold text-sm uppercase tracking-wider text-gray-600">
-            <a href="#geogis" class="hover:text-brandOrange transition">GEOGIS</a>
-            <a href="#consultoria" class="hover:text-brandOrange transition">Consultoría</a>
-            <a href="#visores" class="hover:text-brandOrange transition">Visores</a>
+        <div class="hidden md:flex gap-10 font-bold text-[11px] uppercase tracking-[0.15em] text-gray-500">
+            <a href="#geogis" class="hover:text-brandOrange transition-colors">GEOGIS PRO</a>
+            <a href="#consultoria" class="hover:text-brandOrange transition-colors">Consultoría</a>
+            <a href="#visores" class="hover:text-brandOrange transition-colors">Visores Públicos</a>
         </div>
 
-        <a href="mailto:geonet@geonet.es" class="bg-brandOrange text-white px-6 py-2.5 rounded-full font-bold text-sm hover:shadow-lg hover:bg-orange-600 transition tracking-tight">
-            SOLICITAR DEMO TÉCNICA
+        <a href="mailto:soporte@geonet.es" class="bg-brandOrange text-white px-6 py-2.5 rounded-full font-extrabold text-[11px] uppercase tracking-wider hover:shadow-xl hover:bg-orange-600 transition-all active:scale-95">
+            Solicitar Demo
         </a>
     </nav>
 
-    <section class="bg-brandDark text-white py-24 px-8 relative overflow-hidden hero-pattern">
+    <section class="bg-brandDark text-white py-28 px-8 relative overflow-hidden hero-pattern">
         <div class="max-w-6xl mx-auto relative z-10 grid md:grid-cols-2 gap-16 items-center">
             <div>
-                <h1 class="text-5xl md:text-6xl font-extrabold leading-[1.1] mb-6">
-                    Inteligencia Territorial para la <span class="text-brandOrange font-italic">Gestión Municipal</span>
+                <span class="inline-block border border-brandOrange/40 text-brandOrange px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-[0.2em] mb-6">Visión Estratégica 2026</span>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.05] mb-8">
+                    Inteligencia <br> <span class="text-brandOrange italic">Territorial</span> Activa
                 </h1>
-                <p class="text-gray-400 text-lg mb-10 leading-relaxed max-w-lg">
-                    Optimizamos la administración pública mediante soluciones SIG avanzadas e integración de datos en tiempo real.
+                <p class="text-gray-400 text-lg mb-10 leading-relaxed max-w-lg font-medium">
+                    "Esfuerzo por una administración más eficiente y moderna." Transformamos datos complejos en herramientas de decisión municipal.
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#geogis" class="bg-brandOrange text-white px-8 py-4 rounded-lg font-bold hover:scale-105 transition flex items-center gap-2">
-                        Explorar GEOGIS 
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                <div class="flex flex-wrap gap-5">
+                    <a href="#geogis" class="bg-brandOrange text-white px-10 py-4 rounded-xl font-extrabold hover:scale-105 transition-transform flex items-center gap-3 shadow-2xl shadow-brandOrange/20">
+                        Explorar GEOGIS
                     </a>
-                    <a href="#visores" class="border border-gray-600 text-gray-300 px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-brandDark transition">
-                        Ver Visores Públicos
+                    <a href="#visores" class="border border-gray-700 text-gray-300 px-10 py-4 rounded-xl font-extrabold hover:bg-white hover:text-brandDark transition-all">
+                        Visores Públicos
                     </a>
                 </div>
             </div>
 
-            <div class="relative group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-brandOrange to-orange-900 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                <div class="relative bg-black/40 border border-gray-700 rounded-2xl p-4 shadow-2xl backdrop-blur-sm">
-                    <div class="flex gap-1.5 mb-4">
-                        <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
-                    </div>
-                    <div class="aspect-video bg-gray-800/50 rounded-lg border border-gray-700 flex flex-col items-center justify-center text-center p-6">
-                        <p class="text-brandOrange font-mono text-xs mb-2">SISTEMA ACTIVO // PROVINCIA ALICANTE</p>
-                        <p class="text-2xl font-bold italic">11 Municipios de Referencia</p>
-                        <div class="mt-4 flex gap-2">
-                             <div class="h-1 w-8 bg-brandOrange rounded-full animate-pulse"></div>
-                             <div class="h-1 w-4 bg-gray-600 rounded-full"></div>
+            <div class="relative">
+                <div class="absolute inset-0 bg-brandOrange/20 blur-[120px] animate-pulse-soft"></div>
+                <div class="relative bg-white/5 border border-white/10 rounded-[2rem] p-6 backdrop-blur-sm shadow-2xl">
+                    <div class="aspect-video bg-brandDark/80 rounded-xl border border-white/5 overflow-hidden flex flex-col items-center justify-center p-8 text-center">
+                        <div class="w-16 h-16 border-2 border-brandOrange rounded-full flex items-center justify-center mb-4 animate-bounce">
+                            <div class="w-8 h-8 bg-brandOrange rounded-full opacity-50"></div>
                         </div>
+                        <p class="text-2xl font-black italic mb-2 tracking-tight">11 MUNICIPIOS</p>
+                        <p class="text-[10px] text-gray-500 font-mono tracking-[0.3em] uppercase">Red de Gestión Activa Alicante</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-16 bg-white px-8 border-b border-gray-100">
+    <section class="py-20 bg-white px-8 border-b border-gray-100">
         <div class="max-w-6xl mx-auto text-center">
-            <p class="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] mb-10 italic">Organismos que ya confían en nuestra tecnología</p>
+            <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.5em] mb-16">
+                Red Provincial de Innovación Territorial
+            </h3>
             
-            <div class="logo-grid flex flex-wrap justify-center items-center gap-12 md:gap-20">
-                <div class="flex flex-col items-center gap-2">
-                    <img src="img/calp.png" alt="Escudo Calpe" class="h-16 w-auto object-contain">
-                    <span class="text-[10px] font-bold text-gray-400">CALPE</span>
+            <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20">
+                <div class="group flex flex-col items-center gap-4">
+                    <img src="img/escudo_calpe.png" alt="Ayuntamiento de Calpe" class="shield-logo">
+                    <span class="text-[9px] font-black text-gray-300 group-hover:text-brandOrange transition-colors uppercase tracking-widest">Calpe</span>
                 </div>
-                <div class="flex flex-col items-center gap-2">
-                    <img src="img/teulada.png" alt="Escudo Teulada" class="h-16 w-auto object-contain">
-                    <span class="text-[10px] font-bold text-gray-400">TEULADA</span>
+
+                <div class="group flex flex-col items-center gap-4">
+                    <img src="img/escudo_teulada.png" alt="Ayuntamiento de Teulada" class="shield-logo">
+                    <span class="text-[9px] font-black text-gray-300 group-hover:text-brandOrange transition-colors uppercase tracking-widest">Teulada</span>
                 </div>
-                <div class="flex flex-col items-center gap-2">
-                    <img src="img/ibi.png" alt="Escudo Ayto" class="h-16 w-auto object-contain">
-                    <span class="text-[10px] font-bold text-gray-400">IBI</span>
+
                 </div>
-                <div class="flex flex-col items-center gap-2">
-                    <img src="img/finestrat.png" alt="Escudo Ayto" class="h-16 w-auto object-contain">
-                    <span class="text-[10px] font-bold text-gray-400">FINESTRAT</span>
-                </div>
-                <div class="flex flex-col items-center gap-2">
-                    <img src="img/santapola.png" alt="Escudo Ayto" class="h-16 w-auto object-contain">
-                    <span class="text-[10px] font-bold text-gray-400">SANTAPOLA</span>
-                </div>
-                <div class="flex flex-col items-center gap-2">
-                    <img src="img/altea.png" alt="Escudo Ayto" class="h-16 w-auto object-contain">
-                    <span class="text-[10px] font-bold text-gray-400">ALTEA</span>
-                </div>
-            </div>
         </div>
     </section>
 
-    <section id="geogis" class="py-24 px-8 max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-16 items-center">
+    <section id="geogis" class="py-32 px-8 max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-20 items-center">
             <div>
-                <h2 class="text-4xl font-extrabold mb-6">El Ecosistema <span class="text-brandOrange">GEOGIS</span></h2>
-                <p class="text-gray-600 mb-8 leading-relaxed">
-                    Nuestra solución estrella integra la cartografía con la gestión administrativa, permitiendo un flujo de trabajo sin fisuras.
+                <h2 class="text-4xl font-extrabold mb-8 leading-tight">Mucho más que un mapa: <br><span class="text-brandOrange underline decoration-4 underline-offset-8">El Ecosistema GEOGIS</span></h2>
+                <p class="text-gray-600 mb-10 text-lg leading-relaxed font-medium">
+                    La herramienta definitiva para vincular expedientes administrativos a parcelas, optimizando el flujo de trabajo entre departamentos.
                 </p>
                 
-                <div class="space-y-6">
-                    <div class="flex gap-4 p-4 rounded-xl hover:bg-white hover:shadow-md transition">
-                        <div class="text-brandOrange">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                        </div>
+                <div class="grid gap-6">
+                    <div class="flex gap-6 p-6 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-brandOrange/10 text-brandOrange rounded-xl flex items-center justify-center shrink-0 font-bold italic">PRO</div>
                         <div>
-                            <h4 class="font-bold text-lg">Integración con Gestiona</h4>
-                            <p class="text-sm text-gray-500">Vínculo directo entre expedientes administrativos y parcelas catastrales.</p>
+                            <h4 class="font-extrabold text-lg mb-1">Planeamiento Urbanístico</h4>
+                            <p class="text-sm text-gray-500">Consulta de parámetros y normativa urbanística con seguridad jurídica total.</p>
                         </div>
                     </div>
-                    <div class="flex gap-4 p-4 rounded-xl hover:bg-white hover:shadow-md transition">
-                        <div class="text-brandOrange">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /></svg>
+                    <div class="flex gap-6 p-6 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 bg-blue-500/10 text-blue-500 rounded-xl flex items-center justify-center shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2v-2" /></svg>
                         </div>
                         <div>
-                            <h4 class="font-bold text-lg">Planeamiento Urbanístico</h4>
-                            <p class="text-sm text-gray-500">Consulta de parámetros urbanísticos y normativa en tiempo real.</p>
+                            <h4 class="font-extrabold text-lg mb-1">Conexión con Gestiona</h4>
+                            <p class="text-sm text-gray-500">Vínculo bidireccional entre el SIG y el gestor de expedientes municipal.</p>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-brandDark rounded-[2.5rem] p-10 shadow-2xl border border-gray-800">
-                <div class="text-center mb-10">
-                    <span class="text-brandOrange font-mono text-xs uppercase tracking-widest">Administrative Sync</span>
-                </div>
-                <div class="flex items-center justify-around">
-                    <div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 flex flex-col items-center">
-                        <div class="w-10 h-10 bg-brandOrange/20 text-brandOrange rounded flex items-center justify-center font-bold mb-2">SIG</div>
-                        <span class="text-[10px] font-bold text-gray-500">MAPA</span>
+            <div class="bg-brandDark rounded-[3rem] p-12 shadow-3xl border border-white/5">
+                <div class="flex items-center justify-center gap-10">
+                    <div class="text-center group">
+                        <div class="w-20 h-20 bg-brandOrange/20 border border-brandOrange/40 rounded-2xl flex items-center justify-center text-brandOrange font-black mb-4 group-hover:scale-110 transition-transform">SIG</div>
+                        <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest italic">Territorio</p>
                     </div>
-                    <div class="flex-1 h-px bg-gradient-to-r from-brandOrange to-blue-500 mx-4 relative">
-                        <div class="absolute inset-0 animate-pulse bg-white/20"></div>
+                    <div class="flex-1 h-[2px] bg-gradient-to-r from-brandOrange to-blue-500 relative">
+                        <div class="absolute -top-1 left-1/2 w-2 h-2 bg-white rounded-full animate-ping"></div>
                     </div>
-                    <div class="bg-gray-800 p-6 rounded-2xl border border-gray-700 flex flex-col items-center">
-                        <div class="w-10 h-10 bg-blue-500/20 text-blue-500 rounded flex items-center justify-center font-bold mb-2">DOC</div>
-                        <span class="text-[10px] font-bold text-gray-500">GESTIONA</span>
+                    <div class="text-center group">
+                        <div class="w-20 h-20 bg-blue-500/20 border border-blue-500/40 rounded-2xl flex items-center justify-center text-blue-500 font-black mb-4 group-hover:scale-110 transition-transform">DOC</div>
+                        <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest italic">Gestiona</p>
                     </div>
-                </div>
-                <div class="mt-10 text-center">
-                     <a href="https://www.gestionamunicipal.es/" target="_blank" class="text-gray-400 text-xs hover:text-brandOrange transition underline underline-offset-4 font-semibold uppercase">Explorar integración técnica</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="visores" class="py-24 bg-white px-8">
-    <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl font-extrabold text-brandDark mb-4">Servicios de Información <span class="text-brandOrange">Geográfica Abierta</span></h2>
-            <p class="text-gray-500 max-w-2xl mx-auto italic">Acceso directo a las herramientas cartográficas oficiales de la provincia.</p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="group border border-gray-100 p-8 rounded-3xl shadow-sm hover:shadow-xl hover:border-brandOrange/30 transition-all duration-300 bg-white">
-                <div class="w-12 h-12 bg-brandOrange/10 rounded-2xl flex items-center justify-center text-brandOrange mb-6 group-hover:bg-brandOrange group-hover:text-white transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /></svg>
-                </div>
-                <h3 class="text-xl font-bold mb-3 italic">Callejero Oficial</h3>
-                <p class="text-gray-500 text-sm mb-6 leading-relaxed">Localización precisa de vías y números de policía. La base de datos más fiable para emergencias.</p>
-                <a href="#" target="_blank" class="inline-flex items-center text-brandOrange font-bold text-sm hover:gap-2 transition-all">ACCEDER AHORA <span class="ml-1">→</span></a>
+    <section id="visores" class="bg-gray-100 py-32 px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-extrabold mb-4 italic">Centro de Información <span class="text-brandOrange">Geográfica</span></h2>
+                <p class="text-gray-500 font-medium italic uppercase text-[11px] tracking-widest">Acceso público a herramientas oficiales</p>
             </div>
 
-            <div class="group border border-gray-100 p-8 rounded-3xl shadow-sm hover:shadow-xl hover:border-brandOrange/30 transition-all duration-300 bg-white">
-                <div class="w-12 h-12 bg-brandOrange/10 rounded-2xl flex items-center justify-center text-brandOrange mb-6 group-hover:bg-brandOrange group-hover:text-white transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                </div>
-                <h3 class="text-xl font-bold mb-3 italic">Multivisor Histórico</h3>
-                <p class="text-gray-500 text-sm mb-6 leading-relaxed">Comparativa temporal del territorio mediante ortofotos y vistas oblicuas sincronizadas.</p>
-                <a href="#" target="_blank" class="inline-flex items-center text-brandOrange font-bold text-sm hover:gap-2 transition-all">ABRIR COMPARADOR <span class="ml-1">→</span></a>
-            </div>
-
-            <div class="group border border-gray-100 p-8 rounded-3xl shadow-sm hover:shadow-xl hover:border-brandOrange/30 transition-all duration-300 bg-white">
-                <div class="w-12 h-12 bg-brandOrange/10 rounded-2xl flex items-center justify-center text-brandOrange mb-6 group-hover:bg-brandOrange group-hover:text-white transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
-                </div>
-                <h3 class="text-xl font-bold mb-3 italic">Visor SIG Provincial</h3>
-                <p class="text-gray-500 text-sm mb-6 leading-relaxed">Consulta técnica de capas públicas, medio ambiente, riesgos y planeamiento general.</p>
-                <a href="#" target="_blank" class="inline-flex items-center text-brandOrange font-bold text-sm hover:gap-2 transition-all">CONSULTAR CAPAS <span class="ml-1">→</span></a>
+            <div class="grid md:grid-cols-3 gap-10">
+                <a href="URL_CALLEJERO" target="_blank" class="group bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all border border-transparent hover:border-brandOrange/20">
+                    <h3 class="font-black text-2xl mb-4 group-hover:text-brandOrange transition-colors">Callejero Oficial</h3>
+                    <p class="text-sm text-gray-500 mb-8 leading-relaxed italic">La base oficial con numeración de policía vinculada y actualizada.</p>
+                    <span class="text-brandOrange font-black text-xs uppercase tracking-widest flex items-center gap-2">Explorar Mapa <span class="group-hover:translate-x-2 transition-transform">→</span></span>
+                </a>
+                <a href="URL_MULTIVISOR" target="_blank" class="group bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all border border-transparent hover:border-brandOrange/20">
+                    <h3 class="font-black text-2xl mb-4 group-hover:text-brandOrange transition-colors">Multivisor</h3>
+                    <p class="text-sm text-gray-500 mb-8 leading-relaxed italic">Evolución temporal del territorio mediante ortofotos históricas.</p>
+                    <span class="text-brandOrange font-black text-xs uppercase tracking-widest flex items-center gap-2">Ver Evolución <span class="group-hover:translate-x-2 transition-transform">→</span></span>
+                </a>
+                <a href="URL_SIG_GENERAL" target="_blank" class="group bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all border border-transparent hover:border-brandOrange/20">
+                    <h3 class="font-black text-2xl mb-4 group-hover:text-brandOrange transition-colors">SIG Provincial</h3>
+                    <p class="text-sm text-gray-500 mb-8 leading-relaxed italic">Consulta abierta de capas públicas, medio ambiente y riesgos.</p>
+                    <span class="text-brandOrange font-black text-xs uppercase tracking-widest flex items-center gap-2">Consultar Capas <span class="group-hover:translate-x-2 transition-transform">→</span></span>
+                </a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-    <footer class="bg-brandDark text-white py-16 px-8">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center border-t border-gray-800 pt-10">
-            <div class="mb-8 md:mb-0 text-center md:text-left leading-relaxed">
-                <p class="font-extrabold text-xl mb-2">GEONET <span class="text-brandOrange">SIG</span></p>
-                <p class="text-xs text-gray-500 font-bold uppercase tracking-widest">Empresa Pública dependiente de la Diputación</p>
+    <footer class="bg-brandDark text-white py-20 px-8">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center border-t border-white/5 pt-12">
+            <div class="mb-10 md:mb-0 text-center md:text-left">
+                <p class="text-2xl font-black mb-2 uppercase italic tracking-tighter">Geonet <span class="text-brandOrange">SIG</span></p>
+                <p class="text-[9px] text-gray-500 font-bold uppercase tracking-[0.4em]">Socio Tecnológico de la Administración Pública</p>
             </div>
-            <div class="flex gap-8 text-xs font-bold text-gray-400 uppercase tracking-widest">
-                <a href="#" class="hover:text-brandOrange transition">Transparencia</a>
-                <a href="#" class="hover:text-brandOrange transition">Accesibilidad</a>
-                <a href="#" class="hover:text-brandOrange transition">Contacto</a>
+            <div class="flex gap-10 text-[10px] font-black text-gray-400 uppercase tracking-widest">
+                <a href="#" class="hover:text-brandOrange transition-colors">Transparencia</a>
+                <a href="#" class="hover:text-brandOrange transition-colors">Accesibilidad</a>
+                <a href="#" class="hover:text-brandOrange transition-colors">Soporte</a>
             </div>
+        </div>
+        <div class="max-w-6xl mx-auto mt-12 text-center text-[9px] text-gray-600 font-bold uppercase tracking-[0.5em]">
+            © 2026 Empresa Pública Geonet // Diputación Provincial de Alicante
         </div>
     </footer>
 
