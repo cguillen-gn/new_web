@@ -72,11 +72,11 @@
     </nav>
 
     <section class="relative min-h-screen flex items-center overflow-hidden bg-brandDark text-white px-8">
-        <video autoplay muted loop playsinline class="absolute inset-0 z-0 w-full h-full object-cover opacity-40">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-blue-data-grid-network-23253-large.mp4" type="video/mp4">
+        <video autoplay muted loop playsinline class="absolute inset-0 z-0 w-full h-full object-cover opacity-60 transition-opacity duration-1000">
+            <source src="https://player.vimeo.com/progressive_redirect/playback/434045526/rendition/720p/file.mp4?loc=external&signature=4468f77348e3e46c7694f4c28f148e64c1b18e64c1b18e64" type="video/mp4">
         </video>
         
-        <div class="absolute inset-0 z-10 video-overlay"></div>
+        <div class="absolute inset-0 z-10" style="background: linear-gradient(to right, rgba(26, 29, 35, 0.8) 20%, rgba(26, 29, 35, 0.3) 100%);"></div>
 
         <div class="max-w-6xl mx-auto relative z-20 grid md:grid-cols-2 gap-16 items-center w-full">
             <div>
@@ -98,14 +98,14 @@
             </div>
 
             <div class="relative hidden md:block">
-                <div class="absolute inset-0 bg-brandOrange/20 blur-[120px] animate-pulse-soft"></div>
+                <div class="absolute inset-0 bg-brandOrange/30 blur-[100px] animate-pulse-soft"></div>
                 <div class="relative bg-white/5 border border-white/10 rounded-[2rem] p-6 backdrop-blur-sm shadow-2xl">
                     <div class="aspect-video bg-brandDark/80 rounded-xl border border-white/5 overflow-hidden flex flex-col items-center justify-center p-8 text-center">
                         <div class="w-16 h-16 border-2 border-brandOrange rounded-full flex items-center justify-center mb-4 animate-bounce">
                             <div class="w-8 h-8 bg-brandOrange rounded-full opacity-50"></div>
                         </div>
                         <p class="text-2xl font-black italic mb-2 tracking-tight uppercase">11 Municipios</p>
-                        <p class="text-[10px] text-gray-400 font-mono tracking-[0.3em] uppercase">Red de Gestión Activa Alicante</p>
+                        <p class="text-[10px] text-gray-400 font-mono tracking-[0.3em] uppercase italic">Red de Gestión Activa Alicante</p>
                     </div>
                 </div>
             </div>
