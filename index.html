@@ -28,7 +28,9 @@
     <style>
     html { scroll-behavior: smooth; }
 
-    /* Animación de las partículas fluyendo al centro */
+    /* --- ANIMACIONES DEL ECOSISTEMA --- */
+
+    /* Partículas fluyendo al centro */
     .data-particle {
         position: absolute;
         width: 4px;
@@ -37,6 +39,7 @@
         border-radius: 50%;
         box-shadow: 0 0 10px white;
         opacity: 0;
+        z-index: 20;
         animation: fly-to-center 3s infinite linear;
     }
 
@@ -45,6 +48,15 @@
         20% { opacity: 1; }
         80% { opacity: 1; }
         100% { top: 50%; left: 50%; opacity: 0; transform: scale(0.5); }
+    }
+
+    /* Flotación suave de los nodos */
+    @keyframes float-slow {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+    .animate-float {
+        animation: float-slow 4s infinite ease-in-out;
     }
 
     .animate-pulse-soft {
@@ -116,7 +128,7 @@
     </section>
 
     <section id="geogis" class="py-32 px-8 max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-20 items-start">
+        <div class="grid md:grid-cols-2 gap-20 items-center">
             <div>
                 <h2 class="text-4xl font-extrabold mb-8 leading-tight italic text-brandDark uppercase tracking-tighter">
                     Mucho más que un mapa:<br>
@@ -169,38 +181,55 @@
                 </div>
             </div>
 
-            <div class="relative py-10 flex items-center justify-center">
+            <div class="relative flex items-center justify-center min-h-[500px]">
                 <div class="absolute w-[120%] h-[120%] bg-brandOrange/5 rounded-full blur-[100px] animate-pulse-soft"></div>
-                <div class="relative w-full max-w-md aspect-square bg-brandDark rounded-[3rem] border border-white/10 shadow-3xl p-8 flex items-center justify-center">
-                    <div class="z-30 relative group text-center">
-                        <div class="w-24 h-24 bg-white rounded-3xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
-                            <img src="img/geonet.png" alt="GeoGIS" class="w-14 h-auto">
+                
+                <div class="relative w-full max-w-md aspect-square bg-brandDark rounded-[3rem] border border-white/10 shadow-3xl overflow-hidden">
+                    
+                    <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 400 400">
+                        <line x1="200" y1="200" x2="60" y2="60" stroke="white" stroke-width="1" stroke-dasharray="4" />
+                        <line x1="200" y1="200" x2="340" y2="60" stroke="white" stroke-width="1" stroke-dasharray="4" />
+                        <line x1="200" y1="200" x2="60" y2="340" stroke="white" stroke-width="1" stroke-dasharray="4" />
+                        <line x1="200" y1="200" x2="340" y2="340" stroke="white" stroke-width="1" stroke-dasharray="4" />
+                        <circle cx="200" cy="200" r="85" fill="none" stroke="white" stroke-width="1" stroke-dasharray="8" />
+                    </svg>
+
+                    <div class="data-particle" style="--x: 15%; --y: 15%; animation-delay: 0s;"></div>
+                    <div class="data-particle" style="--x: 85%; --y: 15%; animation-delay: 0.7s;"></div>
+                    <div class="data-particle" style="--x: 15%; --y: 85%; animation-delay: 1.5s;"></div>
+                    <div class="data-particle" style="--x: 85%; --y: 85%; animation-delay: 2.2s;"></div>
+
+                    <div class="absolute inset-0 flex items-center justify-center z-30">
+                        <div class="group text-center">
+                            <div class="w-24 h-24 bg-white rounded-3xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-500">
+                                <img src="img/geonet.png" alt="GeoGIS" class="w-14 h-auto">
+                            </div>
+                            <p class="mt-4 text-[10px] font-black text-white uppercase tracking-widest italic">Hub de Inteligencia</p>
                         </div>
-                        <p class="mt-4 text-[10px] font-black text-white uppercase tracking-widest italic">Hub de Inteligencia</p>
                     </div>
 
-                    <div class="absolute top-10 left-10 text-center">
+                    <div class="absolute top-10 left-10 text-center animate-float" style="animation-delay: 0s;">
                         <div class="w-12 h-12 bg-white/5 border border-brandOrange/30 rounded-xl flex items-center justify-center text-brandOrange mb-1 backdrop-blur-md">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/></svg>
                         </div>
                         <p class="text-[7px] font-bold text-gray-500 uppercase tracking-widest">Urbanismo</p>
                     </div>
 
-                    <div class="absolute top-10 right-10 text-center">
+                    <div class="absolute top-10 right-10 text-center animate-float" style="animation-delay: 0.5s;">
                         <div class="w-12 h-12 bg-white/5 border border-blue-500/30 rounded-xl flex items-center justify-center text-blue-500 mb-1 backdrop-blur-md">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
                         </div>
                         <p class="text-[7px] font-bold text-gray-500 uppercase tracking-widest">Gestiona</p>
                     </div>
 
-                    <div class="absolute bottom-10 left-10 text-center">
+                    <div class="absolute bottom-10 left-10 text-center animate-float" style="animation-delay: 1s;">
                         <div class="w-12 h-12 bg-white/5 border border-emerald-500/30 rounded-xl flex items-center justify-center text-emerald-500 mb-1 backdrop-blur-md">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
                         </div>
                         <p class="text-[7px] font-bold text-gray-500 uppercase tracking-widest">Servicios</p>
                     </div>
 
-                    <div class="absolute bottom-10 right-10 text-center">
+                    <div class="absolute bottom-10 right-10 text-center animate-float" style="animation-delay: 1.5s;">
                         <div class="w-12 h-12 bg-white/5 border border-purple-500/30 rounded-xl flex items-center justify-center text-purple-500 mb-1 backdrop-blur-md">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2"/></svg>
                         </div>
@@ -211,7 +240,7 @@
         </div>
     </section>
 
-    <section id="consultoria" class="py-32 px-8 bg-white border-t border-gray-100 overflow-hidden">
+    <section id="consultoria" class="py-32 px-8 bg-white border-t border-gray-100">
         <div class="max-w-6xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
                 <div class="max-w-2xl">
@@ -253,7 +282,7 @@
             </div>
         </div>
     </section>
-    
+
     <section id="visores" class="bg-gray-100 py-32 px-8 border-t border-gray-200">
         <div class="max-w-6xl mx-auto text-center">
             <h2 class="text-4xl md:text-5xl font-extrabold mb-6 italic uppercase tracking-tighter text-brandDark">
@@ -283,22 +312,22 @@
     </section>
 
     <section id="noticias" class="py-32 px-8 bg-brandLight">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-extrabold mb-16 italic uppercase tracking-tighter text-brandDark text-center">Actualidad y <span class="text-brandOrange uppercase">Compromiso</span></h2>
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-4xl font-extrabold mb-16 italic uppercase tracking-tighter text-brandDark">Actualidad y <span class="text-brandOrange uppercase">Compromiso</span></h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <article class="bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm">
+                <article class="bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm text-left">
                     <span class="text-brandOrange font-black text-[9px] uppercase tracking-widest mb-4 block italic">Institucional</span>
                     <h3 class="text-xl font-extrabold mb-4 italic uppercase tracking-tighter">Convenio con Diputación</h3>
                     <p class="text-sm text-gray-500 mb-6 italic">Digitalización integral de redes de agua en la provincia.</p>
                     <span class="text-[10px] font-bold text-gray-300 uppercase tracking-widest italic">Marzo 2026</span>
                 </article>
-                <article class="bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm">
+                <article class="bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm text-left">
                     <span class="text-blue-500 font-black text-[9px] uppercase tracking-widest mb-4 block italic">Éxito</span>
                     <h3 class="text-xl font-extrabold mb-4 italic uppercase tracking-tighter">Implantación en Elche</h3>
                     <p class="text-sm text-gray-500 mb-6 italic">Integración total de servicios urbanísticos y redes territoriales.</p>
                     <span class="text-[10px] font-bold text-gray-300 uppercase tracking-widest italic">Febrero 2026</span>
                 </article>
-                <article class="bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm">
+                <article class="bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm text-left">
                     <span class="text-emerald-500 font-black text-[9px] uppercase tracking-widest mb-4 block italic">Eventos</span>
                     <h3 class="text-xl font-extrabold mb-4 italic uppercase tracking-tighter">Ponencia Innovación SIG</h3>
                     <p class="text-sm text-gray-500 mb-6 italic">Modelos de interoperabilidad en el Congreso Nacional.</p>
@@ -308,60 +337,11 @@
         </div>
     </section>
 
-    <section id="empleo" class="py-32 px-8 bg-brandDark text-white relative">
-        <div class="max-w-6xl mx-auto relative z-10">
-            <div class="grid md:grid-cols-2 gap-20">
-                
-                <div>
-                    <span class="text-brandOrange font-black text-[10px] uppercase tracking-[0.4em] mb-6 block italic">Recursos Humanos</span>
-                    <h2 class="text-4xl font-extrabold mb-8 italic uppercase tracking-tighter">
-                        Únete a nuestro <span class="text-brandOrange">equipo</span>
-                    </h2>
-                    <p class="text-gray-400 text-base mb-8 leading-relaxed font-medium italic">
-                        En Geonet valoramos la iniciativa de profesionales que deseen aportar su experiencia al desarrollo y modernización del territorio. 
-                    </p>
-                    <div class="bg-white/5 border border-white/10 p-8 rounded-3xl mb-8">
-                        <h4 class="text-sm font-black uppercase tracking-widest mb-4 italic text-white">Candidaturas espontáneas</h4>
-                        <p class="text-xs text-gray-500 leading-relaxed italic mb-6">
-                            Si actualmente no encuentras una vacante que se ajuste a tu perfil, te invitamos a enviarnos tu currículum. Evaluamos continuamente nuevos perfiles técnicos para futuras necesidades de nuestra estructura operativa.
-                        </p>
-                        <a href="mailto:rrhh@geonet.es" class="inline-flex items-center gap-2 text-brandOrange font-black text-[11px] uppercase tracking-widest border-b border-brandOrange/20 hover:border-brandOrange transition-all pb-1 italic">
-                            Enviar currículum vitae →
-                        </a>
-                    </div>
-                </div>
-
-                <div class="bg-white/5 border border-white/10 p-10 rounded-[2.5rem] backdrop-blur-sm">
-                    <div class="flex items-center justify-between mb-10 pb-6 border-b border-white/10">
-                        <h3 class="text-lg font-extrabold uppercase tracking-tighter italic">Puestos vacantes</h3>
-                        <span class="flex items-center gap-2 px-3 py-1 bg-gray-500/10 border border-gray-500/30 rounded-full">
-                            <span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span>
-                            <span class="text-[9px] font-black uppercase text-gray-400">Sin procesos abiertos</span>
-                        </span>
-                    </div>
-
-                    <div class="space-y-6">
-                        <p class="text-sm text-gray-400 italic leading-relaxed">
-                            Actualmente no disponemos de procesos de selección activos. No obstante, mantenemos una base de datos actualizada con los perfiles recibidos para incorporaciones inmediatas ante nuevos proyectos.
-                        </p>
-                        
-                        </div>
-
-                    <div class="mt-12 pt-8 border-t border-white/5">
-                        <p class="text-[10px] text-gray-600 font-bold uppercase tracking-widest italic">
-                            Información tratada bajo estricta confidencialidad de acuerdo con la RGPD.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <footer class="bg-brandDark text-white py-20 px-8 border-t border-white/5">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
             <div class="mb-10 md:mb-0 text-center md:text-left">
-                <img src="img/geonet_negro.png" alt="Logo Geonet" class="h-10 w-auto filter invert opacity-80 mb-4 mx-auto md:mx-0">
-                <p class="text-[9px] text-gray-500 font-bold uppercase tracking-[0.4em] italic italic">Socio Tecnológico de la Administración Pública</p>
+                <img src="img/geonet.png" alt="Logo Geonet" class="h-10 w-auto filter invert brightness-200 opacity-80 mb-4 mx-auto md:mx-0">
+                <p class="text-[9px] text-gray-500 font-bold uppercase tracking-[0.4em] italic">Socio Tecnológico de la Administración Pública</p>
             </div>
             <div class="flex gap-10 text-[10px] font-black text-gray-400 uppercase tracking-widest italic">
                 <a href="https://abierta.geonet.es/" class="hover:text-brandOrange transition-colors">Transparencia</a>
