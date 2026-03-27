@@ -26,60 +26,70 @@
     </script>
 
     <style>
-        html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; }
 
-        /* --- NUEVO GRÁFICO: PILA DE CAPAS 3D --- */
-        .stack-container {
-            perspective: 1200px;
-            height: 400px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
+    /* --- ESTILOS DEL GRAFICO 3D INTEGRADO --- */
+    .stack-container {
+        perspective: 1200px;
+        height: 400px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
 
-        .layer-plane {
-            position: absolute;
-            width: 320px;
-            height: 180px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transform: rotateX(60deg) rotateZ(-35deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(8px);
-            transition: all 0.5s ease;
-        }
+    .layer-plane {
+        position: absolute;
+        width: 320px;
+        height: 180px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transform: rotateX(60deg) rotateZ(-35deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(8px);
+        transition: all 0.5s ease;
+        overflow: hidden; /* Para que el esquema no salga del cristal */
+    }
 
-        /* Animación de levitación */
-        @keyframes float-layer {
-            0%, 100% { transform: rotateX(60deg) rotateZ(-35deg) translateZ(var(--base-z)); }
-            50% { transform: rotateX(60deg) rotateZ(-35deg) translateZ(calc(var(--base-z) + 15px)); }
-        }
+    /* Esquemas GIS dentro de las capas */
+    .gis-schema {
+        position: absolute;
+        inset: 10px;
+        opacity: 0.3;
+        transform: rotateZ(35deg) rotateX(-60deg) scale(1.1);
+        filter: blur(0.5px);
+    }
 
-        .layer-1 { --base-z: 0px; animation: float-layer 5s infinite ease-in-out; border-color: rgba(244, 102, 0, 0.4); }
-        .layer-2 { --base-z: 70px; animation: float-layer 5s infinite ease-in-out -1.5s; border-color: rgba(16, 185, 129, 0.4); }
-        .layer-3 { --base-z: 140px; animation: float-layer 5s infinite ease-in-out -3s; border-color: rgba(59, 130, 246, 0.4); }
+    /* Animación de levitación individualizada */
+    @keyframes float-layer {
+        0%, 100% { transform: rotateX(60deg) rotateZ(-35deg) translateZ(var(--base-z)); }
+        50% { transform: rotateX(60deg) rotateZ(-35deg) translateZ(calc(var(--base-z) + 15px)); }
+    }
 
-        /* Haz de luz que atraviesa las capas */
-        .beam {
-            position: absolute;
-            width: 2px;
-            height: 350px;
-            background: linear-gradient(to top, transparent, #f46600, transparent);
-            box-shadow: 0 0 15px #f46600;
-            z-index: 50;
-            opacity: 0.6;
-        }
+    .layer-1 { --base-z: 0px; animation: float-layer 5s infinite ease-in-out; border-color: rgba(244, 102, 0, 0.4); }
+    .layer-2 { --base-z: 70px; animation: float-layer 5s infinite ease-in-out -1.5s; border-color: rgba(16, 185, 129, 0.4); }
+    .layer-3 { --base-z: 140px; animation: float-layer 5s infinite ease-in-out -3s; border-color: rgba(59, 130, 246, 0.4); }
 
-        .animate-pulse-soft { animation: pulse-soft 3s infinite ease-in-out; }
-        @keyframes pulse-soft {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.1; }
-        }
-    </style>
+    /* Haz de luz central */
+    .beam {
+        position: absolute;
+        width: 2px;
+        height: 350px;
+        background: linear-gradient(to top, transparent, #f46600, transparent);
+        box-shadow: 0 0 15px #f46600;
+        z-index: 50;
+        opacity: 0.6;
+    }
+
+    .animate-pulse-soft { animation: pulse-soft 3s infinite ease-in-out; }
+    @keyframes pulse-soft {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 0.1; }
+    }
+</style>
 </head>
 <body class="bg-brandLight text-brandDark antialiased font-sans">
 
