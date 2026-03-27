@@ -520,5 +520,60 @@
         <div class="mt-16 text-center text-[9px] text-gray-600 font-bold uppercase tracking-[0.5em] italic">© 2026 Geonet Territorial SAU</div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('news-modal');
+            const cards = document.querySelectorAll('.news-card');
+            const closeButtons = document.querySelectorAll('#close-modal, #close-modal-bottom, .fixed.inset-0.bg-black\/80');
+            const body = document.body;
+
+            // Elementos dentro del modal
+            const modalImg = document.getElementById('modal-img');
+            const modalTag = document.getElementById('modal-tag');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDate = document.getElementById('modal-date');
+            const modalFullText = document.getElementById('modal-full-text');
+
+            // Abrir Modal
+            cards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    // Coger datos del data-attribute de la tarjeta pulsada
+                    const data = card.dataset;
+                    
+                    modalImg.src = data.img;
+                    modalImg.alt = data.title;
+                    modalTag.textContent = data.tag;
+                    modalTag.className = `absolute bottom-6 left-10 inline-block bg-${data.tagColor}/10 text-${data.tagColor} px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-widest mb-6 italic`;
+                    modalTitle.textContent = data.title;
+                    modalDate.textContent = data.date;
+                    modalFullText.textContent = data.fullText;
+
+                    // Mostrar Modal
+                    modal.classList.remove('hidden');
+                    body.classList.add('overflow-hidden'); // Bloquear scroll de la web
+                });
+            });
+
+            // Cerrar Modal
+            closeButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // Si el clic es en el backdrop o en los botones, cerrar
+                    if (e.target === btn || btn.id === 'close-modal' || btn.id === 'close-modal-bottom') {
+                        modal.classList.add('hidden');
+                        body.classList.remove('overflow-hidden'); // Reactivar scroll
+                    }
+                });
+            });
+
+            // Cerrar con tecla ESC
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    modal.classList.add('hidden');
+                    body.classList.remove('overflow-hidden');
+                }
+            });
+        });
+    </script>
+    
 </body>
 </html>
