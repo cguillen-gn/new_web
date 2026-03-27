@@ -312,27 +312,60 @@
     </section>
 
     <section id="noticias" class="py-32 px-8 bg-brandLight">
-        <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-4xl font-extrabold mb-16 italic uppercase tracking-tighter text-brandDark">Actualidad y <span class="text-brandOrange uppercase">Compromiso</span></h2>
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div class="max-w-2xl">
+                    <h2 class="text-4xl font-extrabold mb-6 leading-tight text-brandDark italic uppercase tracking-tighter">
+                        Actualidad y <br>
+                        <span class="text-brandOrange uppercase">Compromiso Territorial</span>
+                    </h2>
+                    <p class="text-gray-500 font-medium italic">Crónica de nuestra actividad en la modernización de la administración pública.</p>
+                </div>
+                <a href="#" class="hidden md:inline-flex items-center gap-2 text-brandOrange font-black text-[10px] uppercase tracking-widest border-b-2 border-brandOrange/10 hover:border-brandOrange pb-2 transition-all italic">
+                    Explorar archivo histórico →
+                </a>
+            </div>
+
             <div class="grid md:grid-cols-3 gap-8">
-                <article class="bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm text-left">
-                    <span class="text-brandOrange font-black text-[9px] uppercase tracking-widest mb-4 block italic">Institucional</span>
-                    <h3 class="text-xl font-extrabold mb-4 italic uppercase tracking-tighter">Convenio con Diputación</h3>
-                    <p class="text-sm text-gray-500 mb-6 italic">Digitalización integral de redes de agua en la provincia.</p>
-                    <span class="text-[10px] font-bold text-gray-300 uppercase tracking-widest italic">Marzo 2026</span>
+                <article class="group bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col justify-between min-h-[350px]">
+                    <div>
+                        <span class="inline-block bg-brandOrange/10 text-brandOrange px-3 py-1 rounded-md text-[9px] font-black uppercase tracking-widest mb-6 italic">Institucional</span>
+                        <h3 class="text-xl font-extrabold mb-4 group-hover:text-brandOrange transition-colors leading-tight italic uppercase tracking-tighter">Convenio con Diputación</h3>
+                        <p class="text-sm text-gray-500 leading-relaxed italic line-clamp-3">Acuerdo para la digitalización integral de redes de agua en municipios de la provincia de Alicante.</p>
+                    </div>
+                    <div class="pt-8 border-t border-gray-50 flex justify-between items-center">
+                        <span class="text-[10px] font-bold text-gray-300 uppercase tracking-widest italic">Marzo 2026</span>
+                        <span class="text-brandOrange opacity-0 group-hover:opacity-100 transition-opacity text-xs italic font-black">Leer más</span>
+                    </div>
                 </article>
-                <article class="bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm text-left">
-                    <span class="text-blue-500 font-black text-[9px] uppercase tracking-widest mb-4 block italic">Éxito</span>
-                    <h3 class="text-xl font-extrabold mb-4 italic uppercase tracking-tighter">Implantación en Elche</h3>
-                    <p class="text-sm text-gray-500 mb-6 italic">Integración total de servicios urbanísticos y redes territoriales.</p>
-                    <span class="text-[10px] font-bold text-gray-300 uppercase tracking-widest italic">Febrero 2026</span>
+
+                <article class="group bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col justify-between min-h-[350px]">
+                    <div>
+                        <span class="inline-block bg-blue-500/10 text-blue-500 px-3 py-1 rounded-md text-[9px] font-black uppercase tracking-widest mb-6 italic">Éxito</span>
+                        <h3 class="text-xl font-extrabold mb-4 group-hover:text-brandOrange transition-colors leading-tight italic uppercase tracking-tighter">Implantación en Elche</h3>
+                        <p class="text-sm text-gray-500 leading-relaxed italic line-clamp-3">Integración total de servicios urbanísticos y redes territoriales bajo el ecosistema GeoGIS.</p>
+                    </div>
+                    <div class="pt-8 border-t border-gray-50 flex justify-between items-center">
+                        <span class="text-[10px] font-bold text-gray-300 uppercase tracking-widest italic">Febrero 2026</span>
+                        <span class="text-brandOrange opacity-0 group-hover:opacity-100 transition-opacity text-xs italic font-black">Leer más</span>
+                    </div>
                 </article>
-                <article class="bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm text-left">
-                    <span class="text-emerald-500 font-black text-[9px] uppercase tracking-widest mb-4 block italic">Eventos</span>
-                    <h3 class="text-xl font-extrabold mb-4 italic uppercase tracking-tighter">Ponencia Innovación SIG</h3>
-                    <p class="text-sm text-gray-500 mb-6 italic">Modelos de interoperabilidad en el Congreso Nacional.</p>
-                    <span class="text-[10px] font-bold text-gray-300 uppercase tracking-widest italic">Enero 2026</span>
+
+                <article class="group bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col justify-between min-h-[350px]">
+                    <div>
+                        <span class="inline-block bg-emerald-500/10 text-emerald-500 px-3 py-1 rounded-md text-[9px] font-black uppercase tracking-widest mb-6 italic">Eventos</span>
+                        <h3 class="text-xl font-extrabold mb-4 group-hover:text-brandOrange transition-colors leading-tight italic uppercase tracking-tighter">Ponencia Innovación SIG</h3>
+                        <p class="text-sm text-gray-500 leading-relaxed italic line-clamp-3">Presentación de modelos de interoperabilidad en el Congreso Nacional de Administración Digital.</p>
+                    </div>
+                    <div class="pt-8 border-t border-gray-50 flex justify-between items-center">
+                        <span class="text-[10px] font-bold text-gray-300 uppercase tracking-widest italic">Enero 2026</span>
+                        <span class="text-brandOrange opacity-0 group-hover:opacity-100 transition-opacity text-xs italic font-black">Leer más</span>
+                    </div>
                 </article>
+            </div>
+
+            <div class="mt-16 text-center md:hidden">
+                <a href="#" class="inline-block bg-brandDark text-white px-8 py-4 rounded-xl font-extrabold text-[10px] uppercase tracking-widest">Ver todas las noticias</a>
             </div>
         </div>
     </section>
