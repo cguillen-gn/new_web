@@ -26,58 +26,60 @@
     </script>
 
     <style>
-    html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; }
 
-    /* Contenedor de la pila */
-    .stack-container {
-        perspective: 1000px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+        /* --- NUEVO GRÁFICO: PILA DE CAPAS 3D --- */
+        .stack-container {
+            perspective: 1200px;
+            height: 400px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
 
-    /* Cada capa de la pila */
-    .layer-plane {
-        position: absolute;
-        width: 280px;
-        height: 180px;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        transform: rotateX(55deg) rotateZ(-35deg);
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        backdrop-filter: blur(4px);
-    }
+        .layer-plane {
+            position: absolute;
+            width: 320px;
+            height: 180px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: rotateX(60deg) rotateZ(-35deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            transition: all 0.5s ease;
+        }
 
-    /* Animación de flotación individualizada */
-    @keyframes float-layer {
-        0%, 100% { transform: rotateX(55deg) rotateZ(-35deg) translateY(0px); }
-        50% { transform: rotateX(55deg) rotateZ(-35deg) translateY(-15px); }
-    }
+        /* Animación de levitación */
+        @keyframes float-layer {
+            0%, 100% { transform: rotateX(60deg) rotateZ(-35deg) translateZ(var(--base-z)); }
+            50% { transform: rotateX(60deg) rotateZ(-35deg) translateZ(calc(var(--base-z) + 15px)); }
+        }
 
-    .layer-1 { z-index: 10; transform: translateZ(0px); animation: float-layer 4s infinite ease-in-out; }
-    .layer-2 { z-index: 20; transform: translateZ(60px); animation: float-layer 4s infinite ease-in-out -1.3s; }
-    .layer-3 { z-index: 30; transform: translateZ(120px); animation: float-layer 4s infinite ease-in-out -2.6s; }
+        .layer-1 { --base-z: 0px; animation: float-layer 5s infinite ease-in-out; border-color: rgba(244, 102, 0, 0.4); }
+        .layer-2 { --base-z: 70px; animation: float-layer 5s infinite ease-in-out -1.5s; border-color: rgba(16, 185, 129, 0.4); }
+        .layer-3 { --base-z: 140px; animation: float-layer 5s infinite ease-in-out -3s; border-color: rgba(59, 130, 246, 0.4); }
 
-    /* Haz de luz central */
-    .core-beam {
-        position: absolute;
-        width: 2px;
-        height: 300px;
-        background: linear-gradient(to top, transparent, #f46600, transparent);
-        z-index: 40;
-        filter: blur(1px);
-        box-shadow: 0 0 20px #f46600;
-    }
+        /* Haz de luz que atraviesa las capas */
+        .beam {
+            position: absolute;
+            width: 2px;
+            height: 350px;
+            background: linear-gradient(to top, transparent, #f46600, transparent);
+            box-shadow: 0 0 15px #f46600;
+            z-index: 50;
+            opacity: 0.6;
+        }
 
-    .animate-pulse-soft { animation: pulse-soft 3s infinite ease-in-out; }
-    @keyframes pulse-soft {
-        0%, 100% { opacity: 0.5; }
-        50% { opacity: 0.1; }
-    }
-</style>
+        .animate-pulse-soft { animation: pulse-soft 3s infinite ease-in-out; }
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.1; }
+        }
+    </style>
 </head>
 <body class="bg-brandLight text-brandDark antialiased font-sans">
 
@@ -103,116 +105,97 @@
         <video autoplay muted loop playsinline class="absolute inset-0 z-0 w-full h-full object-cover opacity-60">
             <source src="img/video.mp4" type="video/mp4">
         </video>
-        
         <div class="absolute inset-0 z-10" style="background: linear-gradient(to right, rgba(26, 29, 35, 0.85) 20%, rgba(26, 29, 35, 0.1) 100%);"></div>
 
         <div class="max-w-6xl mx-auto relative z-20 grid md:grid-cols-2 gap-16 items-center w-full">
             <div>
                 <span class="inline-block border border-brandOrange/40 text-brandOrange px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-[0.2em] mb-6 italic">Visión Estratégica 2026</span>
-                <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.05] mb-8">
-                    Inteligencia <br> <span class="text-brandOrange italic">Territorial</span> Activa
-                </h1>
-                <p class="text-gray-300 text-lg mb-10 leading-relaxed max-w-lg font-medium italic">
-                    "Esfuerzo por una administración más eficiente y moderna." Transformamos datos complejos en herramientas de decisión municipal.
-                </p>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.05] mb-8">Inteligencia <br> <span class="text-brandOrange italic">Territorial</span> Activa</h1>
+                <p class="text-gray-300 text-lg mb-10 leading-relaxed max-w-lg font-medium italic">"Esfuerzo por una administración más eficiente y moderna." Transformamos datos complejos en herramientas de decisión municipal.</p>
                 <div class="flex flex-wrap gap-5">
-                    <a href="#geogis" class="bg-brandOrange text-white px-10 py-4 rounded-xl font-extrabold hover:scale-105 transition-transform shadow-2xl shadow-brandOrange/20 text-center uppercase text-xs tracking-widest italic">
-                        Explorar GeoGIS
-                    </a>
-                    <a href="#visores" class="border border-white/30 text-white px-10 py-4 rounded-xl font-extrabold hover:bg-white hover:text-brandDark transition-all text-center uppercase text-xs tracking-widest italic">
-                        Visores Públicos
-                    </a>
+                    <a href="#geogis" class="bg-brandOrange text-white px-10 py-4 rounded-xl font-extrabold hover:scale-105 transition-transform text-center uppercase text-xs tracking-widest italic">Explorar GeoGIS</a>
+                    <a href="#visores" class="border border-white/30 text-white px-10 py-4 rounded-xl font-extrabold hover:bg-white hover:text-brandDark transition-all text-center uppercase text-xs tracking-widest italic">Visores Públicos</a>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="geogis" class="py-32 px-8 max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-20 items-center">
+        <div class="grid md:grid-cols-2 gap-20 items-start">
             <div>
-                <h2 class="text-4xl font-extrabold mb-8 leading-tight italic text-brandDark uppercase tracking-tighter">
-                    Mucho más que un mapa:<br>
-                    <span class="text-brandOrange underline decoration-4 underline-offset-8">El ecosistema GeoGIS</span>
-                </h2>
-                <p class="text-gray-600 mb-10 text-lg leading-relaxed font-medium italic">
-                    Una solución integral que unifica la realidad territorial y administrativa para maximizar la transparencia y eficiencia municipal.
-                </p>
+                <h2 class="text-4xl font-extrabold mb-8 leading-tight italic text-brandDark uppercase tracking-tighter">Mucho más que un mapa:<br><span class="text-brandOrange underline decoration-4 underline-offset-8">El ecosistema GeoGIS</span></h2>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
-                    <div class="flex gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm">
                         <div class="w-10 h-10 bg-brandOrange/10 text-brandOrange rounded-xl flex items-center justify-center shrink-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 3v18"/></svg>
                         </div>
-                        <div>
-                            <h4 class="font-extrabold text-sm mb-1 italic">Planeamiento</h4>
-                            <p class="text-[10px] text-gray-500 italic">Normativa y parámetros con seguridad jurídica.</p>
-                        </div>
+                        <div><h4 class="font-extrabold text-sm mb-1 italic">Planeamiento</h4><p class="text-[10px] text-gray-500 italic">Normativa con seguridad jurídica.</p></div>
                     </div>
-            
-                    <div class="flex gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm">
                         <div class="w-10 h-10 bg-blue-500/10 text-blue-500 rounded-xl flex items-center justify-center shrink-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
                         </div>
-                        <div>
-                            <h4 class="font-extrabold text-sm mb-1 italic text-blue-600">Conexión Gestiona</h4>
-                            <p class="text-[10px] text-gray-500 italic">Vínculo directo con el gestor de expedientes.</p>
-                        </div>
+                        <div><h4 class="font-extrabold text-sm mb-1 italic text-blue-600">Conexión Gestiona</h4><p class="text-[10px] text-gray-500 italic">Vínculo directo con expedientes.</p></div>
                     </div>
-            
-                    <div class="flex gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm">
                         <div class="w-10 h-10 bg-emerald-500/10 text-emerald-500 rounded-xl flex items-center justify-center shrink-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 0 1 7 7c0 2.5-2 4.5-5 5v4h-4v-4c-3-.5-5-2.5-5-5a7 7 0 0 1 7-7z"/></svg>
                         </div>
-                        <div>
-                            <h4 class="font-extrabold text-sm mb-1 italic text-emerald-600">Infraestructuras</h4>
-                            <p class="text-[10px] text-gray-500 italic">Gestión técnica de redes y servicios urbanos.</p>
-                        </div>
+                        <div><h4 class="font-extrabold text-sm mb-1 italic text-emerald-600">Infraestructuras</h4><p class="text-[10px] text-gray-500 italic">Gestión de redes y servicios.</p></div>
                     </div>
-            
-                    <div class="flex gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm">
                         <div class="w-10 h-10 bg-purple-500/10 text-purple-500 rounded-xl flex items-center justify-center shrink-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V10Z"/><path d="m3 10 9-7 9 7"/></svg>
                         </div>
-                        <div>
-                            <h4 class="font-extrabold text-sm mb-1 italic text-purple-600">Catastro</h4>
-                            <p class="text-[10px] text-gray-500 italic">Coordinación tributaria y análisis territorial.</p>
-                        </div>
+                        <div><h4 class="font-extrabold text-sm mb-1 italic text-purple-600">Catastro</h4><p class="text-[10px] text-gray-500 italic">Coordinación tributaria activa.</p></div>
                     </div>
                 </div>
-            
+
                 <div class="space-y-6 pt-6 border-t border-gray-100">
-                    <h5 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] mb-6 italic">Propiedades del Sistema</h5>
+                    <h5 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] mb-4 italic">Virtudes del Sistema</h5>
+                    <div class="flex items-start gap-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f46600" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+                        <div><p class="text-xs font-extrabold italic text-brandDark uppercase tracking-wider">Información siempre actualizada</p><p class="text-[11px] text-gray-500 italic">Capas de información mantenidas regularmente.</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f46600" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+                        <div><p class="text-xs font-extrabold italic text-brandDark uppercase tracking-wider">Gestión viva y editable</p><p class="text-[11px] text-gray-500 italic">Datos editables directamente por los técnicos municipales.</p></div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f46600" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+                        <div><p class="text-xs font-extrabold italic text-brandDark uppercase tracking-wider">Seguridad por roles</p><p class="text-[11px] text-gray-500 italic">Segmentación de datos sensibles para la gestión interna.</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative py-10 flex items-center justify-center min-h-[500px]">
+                <div class="absolute w-[120%] h-[120%] bg-brandOrange/5 rounded-full blur-[100px] animate-pulse-soft"></div>
+                <div class="relative w-full max-w-md aspect-square bg-brandDark rounded-[3rem] border border-white/10 shadow-3xl overflow-hidden flex items-center justify-center">
                     
-                    <div class="grid grid-cols-1 gap-6">
-                        <div class="flex items-start gap-4">
-                            <div class="mt-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f46600" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                            </div>
-                            <div>
-                                <p class="text-xs font-extrabold italic text-brandDark uppercase tracking-wider mb-1">Actualización de alta frecuencia</p>
-                                <p class="text-[11px] text-gray-500 italic leading-relaxed">Mantenimiento riguroso de capas de información, asegurando datos vigentes para la toma de decisiones.</p>
+                    <div class="beam"></div>
+
+                    <div class="stack-container">
+                        <div class="layer-plane layer-3">
+                            <div class="transform rotateZ(35deg) rotateX(-60deg) text-center">
+                                <p class="text-[9px] font-black text-blue-400 uppercase tracking-widest italic">Capa Jurídica</p>
                             </div>
                         </div>
-            
-                        <div class="flex items-start gap-4">
-                            <div class="mt-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f46600" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                            </div>
-                            <div>
-                                <p class="text-xs font-extrabold italic text-brandDark uppercase tracking-wider mb-1">Gestión técnica descentralizada</p>
-                                <p class="text-[11px] text-gray-500 italic leading-relaxed">Información dinámica y editable directamente por los técnicos municipales para un inventario siempre vivo.</p>
+                        <div class="layer-plane layer-2">
+                            <div class="transform rotateZ(35deg) rotateX(-60deg) text-center">
+                                <p class="text-[9px] font-black text-emerald-400 uppercase tracking-widest italic">Capa Técnica</p>
                             </div>
                         </div>
-            
-                        <div class="flex items-start gap-4">
-                            <div class="mt-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f46600" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                            </div>
-                            <div>
-                                <p class="text-xs font-extrabold italic text-brandDark uppercase tracking-wider mb-1">Acceso segmentado por roles</p>
-                                <p class="text-[11px] text-gray-500 italic leading-relaxed">Protección de datos sensibles mediante visualización controlada: solo lo que cada perfil necesita gestionar.</p>
+                        <div class="layer-plane layer-1">
+                            <div class="transform rotateZ(35deg) rotateX(-60deg) text-center">
+                                <img src="img/geonet.png" class="h-6 w-auto mx-auto brightness-200">
+                                <p class="text-[9px] font-black text-white uppercase tracking-widest italic mt-2">Territorio</p>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="absolute bottom-8 text-center w-full">
+                        <p class="text-[9px] font-black text-gray-500 uppercase tracking-[0.4em] italic">Ecosistema Multi-Capa</p>
                     </div>
                 </div>
             </div>
@@ -221,37 +204,19 @@
 
     <section id="consultoria" class="py-32 px-8 bg-white border-t border-gray-100">
         <div class="max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-                <div class="max-w-2xl">
-                    <h2 class="text-4xl font-extrabold mb-6 leading-tight text-brandDark italic uppercase tracking-tighter">
-                        Consultoría técnica: <br>
-                        <span class="text-brandOrange uppercase">Más allá de la cartografía</span>
-                    </h2>
-                    <p class="text-gray-600 font-medium italic">Transformamos el territorio en datos útiles para la toma de decisiones municipales.</p>
+            <h2 class="text-4xl font-extrabold mb-16 text-brandDark italic uppercase tracking-tighter">Consultoría técnica: <span class="text-brandOrange">Más allá de la cartografía</span></h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="group p-10 rounded-[2.5rem] bg-brandLight border border-gray-100 hover:shadow-2xl transition-all">
+                    <h4 class="text-xl font-extrabold mb-4 italic uppercase">Asistencia urbanística</h4>
+                    <p class="text-sm text-gray-500 italic">Soporte en interpretación de parámetros y normativa.</p>
                 </div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 text-center">
-                <div class="group p-10 rounded-[2.5rem] border border-gray-100 bg-brandLight hover:bg-white hover:shadow-2xl transition-all duration-500">
-                    <div class="w-14 h-14 bg-brandOrange/10 text-brandOrange rounded-2xl flex items-center justify-center mx-auto mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <h4 class="text-xl font-extrabold mb-4 group-hover:text-brandOrange transition-colors italic uppercase tracking-tighter">Asistencia urbanística</h4>
-                    <p class="text-sm text-gray-500 italic mb-6">Soporte en la interpretación de parámetros y normalización de planeamiento.</p>
+                <div class="group p-10 rounded-[2.5rem] bg-brandLight border border-gray-100 hover:shadow-2xl transition-all">
+                    <h4 class="text-xl font-extrabold mb-4 italic uppercase">Desarrollo SIG</h4>
+                    <p class="text-sm text-gray-500 italic">Soluciones técnicas personalizadas para el territorio.</p>
                 </div>
-                <div class="group p-10 rounded-[2.5rem] border border-gray-100 bg-brandLight hover:bg-white hover:shadow-2xl transition-all duration-500">
-                    <div class="w-14 h-14 bg-blue-500/10 text-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                    </div>
-                    <h4 class="text-xl font-extrabold mb-4 group-hover:text-brandOrange transition-colors italic uppercase tracking-tighter">Desarrollo SIG</h4>
-                    <p class="text-sm text-gray-500 italic mb-6">Soluciones técnicas personalizadas para la gestión inteligente del territorio.</p>
-                </div>
-                <div class="group p-10 rounded-[2.5rem] border border-gray-100 bg-brandLight hover:bg-white hover:shadow-2xl transition-all duration-500">
-                    <div class="w-14 h-14 bg-emerald-500/10 text-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/></svg>
-                    </div>
-                    <h4 class="text-xl font-extrabold mb-4 group-hover:text-brandOrange transition-colors italic uppercase tracking-tighter">Inventarios</h4>
-                    <p class="text-sm text-gray-500 italic mb-6">Censo y valoración técnica de activos y patrimonio urbano municipal.</p>
+                <div class="group p-10 rounded-[2.5rem] bg-brandLight border border-gray-100 hover:shadow-2xl transition-all">
+                    <h4 class="text-xl font-extrabold mb-4 italic uppercase">Inventarios</h4>
+                    <p class="text-sm text-gray-500 italic">Censo y valoración técnica de activos urbanos.</p>
                 </div>
             </div>
         </div>
@@ -259,26 +224,21 @@
 
     <section id="visores" class="bg-gray-100 py-32 px-8 border-t border-gray-200">
         <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-6 italic uppercase tracking-tighter text-brandDark">
-                Herramientas útiles de <br>
-                <span class="text-brandOrange uppercase">Datos Abiertos</span>
-            </h2>
-            <p class="text-gray-500 font-bold italic uppercase text-[11px] tracking-[0.3em] mb-20">Consulta visual y acceso directo a la cartografía básica.</p>
-
-            <div class="grid md:grid-cols-3 gap-10">
-                <a href="https://visor.geonet.es/" target="_blank" class="group bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all">
-                    <h3 class="font-black text-2xl mb-4 group-hover:text-brandOrange italic uppercase tracking-tighter">GeoGIS Provincial</h3>
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-20 italic uppercase tracking-tighter text-brandDark">Herramientas de <span class="text-brandOrange">Datos Abiertos</span></h2>
+            <div class="grid md:grid-cols-3 gap-10 text-left">
+                <a href="https://visor.geonet.es/" target="_blank" class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all">
+                    <h3 class="font-black text-2xl mb-4 italic uppercase">GeoGIS Provincial</h3>
                     <p class="text-sm text-gray-500 mb-8 italic">Visualización de capas de datos abiertos.</p>
                     <span class="text-brandOrange font-black text-xs uppercase italic">Consultar Capas →</span>
                 </a>
-                <a href="https://callejero.geonet.es/" target="_blank" class="group bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all">
-                    <h3 class="font-black text-2xl mb-4 group-hover:text-brandOrange italic uppercase tracking-tighter">Callejero</h3>
+                <a href="https://callejero.geonet.es/" target="_blank" class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all">
+                    <h3 class="font-black text-2xl mb-4 italic uppercase">Callejero</h3>
                     <p class="text-sm text-gray-500 mb-8 italic">Buscador en viarios municipales.</p>
                     <span class="text-brandOrange font-black text-xs uppercase italic">Explorar Mapa →</span>
                 </a>
-                <a href="https://multivisor.geonet.es/" target="_blank" class="group bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all">
-                    <h3 class="font-black text-2xl mb-4 group-hover:text-brandOrange italic uppercase tracking-tighter">Multivisor</h3>
-                    <p class="text-sm text-gray-500 mb-8 italic">Comparador dinámico de ortofotografías históricas para un mismo lugar.</p>
+                <a href="https://multivisor.geonet.es/" target="_blank" class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all">
+                    <h3 class="font-black text-2xl mb-4 italic uppercase">Multivisor</h3>
+                    <p class="text-sm text-gray-500 mb-8 italic">Comparador de ortofotografías históricas.</p>
                     <span class="text-brandOrange font-black text-xs uppercase italic">Ver Evolución →</span>
                 </a>
             </div>
@@ -287,202 +247,89 @@
 
     <section id="noticias" class="py-32 px-8 bg-brandLight">
         <div class="max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 text-center md:text-left">
-                <div class="max-w-2xl">
-                    <h2 class="text-4xl font-extrabold mb-6 leading-tight text-brandDark italic uppercase tracking-tighter">
-                        Actualidad y <br>
-                        <span class="text-brandOrange uppercase">Compromiso Territorial</span>
-                    </h2>
-                    <p class="text-gray-500 font-medium italic">Crónica de nuestra actividad en la modernización de la administración pública.</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <article class="news-card group bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col justify-between min-h-[380px] cursor-pointer"
-                    data-tag="Institucional"
-                    data-tag-color="brandOrange"
-                    data-title="Geonet firma convenio con la Diputación de Alicante"
-                    data-date="15 noviembre 2025"
+            <h2 class="text-4xl font-extrabold mb-16 text-brandDark italic uppercase tracking-tighter text-center">Actualidad y <span class="text-brandOrange">Compromiso</span></h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <article class="news-card group bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm hover:shadow-2xl transition-all min-h-[380px] cursor-pointer flex flex-col justify-between"
+                    data-tag="Institucional" data-tag-color="brandOrange"
+                    data-title="La Diputación de Alicante impulsa GeoGIS"
+                    data-date="15 Noviembre 2025"
                     data-img="img/noticia_convenio.jpg"
-                    data-full-text="La Diputación de Alicante ha aprobado un convenio marco para la modernización de la gestión municipal en la provincia, facilitando a los ayuntamientos que se adhieran la implantación de la plataforma GeoGIS, un Sistema de Información Geográfica desarrollado y ejecutado por Geonet Territorial.
-
-Esta solución informática, implantada ya en algunos municipios alicantinos, es una herramienta que permite a los consistorios consultar y analizar la totalidad de datos espaciales y geográficos existentes en sus municipios con la finalización de mejorar la gestión de su territorio, la toma de decisiones y la prestación de servicios.
-
-La vicepresidenta segunda, Marina Sáez, quien también ostenta la vicepresidencia del Consejo de Administración de Geonet, ha destacado que esta nueva plataforma “permitirá a los ayuntamientos mejorar en la toma de decisiones, la planificación urbana y la prestación de servicios, traduciéndose en una gestión más ágil y eficiente de los recursos locales, al tiempo que promoverá la transparencia y participación ciudadana”.
-
-La plataforma GeoGIS está gestionada por Geonet, empresa pública que actúa como medio propio y servicio técnico de la Diputación de Alicante, especializada en soluciones cartográficas para la administración local, y favorece una mayor eficiencia y agilidad al implementar una infraestructura de datos espaciales.
-
-Este sistema ofrece, de esta forma, acceso a la información territorial de forma centralizada integrando en una plataforma única múltiples conjuntos de datos georreferenciados como callejero, catastro, redes, patrimonio, medioambiente o urbanismo accesibles desde cualquier dispositivo con conexión a internet.
-
-El servicio, gracias a este convenio marco aprobado por unanimidad en el último pleno provincial, se articula a través de encargos específicos que Geonet recibe de la Diputación, asegurando así el apoyo técnico, la consultoría y la asistencia a los municipios.
-
-La iniciativa forma parte del compromiso de la Diputación de Alicante con la transformación digital, la sostenibilidad y la mejora continua del servicio público que se presta desde los ayuntamientos, contribuyendo al desarrollo de una provincia más moderna, eficiente y conectada”, ha apuntado Sáez.">
-                    
+                    data-full-text="La Diputación de Alicante ha aprobado un convenio marco para la modernización de la gestión municipal, facilitando la adhesión de los ayuntamientos a GeoGIS.<br><br>Esta solución permitirá mejorar la toma de decisiones y la planificación urbana. Marina Sáez destacó que GeoGIS promoverá la transparencia y participación ciudadana.">
                     <div>
                         <span class="inline-block bg-brandOrange/10 text-brandOrange px-3 py-1 rounded-md text-[9px] font-black uppercase tracking-widest mb-6 italic">Institucional</span>
-                        <h3 class="text-xl font-extrabold mb-4 group-hover:text-brandOrange transition-colors leading-tight italic uppercase tracking-tighter">La Diputación de Alicante impulsa Geogis</h3>
-                        <p class="text-xs text-gray-500 leading-relaxed italic line-clamp-4">La Diputación de Alicante ha aprobado un convenio marco para la modernización de la gestión municipal, facilitando a la adhesion de los ayuntamientos a GeoGIS</p>
+                        <h3 class="text-xl font-extrabold mb-4 italic uppercase">La Diputación impulsa Geogis</h3>
+                        <p class="text-xs text-gray-500 italic line-clamp-4">Aprobado el convenio marco para la modernización municipal mediante la tecnología de Geonet.</p>
                     </div>
-                    <div class="pt-8 border-t border-gray-50 flex justify-between items-center">
-                        <span class="text-[10px] font-bold text-gray-300 uppercase tracking-widest italic">15 noviembre 2025</span>
+                    <div class="pt-8 border-t border-gray-50 flex justify-between items-center text-gray-300 font-bold text-[10px] italic uppercase tracking-widest">
+                        <span>15 Nov 2025</span>
                         <span class="text-brandOrange text-xs italic font-black">Leer más +</span>
                     </div>
                 </article>
-
-                <article class="news-card group bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col justify-between min-h-[380px] cursor-pointer"
-                    data-tag="Caso de Éxito"
-                    data-tag-color="blue-500"
-                    data-title="Implantación Integral en Elche"
-                    data-date="Febrero 2026"
-                    data-img="https://images.unsplash.com/photo-1531973576160-7125cd663d86?q=80&w=800&auto=format&fit=crop"
-                    data-full-text="Ha concluido con éxito la fase de migración e integración de servicios urbanísticos en Elche. Reducción del 40% en tiempos de respuesta.">
-                    <div>
-                        <span class="inline-block bg-blue-500/10 text-blue-500 px-3 py-1 rounded-md text-[9px] font-black uppercase tracking-widest mb-6 italic">Caso de Éxito</span>
-                        <h3 class="text-xl font-extrabold mb-4 group-hover:text-brandOrange transition-colors leading-tight italic uppercase tracking-tighter">Éxito operativo en Elche</h3>
-                        <p class="text-xs text-gray-500 leading-relaxed italic line-clamp-4">Culmina la integración de servicios urbanísticos, optimizando la gestión municipal significativamente.</p>
-                    </div>
-                    <div class="pt-8 border-t border-gray-50 flex justify-between items-center">
-                        <span class="text-[10px] font-bold text-gray-300 uppercase tracking-widest italic">Feb 2026</span>
-                        <span class="text-brandOrange text-xs italic font-black">Leer más +</span>
-                    </div>
-                </article>
-
-                <article class="news-card group bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col justify-between min-h-[380px] cursor-pointer"
-                    data-tag="Eventos"
-                    data-tag-color="emerald-500"
-                    data-title="Ponencia Nacional sobre Interoperabilidad"
-                    data-date="Enero 2026"
-                    data-img="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop"
-                    data-full-text="Presentación de modelos de interoperabilidad entre SIG y Gestores de Expedientes en el Congreso Nacional de Administración Digital.">
-                    <div>
-                        <span class="inline-block bg-emerald-500/10 text-emerald-500 px-3 py-1 rounded-md text-[9px] font-black uppercase tracking-widest mb-6 italic">Eventos</span>
-                        <h3 class="text-xl font-extrabold mb-4 group-hover:text-brandOrange transition-colors leading-tight italic uppercase tracking-tighter">Congreso Innovación SIG</h3>
-                        <p class="text-xs text-gray-500 leading-relaxed italic line-clamp-4">Presentación de los nuevos estándares de conexión entre el territorio y la administración.</p>
-                    </div>
-                    <div class="pt-8 border-t border-gray-50 flex justify-between items-center">
-                        <span class="text-[10px] font-bold text-gray-300 uppercase tracking-widest italic">Ene 2026</span>
-                        <span class="text-brandOrange text-xs italic font-black">Leer más +</span>
-                    </div>
-                </article>
-            </div>
+                </div>
         </div>
     </section>
 
-    <div id="news-modal" class="fixed inset-0 z-[100] hidden overflow-y-auto" role="dialog" aria-modal="true">
-        <div class="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity"></div>
+    <div id="news-modal" class="fixed inset-0 z-[100] hidden overflow-y-auto">
+        <div class="fixed inset-0 bg-black/80 backdrop-blur-sm"></div>
         <div class="flex min-h-full items-center justify-center p-4 relative z-20">
-            <div class="relative bg-white rounded-[3rem] overflow-hidden shadow-2xl w-full max-w-4xl">
-                <button id="close-modal" class="absolute top-6 right-6 z-30 bg-black/20 p-2 rounded-full text-white hover:bg-brandOrange transition-colors">X</button>
-                <div class="relative aspect-[21/9] w-full overflow-hidden">
-                    <img id="modal-img" src="" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <span id="modal-tag" class="absolute bottom-6 left-10 px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-widest italic text-white"></span>
-                </div>
+            <div class="relative bg-white rounded-[3rem] overflow-hidden shadow-2xl w-full max-w-4xl focus-card">
+                <button id="close-modal" class="absolute top-6 right-6 z-30 bg-black/20 p-2 rounded-full text-white">X</button>
+                <div class="relative aspect-[21/9] w-full"><img id="modal-img" src="" class="w-full h-full object-cover"></div>
                 <div class="p-10 lg:p-16">
-                    <div class="mb-10 pb-6 border-b border-gray-100 flex justify-between items-center">
-                        <h1 id="modal-title" class="text-3xl font-extrabold italic uppercase text-brandDark"></h1>
-                        <span id="modal-date" class="text-[11px] font-bold text-gray-400 uppercase italic"></span>
-                    </div>
-                    <div id="modal-full-text" class="whitespace-pre-line text-gray-600 leading-relaxed italic space-y-4 text-base"></div>
-                    <div class="mt-16 pt-8 border-t border-gray-100 text-center">
-                        <button id="close-modal-bottom" class="text-brandOrange font-black text-xs uppercase italic">← Volver a Actualidad</button>
-                    </div>
+                    <h1 id="modal-title" class="text-3xl font-extrabold italic uppercase text-brandDark mb-6 border-b pb-6"></h1>
+                    <div id="modal-full-text" class="text-gray-600 leading-relaxed italic"></div>
+                    <div class="mt-10 pt-8 border-t text-center"><button id="close-modal-bottom" class="text-brandOrange font-black text-xs uppercase italic">← Volver</button></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <section id="empleo" class="py-32 px-8 bg-brandDark text-white relative">
-        <div class="max-w-6xl mx-auto relative z-10 grid md:grid-cols-2 gap-20">
+    <section id="empleo" class="py-32 px-8 bg-brandDark text-white">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20">
             <div>
-                <span class="text-brandOrange font-black text-[10px] uppercase tracking-[0.4em] mb-6 block italic">Recursos Humanos</span>
-                <h2 class="text-4xl font-extrabold mb-8 italic uppercase tracking-tighter">Únete a nuestro <span class="text-brandOrange">equipo</span></h2>
-                <p class="text-gray-400 text-base mb-8 leading-relaxed font-medium italic italic italic">En Geonet valoramos la iniciativa de profesionales que deseen aportar su experiencia al desarrollo del territorio.</p>
-                <div class="bg-white/5 border border-white/10 p-8 rounded-3xl">
-                    <h4 class="text-sm font-black uppercase tracking-widest mb-4 italic text-white">Candidaturas espontáneas</h4>
-                    <a href="mailto:rrhh@geonet.es" class="inline-flex items-center gap-2 text-brandOrange font-black text-[11px] uppercase tracking-widest border-b border-brandOrange/20 hover:border-brandOrange pb-1 italic italic">Enviar currículum vitae →</a>
-                </div>
+                <span class="text-brandOrange font-black text-[10px] uppercase tracking-[0.4em] mb-6 block italic">RRHH</span>
+                <h2 class="text-4xl font-extrabold mb-8 italic uppercase tracking-tighter">Únete al <span class="text-brandOrange">equipo</span></h2>
+                <a href="mailto:rrhh@geonet.es" class="inline-block bg-white text-brandDark px-10 py-4 rounded-xl font-extrabold uppercase text-xs tracking-widest italic">Enviar CV</a>
             </div>
-            <div class="bg-white/5 border border-white/10 p-10 rounded-[2.5rem] backdrop-blur-sm">
-                <div class="flex items-center justify-between mb-10 pb-6 border-b border-white/10">
-                    <h3 class="text-lg font-extrabold uppercase tracking-tighter italic">Puestos vacantes</h3>
-                    <span class="px-3 py-1 bg-gray-500/10 border border-gray-500/30 rounded-full text-[9px] font-black uppercase text-gray-400 italic">Sin procesos abiertos</span>
-                </div>
-                <p class="text-sm text-gray-400 italic">Mantenemos una base de datos actualizada para incorporaciones inmediatas ante nuevos proyectos.</p>
+            <div class="bg-white/5 border border-white/10 p-10 rounded-[2.5rem]">
+                <h3 class="text-lg font-extrabold uppercase italic mb-6">Puestos vacantes</h3>
+                <p class="text-sm text-gray-400 italic">Sin procesos abiertos. Aceptamos candidaturas espontáneas.</p>
             </div>
         </div>
     </section>
 
     <footer class="bg-brandDark text-white py-20 px-8 border-t border-white/5 text-center md:text-left">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
-            <div>
-                <img src="img/geonet.png" alt="Logo" class="h-10 w-auto filter invert brightness-200 opacity-80 mb-4 mx-auto md:mx-0">
-                <p class="text-[9px] text-gray-500 font-bold uppercase tracking-[0.4em] italic">Socio Tecnológico de la Administración Pública</p>
-            </div>
+            <img src="img/geonet.png" alt="Logo" class="h-10 filter invert brightness-200 opacity-80 mx-auto md:mx-0">
             <div class="flex gap-10 text-[10px] font-black text-gray-400 uppercase tracking-widest italic mt-10 md:mt-0">
-                <a href="#" class="hover:text-brandOrange transition-colors">Transparencia</a>
-                <a href="#" class="hover:text-brandOrange transition-colors">Sede Electrónica</a>
+                <a href="#">Transparencia</a>
+                <a href="#">Sede Electrónica</a>
             </div>
         </div>
         <div class="mt-16 text-center text-[9px] text-gray-600 font-bold uppercase tracking-[0.5em] italic">© 2026 Geonet Territorial SAU</div>
     </footer>
 
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const modal = document.getElementById('news-modal');
-        const cards = document.querySelectorAll('.news-card');
-        const body = document.body;
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('news-modal');
+            const cards = document.querySelectorAll('.news-card');
+            const closeModal = () => { modal.classList.add('hidden'); document.body.style.overflow = 'auto'; };
 
-        const modalImg = document.getElementById('modal-img');
-        const modalTag = document.getElementById('modal-tag');
-        const modalTitle = document.getElementById('modal-title');
-        const modalDate = document.getElementById('modal-date');
-        const modalFullText = document.getElementById('modal-full-text');
-
-        // --- FUNCIÓN PARA CERRAR ---
-        const closeModal = () => {
-            modal.classList.add('hidden');
-            body.classList.remove('overflow-hidden');
-        };
-
-        // --- ABRIR MODAL ---
-        cards.forEach(card => {
-            card.addEventListener('click', () => {
-                const data = card.dataset;
-                modalImg.src = data.img;
-                modalTag.textContent = data.tag;
-                modalTag.className = `absolute bottom-6 left-10 inline-block bg-${data.tagColor}/10 text-${data.tagColor} px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-widest mb-6 italic text-white`;
-                modalTitle.textContent = data.title;
-                modalDate.textContent = data.date;
-                
-                // Usamos innerHTML para que funcionen los saltos de línea <br>
-                modalFullText.innerHTML = data.fullText;
-                
-                modal.classList.remove('hidden');
-                body.classList.add('overflow-hidden');
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const data = card.dataset;
+                    document.getElementById('modal-img').src = data.img;
+                    document.getElementById('modal-title').innerHTML = data.title;
+                    document.getElementById('modal-full-text').innerHTML = data.fullText;
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                });
             });
-        });
 
-        // --- CERRAR AL PULSAR EN LOS BOTONES ---
-        document.getElementById('close-modal').onclick = closeModal;
-        document.getElementById('close-modal-bottom').onclick = closeModal;
-        
-        // --- LA MAGIA: CERRAR AL PULSAR FUERA (EN EL FONDO OSCURO) ---
-        modal.addEventListener('click', (e) => {
-            // "e.target" es donde has hecho clic. 
-            // Si el clic NO es dentro de la tarjeta blanca (el hijo del modal), cerramos.
-            const isClickInside = e.target.closest('.bg-white'); 
-            
-            if (!isClickInside) {
-                closeModal();
-            }
+            document.getElementById('close-modal').onclick = closeModal;
+            document.getElementById('close-modal-bottom').onclick = closeModal;
+            modal.onclick = (e) => { if (e.target.classList.contains('bg-black/80')) closeModal(); };
         });
-
-        // --- CERRAR CON LA TECLA ESC ---
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-    });
-</script>
+    </script>
 </body>
 </html>
