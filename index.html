@@ -26,68 +26,78 @@
     </script>
 
     <style>
-        html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; }
 
-        /* --- GRÁFICO 3D DE CAPAS --- */
-        .stack-container {
-            perspective: 1200px;
-            height: 450px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
+    /* --- ESTILOS DEL GRAFICO 3D INTEGRADO --- */
+    .stack-container {
+        perspective: 1200px;
+        height: 400px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
 
-        .layer-plane {
-            position: absolute;
-            width: 320px;
-            height: 180px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transform: rotateX(60deg) rotateZ(-35deg);
-            backdrop-filter: blur(6px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.5s ease;
-        }
+    .layer-plane {
+        position: absolute;
+        width: 320px;
+        height: 180px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transform: rotateX(60deg) rotateZ(-35deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(8px);
+        transition: all 0.5s ease;
+        overflow: hidden; /* Para que el esquema no salga del cristal */
+    }
 
-        /* Orden de capas: 1 abajo, 2 medio, 3 arriba */
-        @keyframes float-layer {
-            0%, 100% { transform: rotateX(60deg) rotateZ(-35deg) translateZ(var(--base-z)); }
-            50% { transform: rotateX(60deg) rotateZ(-35deg) translateZ(calc(var(--base-z) + 12px)); }
-        }
+    /* Esquemas GIS dentro de las capas */
+    .gis-schema {
+        position: absolute;
+        inset: 10px;
+        opacity: 0.3;
+        transform: rotateZ(35deg) rotateX(-60deg) scale(1.1);
+        filter: blur(0.5px);
+    }
 
-        .layer-1 { --base-z: 0px; animation: float-layer 5s infinite ease-in-out; border-color: rgba(244, 102, 0, 0.4); z-index: 10; }
-        .layer-2 { --base-z: 70px; animation: float-layer 5s infinite ease-in-out -1.5s; border-color: rgba(16, 185, 129, 0.4); z-index: 20; }
-        .layer-3 { --base-z: 140px; animation: float-layer 5s infinite ease-in-out -3s; border-color: rgba(59, 130, 246, 0.4); z-index: 30; }
+    /* Animación de levitación individualizada */
+    @keyframes float-layer {
+        0%, 100% { transform: rotateX(60deg) rotateZ(-35deg) translateZ(var(--base-z)); }
+        50% { transform: rotateX(60deg) rotateZ(-35deg) translateZ(calc(var(--base-z) + 15px)); }
+    }
 
-        .gis-content {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform: rotateZ(35deg) rotateX(-60deg); /* Neutraliza la rotación para dibujar plano */
-        }
+    .layer-1 { --base-z: 0px; animation: float-layer 5s infinite ease-in-out; border-color: rgba(244, 102, 0, 0.4); }
+    .layer-2 { --base-z: 70px; animation: float-layer 5s infinite ease-in-out -1.5s; border-color: rgba(16, 185, 129, 0.4); }
+    .layer-3 { --base-z: 140px; animation: float-layer 5s infinite ease-in-out -3s; border-color: rgba(59, 130, 246, 0.4); }
 
-        .beam {
-            position: absolute;
-            width: 2px;
-            height: 380px;
-            background: linear-gradient(to top, transparent, #f46600, transparent);
-            box-shadow: 0 0 15px #f46600;
-            z-index: 50;
-            opacity: 0.5;
-        }
+    /* Haz de luz central */
+    .beam {
+        position: absolute;
+        width: 2px;
+        height: 350px;
+        background: linear-gradient(to top, transparent, #f46600, transparent);
+        box-shadow: 0 0 15px #f46600;
+        z-index: 50;
+        opacity: 0.6;
+    }
 
-        .animate-pulse-soft { animation: pulse-soft 3s infinite ease-in-out; }
-        @keyframes pulse-soft { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.1; } }
-    </style>
+    .animate-pulse-soft { animation: pulse-soft 3s infinite ease-in-out; }
+    @keyframes pulse-soft {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 0.1; }
+    }
+</style>
 </head>
 <body class="bg-brandLight text-brandDark antialiased font-sans">
 
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 py-4 px-8 flex justify-between items-center">
-        <img src="img/geonet.png" alt="Logo Geonet" class="h-10 w-auto object-contain">
+        <div class="flex items-center gap-2">
+            <img src="img/geonet.png" alt="Logo Geonet" class="h-10 w-auto object-contain">
+        </div>
+        
         <div class="hidden lg:flex gap-8 font-bold text-[10px] uppercase tracking-[0.2em] text-gray-500">
             <a href="#geogis" class="hover:text-brandOrange transition-colors">GEOGIS</a>
             <a href="#consultoria" class="hover:text-brandOrange transition-colors">CONSULTORÍA</a>
@@ -95,7 +105,10 @@
             <a href="#noticias" class="hover:text-brandOrange transition-colors">ACTUALIDAD</a>
             <a href="#empleo" class="hover:text-brandOrange transition-colors">EMPLEO</a>
         </div>
-        <a href="mailto:soporte@geonet.es" class="bg-brandOrange text-white px-6 py-2.5 rounded-full font-extrabold text-[10px] uppercase tracking-widest">Solicitar Demo</a>
+
+        <a href="mailto:soporte@geonet.es" class="bg-brandOrange text-white px-6 py-2.5 rounded-full font-extrabold text-[10px] uppercase tracking-widest hover:shadow-xl transition-all active:scale-95">
+            Solicitar Demo
+        </a>
     </nav>
 
     <section class="relative min-h-screen flex items-center overflow-hidden bg-brandDark text-white px-8">
@@ -103,11 +116,16 @@
             <source src="img/video.mp4" type="video/mp4">
         </video>
         <div class="absolute inset-0 z-10" style="background: linear-gradient(to right, rgba(26, 29, 35, 0.85) 20%, rgba(26, 29, 35, 0.1) 100%);"></div>
-        <div class="max-w-6xl mx-auto relative z-20 w-full">
-            <span class="inline-block border border-brandOrange/40 text-brandOrange px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-[0.2em] mb-6 italic">Visión Estratégica 2026</span>
-            <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.05] mb-8 italic">Inteligencia <br> <span class="text-brandOrange">Territorial</span> Activa</h1>
-            <div class="flex gap-5">
-                <a href="#geogis" class="bg-brandOrange text-white px-10 py-4 rounded-xl font-extrabold hover:scale-105 transition-transform uppercase text-xs italic tracking-widest">Explorar GeoGIS</a>
+
+        <div class="max-w-6xl mx-auto relative z-20 grid md:grid-cols-2 gap-16 items-center w-full">
+            <div>
+                <span class="inline-block border border-brandOrange/40 text-brandOrange px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-[0.2em] mb-6 italic">Visión Estratégica 2026</span>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.05] mb-8">Inteligencia <br> <span class="text-brandOrange italic">Territorial</span> Activa</h1>
+                <p class="text-gray-300 text-lg mb-10 leading-relaxed max-w-lg font-medium italic">"Esfuerzo por una administración más eficiente y moderna." Transformamos datos complejos en herramientas de decisión municipal.</p>
+                <div class="flex flex-wrap gap-5">
+                    <a href="#geogis" class="bg-brandOrange text-white px-10 py-4 rounded-xl font-extrabold hover:scale-105 transition-transform text-center uppercase text-xs tracking-widest italic">Explorar GeoGIS</a>
+                    <a href="#visores" class="border border-white/30 text-white px-10 py-4 rounded-xl font-extrabold hover:bg-white hover:text-brandDark transition-all text-center uppercase text-xs tracking-widest italic">Visores Públicos</a>
+                </div>
             </div>
         </div>
     </section>
@@ -121,43 +139,44 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-16">
                     <div class="flex gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm">
                         <div class="w-10 h-10 bg-brandOrange/10 text-brandOrange rounded-xl flex items-center justify-center shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 3v18"/></svg>
                         </div>
                         <div><h4 class="font-extrabold text-sm mb-1 italic">Planeamiento</h4><p class="text-[10px] text-gray-500 italic">Normativa con seguridad jurídica.</p></div>
                     </div>
                     <div class="flex gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm">
                         <div class="w-10 h-10 bg-blue-500/10 text-blue-500 rounded-xl flex items-center justify-center shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
                         </div>
                         <div><h4 class="font-extrabold text-sm mb-1 italic text-blue-600">Conexión Gestiona</h4><p class="text-[10px] text-gray-500 italic">Vínculo directo con expedientes.</p></div>
                     </div>
                     <div class="flex gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm">
                         <div class="w-10 h-10 bg-emerald-500/10 text-emerald-500 rounded-xl flex items-center justify-center shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 0 1 7 7c0 2.5-2 4.5-5 5v4h-4v-4c-3-.5-5-2.5-5-5a7 7 0 0 1 7-7z"/></svg>
                         </div>
                         <div><h4 class="font-extrabold text-sm mb-1 italic text-emerald-600">Infraestructuras</h4><p class="text-[10px] text-gray-500 italic">Gestión de redes y servicios.</p></div>
                     </div>
                     <div class="flex gap-4 p-5 rounded-2xl bg-white border border-gray-100 shadow-sm">
                         <div class="w-10 h-10 bg-purple-500/10 text-purple-500 rounded-xl flex items-center justify-center shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V10Z"/><path d="m3 10 9-7 9 7"/></svg>
                         </div>
                         <div><h4 class="font-extrabold text-sm mb-1 italic text-purple-600">Catastro</h4><p class="text-[10px] text-gray-500 italic">Coordinación tributaria activa.</p></div>
                     </div>
                 </div>
 
-                <div class="space-y-6 pt-12 border-t border-gray-100 mt-10">
+                <div class="space-y-6 pt-6 border-t border-gray-100 mt-10">
                     <h5 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] mb-4 italic">Virtudes del Sistema</h5>
+                    
                     <div class="flex items-start gap-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f46600" stroke-width="2.5" class="mt-1"><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></svg>
-                        <div><p class="text-xs font-extrabold italic text-brandDark uppercase tracking-wider mb-1">Información siempre actualizada</p><p class="text-[11px] text-gray-500 italic">Mantenimiento riguroso de capas de información.</p></div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f46600" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></svg>
+                        <div><p class="text-xs font-extrabold italic text-brandDark uppercase tracking-wider mb-1">Información siempre actualizada</p><p class="text-[11px] text-gray-500 italic">Capas de información mantenidas rigurosamente.</p></div>
                     </div>
                     <div class="flex items-start gap-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f46600" stroke-width="2.5" class="mt-1"><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></svg>
-                        <div><p class="text-xs font-extrabold italic text-brandDark uppercase tracking-wider mb-1">Gestión técnica descentralizada</p><p class="text-[11px] text-gray-500 italic">Datos editables por técnicos municipales.</p></div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f46600" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></svg>
+                        <div><p class="text-xs font-extrabold italic text-brandDark uppercase tracking-wider mb-1">Gestión viva y editable</p><p class="text-[11px] text-gray-500 italic">Datos editables directamente por los técnicos municipales.</p></div>
                     </div>
                     <div class="flex items-start gap-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f46600" stroke-width="2.5" class="mt-1"><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></svg>
-                        <div><p class="text-xs font-extrabold italic text-brandDark uppercase tracking-wider mb-1">Acceso segmentado por roles</p><p class="text-[11px] text-gray-500 italic leading-relaxed">Protección de datos sensibles para gestión interna.</p></div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f46600" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></svg>
+                        <div><p class="text-xs font-extrabold italic text-brandDark uppercase tracking-wider mb-1">Seguridad por roles</p><p class="text-[11px] text-gray-500 italic leading-relaxed">Segmentación de datos sensibles para la gestión interna.</p></div>
                     </div>
                 </div>
             </div>
@@ -168,39 +187,37 @@
                     
                     <div class="beam"></div>
 
-                    <div class="stack-container">
+                    <div class="stack-container relative z-10">
                         <div class="layer-plane layer-3">
-                            <div class="gis-content text-center flex flex-col items-center justify-center">
-                                <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full opacity-40 text-blue-400" fill="currentColor">
-                                    <circle cx="20" cy="20" r="1.5"/><circle cx="50" cy="30" r="1.5"/><circle cx="80" cy="15" r="1.5"/><circle cx="40" cy="60" r="1.5"/><circle cx="70" cy="75" r="1.5"/><circle cx="15" cy="85" r="1.5"/><circle cx="85" cy="45" r="1.5"/><circle cx="35" cy="45" r="1.5"/><circle cx="60" cy="55" r="1.5"/><circle cx="90" cy="85" r="1.5"/><circle cx="10" cy="50" r="1.5"/>
+                            <div class="transform rotateZ(35deg) rotateX(-60deg) text-center relative w-full h-full p-4">
+                                <svg class="gis-schema text-blue-400" viewBox="0 0 100 100" fill="currentColor">
+                                    <circle cx="20" cy="30" r="3"/><circle cx="50" cy="50" r="4"/><circle cx="80" cy="20" r="3"/><circle cx="70" cy="80" r="3"/>
                                 </svg>
-                                <p class="text-[9px] font-black text-blue-400 uppercase tracking-widest italic z-10">Capa Jurídica</p>
+                                <p class="text-[9px] font-black text-blue-400 uppercase tracking-widest italic relative z-10">Capa Jurídica</p>
                             </div>
                         </div>
 
                         <div class="layer-plane layer-2">
-                            <div class="gis-content text-center flex flex-col items-center justify-center">
-                                <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full opacity-30 text-emerald-400" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <polygon points="20,10 35,15 30,30 15,25"/><polygon points="60,20 75,25 70,40 55,35"/><polygon points="40,45 55,50 50,65 35,60"/><polygon points="75,55 90,60 85,75 70,70"/><polygon points="15,45 30,50 25,65 10,60"/><polygon points="45,70 60,75 55,90 40,85"/><polygon points="70,10 85,15 80,25 65,20"/>
+                            <div class="transform rotateZ(35deg) rotateX(-60deg) text-center relative w-full h-full p-4">
+                                <svg class="gis-schema text-emerald-400" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="10,10 50,20 40,60 20,50"/><polygon points="60,60 90,50 80,90 70,80"/>
                                 </svg>
-                                <p class="text-[9px] font-black text-emerald-400 uppercase tracking-widest italic z-10">Capa Técnica</p>
+                                <p class="text-[9px] font-black text-emerald-400 uppercase tracking-widest italic relative z-10">Capa Técnica</p>
                             </div>
                         </div>
 
                         <div class="layer-plane layer-1">
-                            <div class="gis-content text-center flex flex-col items-center justify-center p-6">
-                                <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full opacity-20 text-white" stroke="currentColor" stroke-width="0.8" fill="none">
-                                    <path d="M10,0 v100 M30,0 v100 M50,0 v100 M70,0 v100 M90,0 v100 M0,20 h100 M0,40 h100 M0,60 h100 M0,80 h100"/>
-                                    <rect x="12" y="22" width="16" height="16" fill="rgba(255,255,255,0.1)"/>
-                                    <rect x="52" y="62" width="16" height="16" fill="rgba(255,255,255,0.1)"/>
+                            <div class="transform rotateZ(35deg) rotateX(-60deg) text-center relative w-full h-full p-4">
+                                <svg class="gis-schema text-white" viewBox="0 0 100 100" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M0,20h100M0,40h100M0,60h100M0,80h100"/><path d="M20,0v100M40,0v100M60,0v100M80,0v100"/>
                                 </svg>
-                                <p class="text-[10px] font-black text-white uppercase tracking-[0.2em] italic mb-1 z-10">GeqNet</p>
-                                <p class="text-[7px] font-bold text-gray-400 uppercase tracking-widest z-10">TERRITORIO</p>
+                                <img src="img/geonet.png" class="h-6 w-auto mx-auto brightness-200 opacity-60 relative z-10">
+                                <p class="text-[9px] font-black text-white uppercase tracking-widest italic mt-2 relative z-10">Territorio</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="absolute bottom-8 text-center w-full">
+                    <div class="absolute bottom-10 w-full text-center">
                         <p class="text-[9px] font-black text-gray-500 uppercase tracking-[0.4em] italic">Ecosistema GEOGIS</p>
                     </div>
                 </div>
@@ -210,20 +227,43 @@
 
     <section id="consultoria" class="py-32 px-8 bg-white border-t border-gray-100">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-extrabold mb-16 text-brandDark italic uppercase tracking-tighter">Consultoría técnica: <span class="text-brandOrange uppercase">Más allá de la cartografía</span></h2>
+            <h2 class="text-4xl font-extrabold mb-16 text-brandDark italic uppercase tracking-tighter">Consultoría técnica: <span class="text-brandOrange">Más allá de la cartografía</span></h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="group p-10 rounded-[2.5rem] bg-brandLight border border-gray-100 hover:shadow-2xl transition-all duration-500">
+                <div class="group p-10 rounded-[2.5rem] bg-brandLight border border-gray-100 hover:shadow-2xl transition-all">
                     <h4 class="text-xl font-extrabold mb-4 italic uppercase">Asistencia urbanística</h4>
                     <p class="text-sm text-gray-500 italic">Soporte en interpretación de parámetros y normativa.</p>
                 </div>
-                <div class="group p-10 rounded-[2.5rem] bg-brandLight border border-gray-100 hover:shadow-2xl transition-all duration-500">
+                <div class="group p-10 rounded-[2.5rem] bg-brandLight border border-gray-100 hover:shadow-2xl transition-all">
                     <h4 class="text-xl font-extrabold mb-4 italic uppercase">Desarrollo SIG</h4>
                     <p class="text-sm text-gray-500 italic">Soluciones técnicas personalizadas para el territorio.</p>
                 </div>
-                <div class="group p-10 rounded-[2.5rem] bg-brandLight border border-gray-100 hover:shadow-2xl transition-all duration-500">
+                <div class="group p-10 rounded-[2.5rem] bg-brandLight border border-gray-100 hover:shadow-2xl transition-all">
                     <h4 class="text-xl font-extrabold mb-4 italic uppercase">Inventarios</h4>
                     <p class="text-sm text-gray-500 italic">Censo y valoración técnica de activos urbanos.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="visores" class="bg-gray-100 py-32 px-8 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-20 italic uppercase tracking-tighter text-brandDark">Herramientas de <span class="text-brandOrange">Datos Abiertos</span></h2>
+            <div class="grid md:grid-cols-3 gap-10 text-left">
+                <a href="https://visor.geonet.es/" target="_blank" class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all">
+                    <h3 class="font-black text-2xl mb-4 italic uppercase">GeoGIS Provincial</h3>
+                    <p class="text-sm text-gray-500 mb-8 italic">Visualización de capas de datos abiertos.</p>
+                    <span class="text-brandOrange font-black text-xs uppercase italic">Consultar Capas →</span>
+                </a>
+                <a href="https://callejero.geonet.es/" target="_blank" class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all">
+                    <h3 class="font-black text-2xl mb-4 italic uppercase">Callejero</h3>
+                    <p class="text-sm text-gray-500 mb-8 italic">Buscador en viarios municipales.</p>
+                    <span class="text-brandOrange font-black text-xs uppercase italic">Explorar Mapa →</span>
+                </a>
+                <a href="https://multivisor.geonet.es/" target="_blank" class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all">
+                    <h3 class="font-black text-2xl mb-4 italic uppercase">Multivisor</h3>
+                    <p class="text-sm text-gray-500 mb-8 italic">Comparador de ortofotografías históricas.</p>
+                    <span class="text-brandOrange font-black text-xs uppercase italic">Ver Evolución →</span>
+                </a>
             </div>
         </div>
     </section>
@@ -237,10 +277,10 @@
                     data-title="La Diputación de Alicante impulsa GeoGIS"
                     data-date="15 Noviembre 2025"
                     data-img="img/noticia_convenio.jpg"
-                    data-full-text="La Diputación de Alicante ha aprobado un convenio marco para la modernización de la gestión municipal, facilitando la adhesión de los ayuntamientos a GeoGIS.<br><br>Esta solución permitirá mejorar la toma de decisiones y la planificación urbana.">
+                    data-full-text="La Diputación de Alicante ha aprobado un convenio marco para la modernización de la gestión municipal, facilitando la adhesión de los ayuntamientos a GeoGIS.<br><br>Esta solución permitirá mejorar la toma de decisiones y la planificación urbana. Marina Sáez destacó que GeoGIS promoverá la transparencia y participación ciudadana.">
                     <div>
                         <span class="inline-block bg-brandOrange/10 text-brandOrange px-3 py-1 rounded-md text-[9px] font-black uppercase tracking-widest mb-6 italic">Institucional</span>
-                        <h3 class="text-xl font-extrabold mb-4 italic uppercase leading-tight">La Diputación impulsa Geogis</h3>
+                        <h3 class="text-xl font-extrabold mb-4 italic uppercase">La Diputación impulsa Geogis</h3>
                         <p class="text-xs text-gray-500 italic line-clamp-4">Aprobado el convenio marco para la modernización municipal mediante la tecnología de Geonet.</p>
                     </div>
                     <div class="pt-8 border-t border-gray-50 flex justify-between items-center text-gray-300 font-bold text-[10px] italic uppercase tracking-widest">
@@ -248,51 +288,45 @@
                         <span class="text-brandOrange text-xs italic font-black">Leer más +</span>
                     </div>
                 </article>
-            </div>
+                </div>
         </div>
     </section>
 
     <div id="news-modal" class="fixed inset-0 z-[100] hidden overflow-y-auto">
         <div class="fixed inset-0 bg-black/80 backdrop-blur-sm"></div>
         <div class="flex min-h-full items-center justify-center p-4 relative z-20">
-            <div id="modal-content" class="relative bg-white rounded-[3rem] overflow-hidden shadow-2xl w-full max-w-4xl">
-                <button id="close-modal" class="absolute top-6 right-6 z-30 bg-black/20 p-2 rounded-full text-white hover:bg-brandOrange">X</button>
+            <div class="relative bg-white rounded-[3rem] overflow-hidden shadow-2xl w-full max-w-4xl focus-card">
+                <button id="close-modal" class="absolute top-6 right-6 z-30 bg-black/20 p-2 rounded-full text-white">X</button>
                 <div class="relative aspect-[21/9] w-full"><img id="modal-img" src="" class="w-full h-full object-cover"></div>
                 <div class="p-10 lg:p-16">
-                    <h1 id="modal-title" class="text-3xl font-extrabold italic uppercase text-brandDark mb-6 border-b pb-6 leading-tight"></h1>
-                    <div id="modal-full-text" class="text-gray-600 leading-relaxed italic space-y-4"></div>
-                    <div class="mt-16 pt-8 border-t text-center"><button id="close-modal-bottom" class="text-brandOrange font-black text-xs uppercase italic">← Volver</button></div>
+                    <h1 id="modal-title" class="text-3xl font-extrabold italic uppercase text-brandDark mb-6 border-b pb-6"></h1>
+                    <div id="modal-full-text" class="text-gray-600 leading-relaxed italic"></div>
+                    <div class="mt-10 pt-8 border-t text-center"><button id="close-modal-bottom" class="text-brandOrange font-black text-xs uppercase italic">← Volver</button></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <section id="empleo" class="py-32 px-8 bg-brandDark text-white relative overflow-hidden">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center z-10 relative">
+    <section id="empleo" class="py-32 px-8 bg-brandDark text-white">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20">
             <div>
-                <span class="text-brandOrange font-black text-[10px] uppercase tracking-[0.4em] mb-6 block italic">Human Capital</span>
-                <h2 class="text-4xl font-extrabold mb-8 italic uppercase tracking-tighter">Únete al <span class="text-brandOrange underline decoration-2 underline-offset-4">equipo Geonet</span></h2>
-                <a href="mailto:rrhh@geonet.es" class="inline-block bg-white text-brandDark px-10 py-4 rounded-xl font-extrabold uppercase text-xs tracking-widest italic hover:bg-brandOrange hover:text-white transition-colors">Enviar CV</a>
+                <span class="text-brandOrange font-black text-[10px] uppercase tracking-[0.4em] mb-6 block italic">RRHH</span>
+                <h2 class="text-4xl font-extrabold mb-8 italic uppercase tracking-tighter">Únete al <span class="text-brandOrange">equipo</span></h2>
+                <a href="mailto:rrhh@geonet.es" class="inline-block bg-white text-brandDark px-10 py-4 rounded-xl font-extrabold uppercase text-xs tracking-widest italic">Enviar CV</a>
             </div>
-            <div class="bg-white/5 border border-white/10 p-10 rounded-[2.5rem] backdrop-blur-sm">
-                <div class="flex items-center justify-between mb-10 pb-6 border-b border-white/10">
-                    <h3 class="text-lg font-extrabold uppercase italic">Puestos vacantes</h3>
-                    <span class="px-3 py-1 bg-gray-500/10 border border-gray-500/30 rounded-full text-[9px] font-black uppercase text-gray-400 italic">Sin procesos abiertos</span>
-                </div>
-                <p class="text-sm text-gray-400 italic">Aceptamos candidaturas espontáneas para futuros proyectos.</p>
+            <div class="bg-white/5 border border-white/10 p-10 rounded-[2.5rem]">
+                <h3 class="text-lg font-extrabold uppercase italic mb-6">Puestos vacantes</h3>
+                <p class="text-sm text-gray-400 italic">Sin procesos abiertos. Aceptamos candidaturas espontáneas.</p>
             </div>
         </div>
     </section>
 
     <footer class="bg-brandDark text-white py-20 px-8 border-t border-white/5 text-center md:text-left">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
-            <div>
-                <img src="img/geonet.png" alt="Logo" class="h-10 filter invert brightness-200 opacity-80 mb-4 mx-auto md:mx-0">
-                <p class="text-[9px] text-gray-500 font-bold uppercase tracking-[0.4em] italic">Socio Tecnológico de la Administración Pública</p>
-            </div>
+            <img src="img/geonet.png" alt="Logo" class="h-10 filter invert brightness-200 opacity-80 mx-auto md:mx-0">
             <div class="flex gap-10 text-[10px] font-black text-gray-400 uppercase tracking-widest italic mt-10 md:mt-0">
-                <a href="#" class="hover:text-brandOrange transition-colors">Transparencia</a>
-                <a href="#" class="hover:text-brandOrange transition-colors">Sede Electrónica</a>
+                <a href="#">Transparencia</a>
+                <a href="#">Sede Electrónica</a>
             </div>
         </div>
         <div class="mt-16 text-center text-[9px] text-gray-600 font-bold uppercase tracking-[0.5em] italic">© 2026 Geonet Territorial SAU</div>
@@ -306,10 +340,10 @@
 
             cards.forEach(card => {
                 card.addEventListener('click', () => {
-                    const d = card.dataset;
-                    document.getElementById('modal-img').src = d.img;
-                    document.getElementById('modal-title').innerHTML = d.title;
-                    document.getElementById('modal-full-text').innerHTML = d.fullText;
+                    const data = card.dataset;
+                    document.getElementById('modal-img').src = data.img;
+                    document.getElementById('modal-title').innerHTML = data.title;
+                    document.getElementById('modal-full-text').innerHTML = data.fullText;
                     modal.classList.remove('hidden');
                     document.body.style.overflow = 'hidden';
                 });
@@ -317,7 +351,7 @@
 
             document.getElementById('close-modal').onclick = closeModal;
             document.getElementById('close-modal-bottom').onclick = closeModal;
-            modal.onclick = (e) => { if (!e.target.closest('#modal-content')) closeModal(); };
+            modal.onclick = (e) => { if (e.target.classList.contains('bg-black/80')) closeModal(); };
         });
     </script>
 </body>
