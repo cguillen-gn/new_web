@@ -26,51 +26,58 @@
     </script>
 
     <style>
-        html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; }
 
-        /* --- ANIMACIONES DEL ECOSISTEMA --- */
-        .data-particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 0 10px white;
-            opacity: 0;
-            z-index: 20;
-            animation: fly-to-center 3s infinite linear;
-        }
+    /* Contenedor de la pila */
+    .stack-container {
+        perspective: 1000px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-        @keyframes fly-to-center {
-            0% { top: var(--y); left: var(--x); opacity: 0; transform: scale(1); }
-            20% { opacity: 1; }
-            80% { opacity: 1; }
-            100% { top: 50%; left: 50%; opacity: 0; transform: scale(0.5); }
-        }
+    /* Cada capa de la pila */
+    .layer-plane {
+        position: absolute;
+        width: 280px;
+        height: 180px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transform: rotateX(55deg) rotateZ(-35deg);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(4px);
+    }
 
-        @keyframes float-slow {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        .animate-float { animation: float-slow 4s infinite ease-in-out; }
+    /* Animación de flotación individualizada */
+    @keyframes float-layer {
+        0%, 100% { transform: rotateX(55deg) rotateZ(-35deg) translateY(0px); }
+        50% { transform: rotateX(55deg) rotateZ(-35deg) translateY(-15px); }
+    }
 
-        .animate-pulse-soft { animation: pulse-soft 4s infinite ease-in-out; }
+    .layer-1 { z-index: 10; transform: translateZ(0px); animation: float-layer 4s infinite ease-in-out; }
+    .layer-2 { z-index: 20; transform: translateZ(60px); animation: float-layer 4s infinite ease-in-out -1.3s; }
+    .layer-3 { z-index: 30; transform: translateZ(120px); animation: float-layer 4s infinite ease-in-out -2.6s; }
 
-        @keyframes pulse-soft {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.1; }
-        }
+    /* Haz de luz central */
+    .core-beam {
+        position: absolute;
+        width: 2px;
+        height: 300px;
+        background: linear-gradient(to top, transparent, #f46600, transparent);
+        z-index: 40;
+        filter: blur(1px);
+        box-shadow: 0 0 20px #f46600;
+    }
 
-        .shield-logo {
-            filter: brightness(0) opacity(0.25);
-            transition: all 0.4s ease;
-            max-height: 60px;
-        }
-        .group:hover .shield-logo {
-            filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(98%) contrast(105%);
-            opacity: 1;
-        }
-    </style>
+    .animate-pulse-soft { animation: pulse-soft 3s infinite ease-in-out; }
+    @keyframes pulse-soft {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 0.1; }
+    }
+</style>
 </head>
 <body class="bg-brandLight text-brandDark antialiased font-sans">
 
@@ -138,7 +145,7 @@
                         </div>
                         <div>
                             <h4 class="font-extrabold text-sm mb-1 italic">Planeamiento urbanístico</h4>
-                            <p class="text-[11px] text-gray-500 italic">Normativa y parámetros con seguridad jurídica.</p>
+                            <p class="text-[11px] text-gray-500 italic">Consulta de parámetros urbanísticos por parcela.</p>
                         </div>
                     </div>
 
@@ -147,8 +154,8 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg>
                         </div>
                         <div>
-                            <h4 class="font-extrabold text-sm mb-1 italic text-blue-600">Conexión Gestiona</h4>
-                            <p class="text-[11px] text-gray-500 italic">Vínculo directo con el gestor de expedientes.</p>
+                            <h4 class="font-extrabold text-sm mb-1 italic text-blue-600">Conexión Expedientes</h4>
+                            <p class="text-[11px] text-gray-500 italic">Vínculo directo con el gestor de expedientes por referencia catastral.</p>
                         </div>
                     </div>
 
@@ -158,7 +165,7 @@
                         </div>
                         <div>
                             <h4 class="font-extrabold text-sm mb-1 italic text-emerald-600">Infraestructuras</h4>
-                            <p class="text-[11px] text-gray-500 italic">Gestión de redes, agua y servicios urbanos.</p>
+                            <p class="text-[11px] text-gray-500 italic">Visualizacion de redes de agua, alumbrado público y otras infraestructuras municipales.</p>
                         </div>
                     </div>
 
@@ -177,17 +184,37 @@
             <div class="relative flex items-center justify-center min-h-[500px]">
                 <div class="absolute w-[120%] h-[120%] bg-brandOrange/5 rounded-full blur-[100px] animate-pulse-soft"></div>
                 
-                <div class="relative w-full max-w-md aspect-square bg-brandDark rounded-[3rem] border border-white/10 shadow-3xl overflow-hidden p-8 flex items-center justify-center">
-                    <div class="data-particle" style="--x: 15%; --y: 15%; animation-delay: 0s;"></div>
-                    <div class="data-particle" style="--x: 85%; --y: 15%; animation-delay: 0.7s;"></div>
-                    <div class="data-particle" style="--x: 15%; --y: 85%; animation-delay: 1.5s;"></div>
-                    <div class="data-particle" style="--x: 85%; --y: 85%; animation-delay: 2.2s;"></div>
-
-                    <div class="z-30 text-center">
-                        <div class="w-24 h-24 bg-white rounded-3xl flex items-center justify-center shadow-2xl mx-auto">
-                            <img src="img/geonet.png" alt="GeoGIS" class="w-14 h-auto">
+                <div class="relative w-full max-w-md aspect-square bg-brandDark rounded-[3rem] border border-white/10 shadow-3xl overflow-hidden flex items-center justify-center">
+                    
+                    <div class="core-beam"></div>
+            
+                    <div class="stack-container relative w-full h-full">
+                        
+                        <div class="layer-plane layer-3 border-purple-500/30">
+                            <div class="text-center transform rotateZ(35deg) rotateX(-55deg)">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-purple-500 mb-1 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                                <p class="text-[8px] font-black text-white uppercase tracking-widest">Capa Jurídica</p>
+                            </div>
                         </div>
-                        <p class="mt-4 text-[10px] font-black text-white uppercase tracking-widest italic">Hub de Inteligencia</p>
+            
+                        <div class="layer-plane layer-2 border-emerald-500/30">
+                            <div class="text-center transform rotateZ(35deg) rotateX(-55deg)">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-emerald-500 mb-1 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                                <p class="text-[8px] font-black text-white uppercase tracking-widest">Capa Técnica</p>
+                            </div>
+                        </div>
+            
+                        <div class="layer-plane layer-1 border-brandOrange/30">
+                            <div class="text-center transform rotateZ(35deg) rotateX(-55deg)">
+                                <img src="img/geonet.png" class="w-10 h-auto mx-auto mb-1 opacity-80 brightness-200">
+                                <p class="text-[8px] font-black text-white uppercase tracking-widest">Territorio</p>
+                            </div>
+                        </div>
+            
+                    </div>
+            
+                    <div class="absolute bottom-10 w-full text-center">
+                        <p class="text-[10px] font-black text-white/40 uppercase tracking-[0.4em] italic">Ecosistema Integrado</p>
                     </div>
                 </div>
             </div>
