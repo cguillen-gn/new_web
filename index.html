@@ -403,52 +403,61 @@ La iniciativa forma parte del compromiso de la Diputación de Alicante con la tr
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const modal = document.getElementById('news-modal');
-            const cards = document.querySelectorAll('.news-card');
-            const body = document.body;
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('news-modal');
+        const cards = document.querySelectorAll('.news-card');
+        const body = document.body;
 
-            const modalImg = document.getElementById('modal-img');
-            const modalTag = document.getElementById('modal-tag');
-            const modalTitle = document.getElementById('modal-title');
-            const modalDate = document.getElementById('modal-date');
-            const modalFullText = document.getElementById('modal-full-text');
+        const modalImg = document.getElementById('modal-img');
+        const modalTag = document.getElementById('modal-tag');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDate = document.getElementById('modal-date');
+        const modalFullText = document.getElementById('modal-full-text');
 
-            // Función Cerrar
-            const closeModal = () => {
-                modal.classList.add('hidden');
-                body.classList.remove('overflow-hidden');
-            };
+        // --- FUNCIÓN PARA CERRAR ---
+        const closeModal = () => {
+            modal.classList.add('hidden');
+            body.classList.remove('overflow-hidden');
+        };
 
-            // Abrir
-            cards.forEach(card => {
-                card.addEventListener('click', () => {
-                    const data = card.dataset;
-                    modalImg.src = data.img;
-                    modalTag.textContent = data.tag;
-                    modalTitle.textContent = data.title;
-                    modalDate.textContent = data.date;
-                    modalFullText.textContent = data.fullText;
-                    
-                    modal.classList.remove('hidden');
-                    body.classList.add('overflow-hidden');
-                });
-            });
-
-            // Botones de cierre
-            document.getElementById('close-modal').onclick = closeModal;
-            document.getElementById('close-modal-bottom').onclick = closeModal;
-            
-            // Cerrar al pinchar fuera del modal
-            modal.addEventListener('click', (e) => {
-                if (e.target.classList.contains('bg-black/80')) closeModal();
-            });
-
-            // ESC para cerrar
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') closeModal();
+        // --- ABRIR MODAL ---
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const data = card.dataset;
+                modalImg.src = data.img;
+                modalTag.textContent = data.tag;
+                modalTag.className = `absolute bottom-6 left-10 inline-block bg-${data.tagColor}/10 text-${data.tagColor} px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-widest mb-6 italic text-white`;
+                modalTitle.textContent = data.title;
+                modalDate.textContent = data.date;
+                
+                // Usamos innerHTML para que funcionen los saltos de línea <br>
+                modalFullText.innerHTML = data.fullText;
+                
+                modal.classList.remove('hidden');
+                body.classList.add('overflow-hidden');
             });
         });
-    </script>
+
+        // --- CERRAR AL PULSAR EN LOS BOTONES ---
+        document.getElementById('close-modal').onclick = closeModal;
+        document.getElementById('close-modal-bottom').onclick = closeModal;
+        
+        // --- LA MAGIA: CERRAR AL PULSAR FUERA (EN EL FONDO OSCURO) ---
+        modal.addEventListener('click', (e) => {
+            // "e.target" es donde has hecho clic. 
+            // Si el clic NO es dentro de la tarjeta blanca (el hijo del modal), cerramos.
+            const isClickInside = e.target.closest('.bg-white'); 
+            
+            if (!isClickInside) {
+                closeModal();
+            }
+        });
+
+        // --- CERRAR CON LA TECLA ESC ---
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    });
+</script>
 </body>
 </html>
