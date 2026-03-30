@@ -28,74 +28,32 @@
     <style>
     html { scroll-behavior: smooth; }
 
-    /* --- ESTILOS DEL GRAFICO 3D INTEGRADO --- */
-    .stack-container {
-        perspective: 1200px;
-        height: 500px; /* Aumentamos altura para dar aire */
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
+    /* Estilos base para las tarjetas de navegación */
+    .nav-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
     }
 
-    /* Contenedor del gráfico/vídeo más inmersivo */
-    .immersive-box {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        background: #1a1d23;
-        border-radius: 3rem;
-        border: 1px solid rgba(255,255,255,0.1);
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    /* Efecto Iluminación al pasar el cursor (Hover) */
+    .nav-card:hover:not(.active-card) {
+        background-color: #ffffff;
+        border-color: #f46600;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
     }
 
-    .layer-plane {
-    position: absolute;
-    width: 320px;
-    height: 180px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transform: rotateX(60deg) rotateZ(-35deg);
-    backdrop-filter: blur(6px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s ease;
+    /* Estado Activo (Cuando está pulsada) */
+    .nav-card.active-card {
+        ring: 3px solid #f46600;
+        border-color: #f46600;
+        transform: scale(1.05);
+        box-shadow: 0 20px 25px -5px rgba(244, 102, 0, 0.1);
+        z-index: 10;
     }
 
-    /* Esquemas GIS dentro de las capas */
-    .gis-schema {
-        position: absolute;
-        inset: 10px;
-        opacity: 0.3;
-        transform: rotateZ(35deg) rotateX(-60deg) scale(1.1);
-        filter: blur(0.5px);
-    }
-
-    /* Animación de levitación individualizada */
-    @keyframes float-layer {
-        0%, 100% { transform: rotateX(60deg) rotateZ(-35deg) translateZ(var(--base-z)); }
-        50% { transform: rotateX(60deg) rotateZ(-35deg) translateZ(calc(var(--base-z) + 15px)); }
-    }
-
-    .layer-1 { --base-z: 0px; z-index: 10; animation: float-layer 5s infinite ease-in-out; border-color: rgba(244, 102, 0, 0.4); }
-    .layer-2 { --base-z: 70px; z-index: 20; animation: float-layer 5s infinite ease-in-out -1.5s; border-color: rgba(16, 185, 129, 0.4); }
-    .layer-3 { --base-z: 140px; z-index: 30; animation: float-layer 5s infinite ease-in-out -3s; border-color: rgba(59, 130, 246, 0.4); }
-
-    /* Haz de luz central */
-    .beam {
-        position: absolute;
-        width: 2px;
-        height: 350px;
-        background: linear-gradient(to top, transparent, #f46600, transparent);
-        box-shadow: 0 0 15px #f46600;
-        z-index: 50;
-        opacity: 0.6;
+    /* Punto de color activo */
+    .active-card span {
+        box-shadow: 0 0 10px currentColor;
     }
 
     .animate-pulse-soft { animation: pulse-soft 3s infinite ease-in-out; }
@@ -144,64 +102,90 @@
         </div>
     </section>
 
-    <section id="geogis" class="py-32 px-8 max-w-7xl mx-auto">
-        <div class="text-center mb-20">
+    <section id="geogis" class="py-32 px-4 md:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
             <h2 class="text-4xl md:text-6xl font-extrabold leading-tight italic text-brandDark uppercase tracking-tighter">
                 GeoGIS en Acción:<br>
                 <span class="text-brandOrange underline decoration-8 underline-offset-[12px]">Gestión Territorial Real</span>
             </h2>
         </div>
     
-        <div class="grid lg:grid-cols-12 gap-8 items-center bg-gray-50 p-8 md:p-12 rounded-[4rem] border border-gray-200">
+        <div class="grid lg:grid-cols-12 gap-6 items-center bg-gray-50 p-4 md:p-6 rounded-[3rem] border border-gray-200">
             
-            <div class="lg:col-span-3 space-y-4">
-                <button onclick="playDemo('planeamiento', this)" class="nav-card active-card w-full text-left p-6 rounded-3xl bg-white border border-gray-200 shadow-sm transition-all">
-                    <div class="flex items-center gap-4">
+            <div class="lg:col-span-3 space-y-3">
+                <button onclick="playDemo('planeamiento', this)" class="nav-card active-card w-full text-left p-5 rounded-2xl bg-white border border-gray-200 shadow-sm">
+                    <div class="flex items-center gap-3">
                         <span class="w-2 h-2 rounded-full bg-brandOrange"></span>
-                        <h4 class="font-black text-xs uppercase tracking-widest italic">Planeamiento</h4>
+                        <h4 class="font-black text-[11px] uppercase tracking-widest italic">Planeamiento</h4>
                     </div>
-                    <p class="text-[10px] text-gray-400 mt-2 italic">Consulta de normativa y parámetros urbanísticos.</p>
+                    <p class="text-[10px] text-gray-400 mt-2 italic leading-tight">Consulta de normativa y parámetros urbanísticos.</p>
                 </button>
     
-                <button onclick="playDemo('gestiona', this)" class="nav-card w-full text-left p-6 rounded-3xl bg-white border border-gray-200 shadow-sm transition-all">
-                    <div class="flex items-center gap-4">
+                <button onclick="playDemo('gestiona', this)" class="nav-card w-full text-left p-5 rounded-2xl bg-white border border-gray-200 shadow-sm">
+                    <div class="flex items-center gap-3">
                         <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-                        <h4 class="font-black text-xs uppercase tracking-widest italic text-blue-600">Conexión Gestiona</h4>
+                        <h4 class="font-black text-[11px] uppercase tracking-widest italic text-blue-600">Conexión Gestiona</h4>
                     </div>
-                    <p class="text-[10px] text-gray-400 mt-2 italic">Acceso directo a expedientes administrativos.</p>
+                    <p class="text-[10px] text-gray-400 mt-2 italic leading-tight">Acceso directo a expedientes administrativos.</p>
                 </button>
             </div>
     
-            <div class="lg:col-span-6">
-                <div class="relative aspect-video bg-brandDark rounded-[2.5rem] overflow-hidden shadow-2xl border-[12px] border-white ring-1 ring-gray-200">
+            <div class="lg:col-span-6 h-full">
+                <div class="relative aspect-video bg-brandDark rounded-[2rem] overflow-hidden shadow-2xl border-[8px] border-white ring-1 ring-gray-200">
                     <video id="gis-video" autoplay muted loop playsinline class="w-full h-full object-cover transition-opacity duration-500">
-                        <source id="video-src" src="video/video.mp4" type="video/mp4">
+                        <source id="video-src" src="img/video.mp4" type="video/mp4">
                     </video>
                     
-                    <div class="absolute inset-0 border border-white/10 rounded-[1.8rem] pointer-events-none"></div>
-                    <div class="absolute top-6 right-8 flex items-center gap-2 px-3 py-1 bg-black/40 backdrop-blur-md rounded-full">
+                    <div class="absolute inset-0 border border-white/5 rounded-[1.5rem] pointer-events-none"></div>
+                    <div class="absolute top-4 right-6 flex items-center gap-2 px-3 py-1 bg-black/60 backdrop-blur-md rounded-full border border-white/10">
                         <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
                         <p id="gis-label" class="text-[8px] font-black text-white uppercase tracking-widest italic">REC: Planeamiento</p>
                     </div>
                 </div>
             </div>
     
-            <div class="lg:col-span-3 space-y-4">
-                <button onclick="playDemo('infra', this)" class="nav-card w-full text-left p-6 rounded-3xl bg-white border border-gray-200 shadow-sm transition-all">
-                    <div class="flex items-center gap-4">
+            <div class="lg:col-span-3 space-y-3">
+                <button onclick="playDemo('infra', this)" class="nav-card w-full text-left p-5 rounded-2xl bg-white border border-gray-200 shadow-sm">
+                    <div class="flex items-center gap-3">
                         <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                        <h4 class="font-black text-xs uppercase tracking-widest italic text-emerald-600">Infraestructuras</h4>
+                        <h4 class="font-black text-[11px] uppercase tracking-widest italic text-emerald-600">Infraestructuras</h4>
                     </div>
-                    <p class="text-[10px] text-gray-400 mt-2 italic">Inventario y estado de redes de servicios.</p>
+                    <p class="text-[10px] text-gray-400 mt-2 italic leading-tight">Inventario y estado de redes de servicios.</p>
                 </button>
     
-                <button onclick="playDemo('catastro', this)" class="nav-card w-full text-left p-6 rounded-3xl bg-white border border-gray-100 shadow-sm transition-all">
-                    <div class="flex items-center gap-4">
+                <button onclick="playDemo('catastro', this)" class="nav-card w-full text-left p-5 rounded-2xl bg-white border border-gray-100 shadow-sm">
+                    <div class="flex items-center gap-3">
                         <span class="w-2 h-2 rounded-full bg-purple-500"></span>
-                        <h4 class="font-black text-xs uppercase tracking-widest italic text-purple-600">Catastro</h4>
+                        <h4 class="font-black text-[11px] uppercase tracking-widest italic text-purple-600">Catastro</h4>
                     </div>
-                    <p class="text-[10px] text-gray-400 mt-2 italic">Coordinación tributaria activa en el mapa.</p>
+                    <p class="text-[10px] text-gray-400 mt-2 italic leading-tight">Coordinación tributaria activa en el mapa.</p>
                 </button>
+            </div>
+        </div>
+
+        <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-gray-200 pt-16">
+            <div class="text-center group">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brandOrange/5 text-brandOrange mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></svg>
+                </div>
+                <h5 class="text-sm font-black italic uppercase tracking-widest mb-3">Información Actualizada</h5>
+                <p class="text-[11px] text-gray-500 italic px-6 leading-relaxed">Mantenimiento riguroso y constante de todas las capas de información municipal.</p>
+            </div>
+    
+            <div class="text-center group border-x border-gray-100 px-4">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brandOrange/5 text-brandOrange mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></svg>
+                </div>
+                <h5 class="text-sm font-black italic uppercase tracking-widest mb-3">Gestión Descentralizada</h5>
+                <p class="text-[11px] text-gray-500 italic px-6 leading-relaxed">Datos editables directamente por los técnicos municipales responsables de cada área.</p>
+            </div>
+    
+            <div class="text-center group">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brandOrange/5 text-brandOrange mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></svg>
+                </div>
+                <h5 class="text-sm font-black italic uppercase tracking-widest mb-3">Acceso por Roles</h5>
+                <p class="text-[11px] text-gray-500 italic px-6 leading-relaxed">Protección de datos sensibles mediante una gestión de permisos estricta y segura.</p>
             </div>
         </div>
     </section>
@@ -335,31 +319,32 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const modal = document.getElementById('news-modal');
-            const cards = document.querySelectorAll('.news-card');
-            const closeModal = () => { modal.classList.add('hidden'); document.body.style.overflow = 'auto'; };
+    document.addEventListener('DOMContentLoaded', () => {
+        // Lógica para Modales de Noticias
+        const modal = document.getElementById('news-modal');
+        const cards = document.querySelectorAll('.news-card');
+        const closeModal = () => { modal.classList.add('hidden'); document.body.style.overflow = 'auto'; };
 
-            cards.forEach(card => {
-                card.addEventListener('click', () => {
-                    const data = card.dataset;
-                    document.getElementById('modal-img').src = data.img;
-                    document.getElementById('modal-title').innerHTML = data.title;
-                    document.getElementById('modal-full-text').innerHTML = data.fullText;
-                    modal.classList.remove('hidden');
-                    document.body.style.overflow = 'hidden';
-                });
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const data = card.dataset;
+                document.getElementById('modal-img').src = data.img;
+                document.getElementById('modal-title').innerHTML = data.title;
+                document.getElementById('modal-full-text').innerHTML = data.fullText;
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
             });
-
-            document.getElementById('close-modal').onclick = closeModal;
-            document.getElementById('close-modal-bottom').onclick = closeModal;
-            modal.onclick = (e) => { if (e.target.classList.contains('bg-black/80')) closeModal(); };
         });
 
-        <script>
+        document.getElementById('close-modal').onclick = closeModal;
+        document.getElementById('close-modal-bottom').onclick = closeModal;
+        modal.onclick = (e) => { if (e.target.classList.contains('bg-black/80')) closeModal(); };
+    });
+
+    // Lógica para el Visor GeoGIS (playDemo debe estar fuera del DOMContentLoaded para ser global)
     const demos = {
-        planeamiento: { video: 'img/video.mp4', label: 'REC: Planeamiento' },
-        gestiona: { video: 'video/gestiona.mp4', label: 'REC: Gestión Administrativa' },
+        planeamiento: { video: 'img/video_planeamiento.mp4', label: 'REC: Planeamiento' },
+        gestiona: { video: 'img/gestiona.mp4', label: 'REC: Gestión Administrativa' },
         infra: { video: 'img/video_agua.mp4', label: 'REC: Infraestructuras' },
         catastro: { video: 'img/video_medioambiente.mp4', label: 'REC: Análisis Catastral' }
     };
@@ -370,16 +355,14 @@
         const label = document.getElementById('gis-label');
         const cards = document.querySelectorAll('.nav-card');
 
-        // Evitar recargar si ya está activo
         if (element.classList.contains('active-card')) return;
 
-        // Actualizar UI de tarjetas
+        // Actualizar UI
         cards.forEach(c => c.classList.remove('active-card'));
         element.classList.add('active-card');
 
-        // Transición de vídeo
+        // Cambio de Vídeo con transición
         video.style.opacity = '0';
-        
         setTimeout(() => {
             source.src = demos[type].video;
             label.innerText = demos[type].label;
@@ -388,6 +371,6 @@
             video.style.opacity = '1';
         }, 300);
     }
-    </script>
+</script>
 </body>
 </html>
