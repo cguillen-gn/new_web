@@ -103,52 +103,65 @@
         </div>
     </section>
 
-    <section id="clientes" class="py-16 bg-white border-b border-gray-100 overflow-hidden">
+    <section id="clientes" class="py-12 bg-white border-b border-gray-100 overflow-hidden">
         <div class="max-w-7xl mx-auto px-8">
-            <p class="text-center text-[10px] font-black text-gray-400 uppercase tracking-[0.5em] mb-12 italic">
-                Administraciones que ya impulsan su territorio con Geogis
+            <p class="text-center text-[9px] font-black text-gray-400 uppercase tracking-[0.5em] mb-10 italic">
+                Administraciones que ya impulsan su territorio con GeoNet
             </p>
             
-            <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20">
-                <div class="h-16 w-32 flex items-center justify-center group">
-                    <img src="img/teulada.png" alt="Ayuntamiento de Teulada" 
-                         class="h-full w-auto object-contain transition-all duration-500 filter-to-gray group-hover:filter-dark">
-                </div>
-                <div class="h-16 w-32 flex items-center justify-center group">
-                    <img src="img/altea.png" alt="Ayuntamiento de Altea" 
-                         class="h-full w-auto object-contain transition-all duration-500 filter-to-gray group-hover:filter-dark">
-                </div>
-                <div class="h-16 w-32 flex items-center justify-center group">
-                    <img src="img/calp.png" alt="Ayuntamiento de Calp" 
-                         class="h-full w-auto object-contain transition-all duration-500 filter-to-gray group-hover:filter-dark">
-                </div>
-                <div class="h-16 w-32 flex items-center justify-center group">
-                    <img src="img/ibi.png" alt="Ayuntamiento de Ibi" 
-                         class="h-full w-auto object-contain transition-all duration-500 filter-to-gray group-hover:filter-dark">
-                </div>
-                <div class="h-16 w-32 flex items-center justify-center group">
-                    <img src="img/santapola.png" alt="Ayuntamiento de Santa Pola" 
-                         class="h-full w-auto object-contain transition-all duration-500 filter-to-gray group-hover:filter-dark">
-                </div>
-                <div class="h-16 w-32 flex items-center justify-center group">
-                    <img src="img/finestrat.png" alt="Ayuntamiento de Finestrat" 
-                         class="h-full w-auto object-contain transition-all duration-500 filter-to-gray group-hover:filter-dark">
+            <div class="relative flex overflow-hidden group">
+                <div class="flex gap-16 md:gap-24 animate-scroll items-center whitespace-nowrap">
+                    <img src="img/teulada.png" alt="Teulada" class="logo-carousel">
+                    <img src="img/altea.png" alt="Altea" class="logo-carousel">
+                    <img src="img/calp.png" alt="Calp" class="logo-carousel">
+                    <img src="img/ibi.png" alt="Ibi" class="logo-carousel">
+                    <img src="img/santapola.png" alt="Santa Pola" class="logo-carousel">
+                    <img src="img/finestrat.png" alt="Finestrat" class="logo-carousel">
+                    
+                    <img src="img/teulada.png" alt="Teulada" class="logo-carousel">
+                    <img src="img/altea.png" alt="Altea" class="logo-carousel">
+                    <img src="img/calp.png" alt="Calp" class="logo-carousel">
+                    <img src="img/ibi.png" alt="Ibi" class="logo-carousel">
+                    <img src="img/santapola.png" alt="Santa Pola" class="logo-carousel">
+                    <img src="img/finestrat.png" alt="Finestrat" class="logo-carousel">
                 </div>
             </div>
         </div>
     </section>
     
     <style>
-        /* Convierte el PNG blanco en un gris suave (Estado normal) */
-        .filter-to-gray {
+        /* Estilo individual del logo con tu filtro de blanco a gris */
+        .logo-carousel {
+            height: 60px; /* Altura fija para consistencia */
+            width: auto;
+            object-contain: contain;
             filter: invert(1) brightness(0.4);
             opacity: 0.5;
+            transition: all 0.4s ease;
+            padding: 0 10px;
         }
-        
-        /* Convierte el PNG blanco en negro/gris oscuro (Estado hover) */
-        .filter-dark {
-            filter: invert(1) brightness(0);
+    
+        .logo-carousel:hover {
+            filter: invert(1) brightness(0); /* Negro intenso al pasar el ratón */
             opacity: 1;
+            transform: scale(1.1);
+        }
+    
+        /* Animación del scroll */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Se mueve exactamente la mitad */
+        }
+    
+        .animate-scroll {
+            display: flex;
+            width: max-content;
+            animation: scroll 30s linear infinite;
+        }
+    
+        /* Pausar al pasar el ratón para facilitar la lectura */
+        .group:hover .animate-scroll {
+            animation-play-state: paused;
         }
     </style>
 
