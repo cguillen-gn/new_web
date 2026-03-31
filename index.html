@@ -103,33 +103,53 @@
     </section>
 
     <section id="clientes" class="py-16 bg-white border-b border-gray-100 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-8">
-        <p class="text-center text-[10px] font-black text-gray-400 uppercase tracking-[0.5em] mb-12 italic">
-            Administraciones que ya impulsan su territorio con GeoNet
-        </p>
-        
-        <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-40 grayscale hover:opacity-100 transition-all duration-1000">
-            <div class="h-16 w-32 flex items-center justify-center group">
-                <img src="img/teulada.png" alt="Ayuntamiento de Teulada" class="h-full w-auto object-contain filter group-hover:grayscale-0 transition-all">
-            </div>
-            <div class="h-16 w-32 flex items-center justify-center group">
-                <img src="img/altea.png" alt="Ayuntamiento de Altea" class="h-full w-auto object-contain filter group-hover:grayscale-0 transition-all">
-            </div>
-            <div class="h-16 w-32 flex items-center justify-center group">
-                <img src="img/calp.png" alt="Ayuntamiento de Calp" class="h-full w-auto object-contain filter group-hover:grayscale-0 transition-all">
-            </div>
-            <div class="h-16 w-32 flex items-center justify-center group">
-                <img src="img/ibi.png" alt="Ayuntamiento de Ibi" class="h-full w-auto object-contain filter group-hover:grayscale-0 transition-all">
-            </div>
-            <div class="h-16 w-32 flex items-center justify-center group">
-                <img src="img/santapola.png" alt="Ayuntamiento de Santa Pola" class="h-full w-auto object-contain filter group-hover:grayscale-0 transition-all">
-            </div>
-            <div class="h-16 w-32 flex items-center justify-center group">
-                <img src="img/finestrat.png" alt="Ayuntamiento de Finestrat" class="h-full w-auto object-contain filter group-hover:grayscale-0 transition-all">
+        <div class="max-w-7xl mx-auto px-8">
+            <p class="text-center text-[10px] font-black text-gray-400 uppercase tracking-[0.5em] mb-12 italic">
+                Administraciones que ya impulsan su territorio con GeoNet
+            </p>
+            
+            <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20">
+                <div class="h-16 w-32 flex items-center justify-center group">
+                    <img src="img/teulada.png" alt="Ayuntamiento de Teulada" 
+                         class="h-full w-auto object-contain transition-all duration-500 filter-to-gray group-hover:filter-dark">
+                </div>
+                <div class="h-16 w-32 flex items-center justify-center group">
+                    <img src="img/altea.png" alt="Ayuntamiento de Altea" 
+                         class="h-full w-auto object-contain transition-all duration-500 filter-to-gray group-hover:filter-dark">
+                </div>
+                <div class="h-16 w-32 flex items-center justify-center group">
+                    <img src="img/calp.png" alt="Ayuntamiento de Calp" 
+                         class="h-full w-auto object-contain transition-all duration-500 filter-to-gray group-hover:filter-dark">
+                </div>
+                <div class="h-16 w-32 flex items-center justify-center group">
+                    <img src="img/ibi.png" alt="Ayuntamiento de Ibi" 
+                         class="h-full w-auto object-contain transition-all duration-500 filter-to-gray group-hover:filter-dark">
+                </div>
+                <div class="h-16 w-32 flex items-center justify-center group">
+                    <img src="img/santapola.png" alt="Ayuntamiento de Santa Pola" 
+                         class="h-full w-auto object-contain transition-all duration-500 filter-to-gray group-hover:filter-dark">
+                </div>
+                <div class="h-16 w-32 flex items-center justify-center group">
+                    <img src="img/finestrat.png" alt="Ayuntamiento de Finestrat" 
+                         class="h-full w-auto object-contain transition-all duration-500 filter-to-gray group-hover:filter-dark">
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+    
+    <style>
+        /* Convierte el PNG blanco en un gris suave (Estado normal) */
+        .filter-to-gray {
+            filter: invert(1) brightness(0.4);
+            opacity: 0.5;
+        }
+        
+        /* Convierte el PNG blanco en negro/gris oscuro (Estado hover) */
+        .filter-dark {
+            filter: invert(1) brightness(0);
+            opacity: 1;
+        }
+    </style>
 
     <section id="geogis" class="py-32 px-4 md:px-8 max-w-7xl mx-auto">
         <div class="text-center mb-16">
