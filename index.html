@@ -554,6 +554,23 @@
             document.getElementById('close-modal').onclick = closeModal;
             document.getElementById('close-modal-bottom').onclick = closeModal;
             modal.onclick = (e) => { if (e.target.classList.contains('bg-black/80')) closeModal(); };
+
+            // CERRAR AL PULSAR FUERA (En el fondo oscuro)
+            modal.addEventListener('click', (e) => {
+                // Si el elemento sobre el que hemos pulsado es exactamente el div con ID 'news-modal'
+                // (que es el fondo que ocupa toda la pantalla) y no sus hijos (la noticia en sí)...
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // OPCIONAL: CERRAR AL PULSAR LA TECLA 'ESC'
+            document.addEventListener('keydown', (e) => {
+                if (e.key === "Escape" && !modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+            
         });
     
         // Lógica para el Visor GeoGIS (playDemo debe estar fuera del DOMContentLoaded para ser global)
