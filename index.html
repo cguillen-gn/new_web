@@ -276,7 +276,7 @@
         <div class="max-w-6xl mx-auto">
             <div class="text-left mb-16">
                 <h2 class="text-4xl font-extrabold mb-6 italic uppercase tracking-tighter text-brandDark">Herramientas de <span class="text-brandOrange">Datos Abiertos</span></h2>
-                <p class="text-lg text-gray-500 leading-relaxed italic font-medium max-w-3xl">Herramientas útiles y directas para consultar el callejero, la evolución del territorio y la información provincial.</p>
+                <p class="text-lg text-gray-500 leading-relaxed italic font-medium max-w-3xl">Herramientas útiles y sencillas para consultar el callejero, la evolución del territorio y la información provincial.</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
                 <a href="https://visor.geonet.es/" target="_blank" class="group bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all flex flex-col">
@@ -320,7 +320,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-extrabold mb-8 text-brandDark italic uppercase tracking-tighter">Actualidad y <span class="text-brandOrange">Compromiso</span></h2>
-                <p class="text-lg text-gray-600 leading-relaxed italic font-medium max-w-3xl mx-auto">Información técnica sobre el despliegue de soluciones geoespaciales en la administración local provincial.</p>
+                <p class="text-lg text-gray-600 leading-relaxed italic font-medium max-w-3xl mx-auto">Noticias y actividad de la institución en el territorio provincial.</p>
             </div>
     
             <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
@@ -368,20 +368,6 @@
                 </article>
     
                 <article class="news-card group bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between"
-                    data-tag="Referente" data-img="img/noticia_teulada.jpg" data-title="Hito en Teulada Moraira"
-                    data-full-text="Primer municipio de la provincia en permitir el cruce de datos georreferenciados para uso público.">
-                    <div class="aspect-video bg-gray-100 overflow-hidden"><img src="img/noticia_teulada.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"></div>
-                    <div class="p-8 pb-4">
-                        <span class="inline-block bg-brandOrange/10 text-brandOrange px-3 py-1 rounded-md text-[10px] font-black uppercase mb-6 italic tracking-widest">Referente</span>
-                        <h3 class="text-xl font-extrabold mb-4 italic uppercase leading-tight text-brandDark">Teulada, primer municipio en implantar GeoGIS</h3>
-                        <p class="text-sm text-gray-700 font-bold leading-relaxed">Pioneros en la provincia al permitir el cruce de datos georreferenciados para uso público.</p>
-                    </div>
-                    <div class="p-8 pt-4 border-t border-gray-50 flex justify-between items-center text-[10px] font-black italic uppercase">
-                        <span class="text-gray-400">22 Nov 2017</span><span class="text-brandOrange">Leer más +</span>
-                    </div>
-                </article>
-    
-                <article class="news-card news-item-extra hidden group bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between"
                     data-tag="Implantación" data-img="img/noticia_calp.jpg" data-title="Calp incorpora GeoGIS" data-full-text="Reducción de costes municipales mediante la plataforma GeoGIS.">
                     <div class="aspect-video bg-gray-100 overflow-hidden"><img src="img/noticia_calp.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0"></div>
                     <div class="p-8 pb-4">
@@ -406,11 +392,26 @@
                         <span class="text-gray-400">22 Dic 2020</span><span class="text-brandOrange">Leer más +</span>
                     </div>
                 </article>
+
+                <article class="news-card news-item-extra hidden group bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between"
+                    data-tag="Implantación" data-img="img/noticia_teulada.jpg" data-title="Hito en Teulada Moraira"
+                    data-full-text="Primer municipio de la provincia en permitir el cruce de datos georreferenciados para uso público.">
+                    <div class="aspect-video bg-gray-100 overflow-hidden"><img src="img/noticia_teulada.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"></div>
+                    <div class="p-8 pb-4">
+                        <span class="inline-block bg-brandOrange/10 text-brandOrange px-3 py-1 rounded-md text-[10px] font-black uppercase mb-6 italic tracking-widest">Referente</span>
+                        <h3 class="text-xl font-extrabold mb-4 italic uppercase leading-tight text-brandDark">Teulada, primer municipio en implantar GeoGIS</h3>
+                        <p class="text-sm text-gray-700 font-bold leading-relaxed">Pioneros en la provincia al permitir el cruce de datos georreferenciados para uso público.</p>
+                    </div>
+                    <div class="p-8 pt-4 border-t border-gray-50 flex justify-between items-center text-[10px] font-black italic uppercase">
+                        <span class="text-gray-400">22 Nov 2017</span><span class="text-brandOrange">Leer más +</span>
+                    </div>
+                </article>
+                
             </div>
     
             <div class="mt-20 text-center">
                 <button id="btn-load-more" class="group inline-flex items-center gap-4 bg-white border border-gray-200 text-brandDark px-10 py-4 rounded-xl font-extrabold uppercase text-[10px] tracking-[0.2em] italic hover:border-brandOrange hover:text-brandOrange transition-all shadow-sm">
-                    <span id="btn-text">Ver más actualidad</span>
+                    <span id="btn-text">Ver más</span>
                     <svg id="btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-500"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
             </div>
@@ -441,7 +442,7 @@
             <div class="grid md:grid-cols-2 gap-12 items-start mt-16">
                 <div class="space-y-10">
                     <div>
-                        <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-3 italic">Ubicación Estratégica</p>
+                        <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-3 italic">Oficina</p>
                         <p class="text-base font-bold text-brandDark italic leading-relaxed">Calle Ausó y Monzó, 16, 4ª planta<br>Edificio Hispania<br>03006 Alicante, España</p>
                     </div>
                     <div>
