@@ -196,34 +196,51 @@
     </section>
     
     <section id="geogis" class="py-24 px-4 md:px-8 max-w-7xl mx-auto bg-white rounded-[4rem] shadow-sm border border-gray-100">
-        <div class="text-center mb-10">
+    
+        <div class="text-center mb-12">
             <span class="text-brandOrange font-black text-[10px] uppercase tracking-[0.5em] mb-4 block italic">Nuestra Plataforma</span>
-            <h2 class="text-4xl md:text-6xl font-extrabold italic text-brandDark uppercase tracking-tighter leading-none mb-8">
+            <h2 class="text-4xl md:text-6xl font-extrabold italic text-brandDark uppercase tracking-tighter leading-none">
                 <span class="text-brandOrange">GEOGIS</span>: Gestión Territorial Integrada
             </h2>
-            <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-700 leading-relaxed italic font-medium">
-                Una plataforma de <strong>gestión interna</strong> diseñada para centralizar infraestructuras y expedientes territoriales. La herramienta de trabajo diaria para el personal técnico municipal.
+        </div>
+    
+        <div class="max-w-3xl mx-auto text-center mb-16">
+            <p class="text-lg md:text-xl text-gray-700 leading-relaxed italic font-medium">
+                Una plataforma de <strong>gestión interna</strong> diseñada para centralizar infraestructuras y expedientes territoriales.
             </p>
         </div>
     
-        <div class="bg-gray-50 rounded-[3.5rem] border border-gray-200 shadow-inner overflow-hidden">
+        <div class="mb-16">
+            <div class="flex items-center justify-center gap-4 mb-8">
+                <div class="h-[1px] bg-gray-200 flex-grow max-w-[100px]"></div>
+                <span class="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] italic">Valores del Sistema</span>
+                <div class="h-[1px] bg-gray-200 flex-grow max-w-[100px]"></div>
+            </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 border-b border-gray-200 bg-white/50 backdrop-blur-sm">
-                <div class="p-6 text-center border-b md:border-b-0 md:border-r border-gray-200">
-                    <h5 class="text-[11px] font-black uppercase tracking-[0.2em] mb-1 text-brandDark">Información Actualizada</h5>
-                    <p class="text-xs text-gray-600 font-bold italic">Capas mantenidas por especialistas.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="text-center px-4">
+                    <h5 class="text-[11px] font-black italic uppercase tracking-[0.2em] mb-2 text-brandDark">Información Actualizada</h5>
+                    <p class="text-[12px] text-gray-600 font-bold italic leading-tight">Mantenimiento constante de capas por especialistas.</p>
                 </div>
-                <div class="p-6 text-center border-b md:border-b-0 md:border-r border-gray-200">
-                    <h5 class="text-[11px] font-black uppercase tracking-[0.2em] mb-1 text-brandDark">Gestión Descentralizada</h5>
-                    <p class="text-xs text-gray-600 font-bold italic">Control directo por técnicos municipales.</p>
+                <div class="text-center border-y md:border-y-0 md:border-x border-gray-100 py-6 md:py-0 px-6">
+                    <h5 class="text-[11px] font-black italic uppercase tracking-[0.2em] mb-2 text-brandOrange">Gestión Descentralizada</h5>
+                    <p class="text-[12px] text-gray-600 font-bold italic leading-tight">Control directo por técnicos municipales.</p>
                 </div>
-                <div class="p-6 text-center">
-                    <h5 class="text-[11px] font-black uppercase tracking-[0.2em] mb-1 text-brandDark">Acceso por Roles</h5>
-                    <p class="text-xs text-gray-600 font-bold italic">Seguridad y trazabilidad total.</p>
+                <div class="text-center px-4">
+                    <h5 class="text-[11px] font-black italic uppercase tracking-[0.2em] mb-2 text-brandDark">Acceso por Roles</h5>
+                    <p class="text-[12px] text-gray-600 font-bold italic leading-tight">Seguridad total según nivel de acceso.</p>
                 </div>
             </div>
+        </div>
     
-            <div class="grid lg:grid-cols-12 gap-8 items-center p-8 md:p-12">
+        <div class="relative">
+            <div class="flex items-center justify-center gap-4 mb-10">
+                <div class="h-[1px] bg-gray-200 flex-grow max-w-[100px]"></div>
+                <span class="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] italic">Módulos de Información</span>
+                <div class="h-[1px] bg-gray-200 flex-grow max-w-[100px]"></div>
+            </div>
+    
+            <div class="grid lg:grid-cols-12 gap-8 items-center bg-gray-50 p-6 md:p-10 rounded-[3rem] border border-gray-200">
                 <div class="lg:col-span-3 space-y-4">
                     <button onclick="playDemo('planeamiento', this)" class="nav-card active-card w-full text-left p-6 rounded-2xl bg-white border border-gray-200 shadow-sm transition-all group">
                         <div class="flex items-center gap-3">
@@ -237,7 +254,7 @@
                             <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
                             <h4 class="font-black text-sm uppercase tracking-widest italic text-blue-600">Conexión Gestiona</h4>
                         </div>
-                        <p class="text-[13px] text-gray-600 mt-2 font-bold leading-tight italic">Expedientes administrativos desde el mapa.</p>
+                        <p class="text-[13px] text-gray-600 mt-2 font-bold leading-tight italic">Expedientes administrativos en el mapa.</p>
                     </button>
                 </div>
     
@@ -255,7 +272,7 @@
                             <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
                             <h4 class="font-black text-sm uppercase tracking-widest italic text-emerald-600">Infraestructuras</h4>
                         </div>
-                        <p class="text-[13px] text-gray-600 mt-2 font-bold leading-tight italic">Inventario y estado de redes municipales.</p>
+                        <p class="text-[13px] text-gray-600 mt-2 font-bold leading-tight italic">Inventario y redes municipales.</p>
                     </button>
                     <button onclick="playDemo('catastro', this)" class="nav-card w-full text-left p-6 rounded-2xl bg-white border border-gray-200 shadow-sm transition-all group">
                         <div class="flex items-center gap-3">
