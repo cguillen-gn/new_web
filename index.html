@@ -195,78 +195,60 @@
 </div>
     </section>
     
-    <section id="geogis" class="py-24 px-4 md:px-8 max-w-7xl mx-auto">
-    
-        <div class="mb-12">
-            <h2 class="text-4xl md:text-6xl font-extrabold italic text-brandDark uppercase tracking-tighter leading-none mb-6">
-                <span class="text-brandOrange">GEOGIS</span> <span class="text-gray-300">/</span> Hub Territorial
-            </h2>
-            <p class="text-lg text-gray-600 max-w-2xl italic font-medium border-l-4 border-brandOrange pl-6">
-                Infraestructura digital para la gestión técnica municipal. Centralización de expedientes, redes y planeamiento en un entorno de precisión.
-            </p>
-        </div>
-    
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+    <section id="geogis" class="py-16 px-4 md:px-8 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-12 gap-8 items-start">
             
-            <div class="lg:col-span-8 lg:row-span-2 bg-brandDark rounded-[2.5rem] overflow-hidden shadow-2xl relative border border-gray-800">
-                <video id="gis-video" autoplay muted loop playsinline class="w-full h-full object-cover opacity-80">
-                    <source id="video-src" src="img/video_planeamiento.mp4" type="video/mp4">
-                </video>
-                <div class="absolute bottom-8 left-8 bg-black/40 backdrop-blur-md p-4 rounded-xl border border-white/10">
-                    <div class="flex items-center gap-3">
-                        <span class="w-2 h-2 rounded-full bg-brandOrange animate-pulse"></span>
-                        <span id="gis-label" class="text-[10px] font-black text-white uppercase tracking-widest italic">SISTEMA ACTIVO: PLANEAMIENTO</span>
+            <div class="lg:col-span-4 space-y-8">
+                <div>
+                    <h2 class="text-4xl font-extrabold italic text-brandDark uppercase tracking-tighter leading-none mb-4">
+                        <span class="text-brandOrange">GEOGIS</span>
+                    </h2>
+                    <p class="text-sm text-gray-600 italic font-medium border-l-2 border-brandOrange pl-4 leading-relaxed">
+                        Infraestructura digital para la gestión técnica municipal. Precisión en cada dato.
+                    </p>
+                </div>
+    
+                <div class="bg-gray-50 p-6 rounded-[2rem] border border-gray-100 space-y-6">
+                    <div class="group">
+                        <h5 class="text-[10px] font-black uppercase tracking-widest text-brandOrange mb-1 italic">/ 01 Actualización</h5>
+                        <p class="text-[11px] text-gray-500 font-bold italic leading-tight">Mantenimiento constante de capas por especialistas.</p>
+                    </div>
+                    <div class="group border-t border-gray-200 pt-4">
+                        <h5 class="text-[10px] font-black uppercase tracking-widest text-brandDark mb-1 italic">/ 02 Descentralización</h5>
+                        <p class="text-[11px] text-gray-500 font-bold italic leading-tight">Edición directa por técnicos municipales.</p>
+                    </div>
+                    <div class="group border-t border-gray-200 pt-4">
+                        <h5 class="text-[10px] font-black uppercase tracking-widest text-brandDark mb-1 italic">/ 03 Seguridad</h5>
+                        <p class="text-[11px] text-gray-500 font-bold italic leading-tight">Acceso por roles y trazabilidad total.</p>
                     </div>
                 </div>
             </div>
     
-            <div class="lg:col-span-4 bg-gray-50 rounded-[2.5rem] p-4 border border-gray-200 grid grid-cols-2 lg:grid-cols-1 gap-3">
-                <button onclick="playDemo('planeamiento', this)" class="nav-card active-card flex flex-col justify-between p-5 rounded-2xl bg-white border border-gray-200 shadow-sm transition-all hover:border-brandOrange text-left group">
-                    <h4 class="font-black text-xs uppercase tracking-widest italic text-brandDark">01. Planeamiento</h4>
-                    <p class="text-[11px] text-gray-500 mt-2 font-bold italic leading-tight">Normativa urbanística.</p>
-                </button>
-                
-                <button onclick="playDemo('gestiona', this)" class="nav-card flex flex-col justify-between p-5 rounded-2xl bg-white border border-gray-200 shadow-sm transition-all hover:border-blue-500 text-left group">
-                    <h4 class="font-black text-xs uppercase tracking-widest italic text-blue-600">02. Gestiona</h4>
-                    <p class="text-[11px] text-gray-500 mt-2 font-bold italic leading-tight">Expedientes vinculados.</p>
-                </button>
+            <div class="lg:col-span-8">
+                <div class="relative aspect-video bg-brandDark rounded-[2.5rem] overflow-hidden shadow-2xl border-[6px] border-white ring-1 ring-gray-200">
+                    <video id="gis-video" autoplay muted loop playsinline class="w-full h-full object-cover">
+                        <source id="video-src" src="img/video_planeamiento.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute top-4 right-6 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                        <span id="gis-label" class="text-[8px] font-black text-white uppercase tracking-widest italic">MOD: PLANEAMIENTO</span>
+                    </div>
+                </div>
     
-                <button onclick="playDemo('infra', this)" class="nav-card flex flex-col justify-between p-5 rounded-2xl bg-white border border-gray-200 shadow-sm transition-all hover:border-emerald-500 text-left group">
-                    <h4 class="font-black text-xs uppercase tracking-widest italic text-emerald-600">03. Infraestructuras</h4>
-                    <p class="text-[11px] text-gray-500 mt-2 font-bold italic leading-tight">Redes de servicios.</p>
-                </button>
-    
-                <button onclick="playDemo('catastro', this)" class="nav-card flex flex-col justify-between p-5 rounded-2xl bg-white border border-gray-200 shadow-sm transition-all hover:border-purple-500 text-left group">
-                    <h4 class="font-black text-xs uppercase tracking-widest italic text-purple-600">04. Catastro</h4>
-                    <p class="text-[11px] text-gray-500 mt-2 font-bold italic leading-tight">Gestión tributaria.</p>
-                </button>
-            </div>
-    
-            <div class="lg:col-span-4 bg-brandDark rounded-[2.5rem] p-8 text-white flex flex-col justify-center border border-gray-800">
-                <h5 class="text-[10px] font-black uppercase tracking-[0.4em] text-brandOrange mb-6 italic">Garantías del Sistema</h5>
-                <ul class="space-y-6">
-                    <li class="flex gap-4 items-start">
-                        <span class="text-brandOrange font-black italic text-xs">/01</span>
-                        <div>
-                            <p class="text-xs font-black uppercase italic tracking-wider">Actualización Constante</p>
-                            <p class="text-[11px] text-gray-400 italic mt-1">Mantenimiento de capas por especialistas.</p>
-                        </div>
-                    </li>
-                    <li class="flex gap-4 items-start border-y border-white/5 py-4">
-                        <span class="text-brandOrange font-black italic text-xs">/02</span>
-                        <div>
-                            <p class="text-xs font-black uppercase italic tracking-wider">Gestión Descentralizada</p>
-                            <p class="text-[11px] text-gray-400 italic mt-1">Edición directa por técnicos municipales.</p>
-                        </div>
-                    </li>
-                    <li class="flex gap-4 items-start">
-                        <span class="text-brandOrange font-black italic text-xs">/03</span>
-                        <div>
-                            <p class="text-xs font-black uppercase italic tracking-wider">Acceso por Roles</p>
-                            <p class="text-[11px] text-gray-400 italic mt-1">Seguridad y trazabilidad de usuario.</p>
-                        </div>
-                    </li>
-                </ul>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mt-4">
+                    <button onclick="playDemo('planeamiento', this)" class="nav-card active-card bg-gray-50 p-4 rounded-xl border border-gray-200 text-left transition-all hover:bg-white hover:shadow-md group">
+                        <h4 class="font-black text-[10px] uppercase tracking-tighter italic text-brandDark group-hover:text-brandOrange">Planeamiento</h4>
+                    </button>
+                    <button onclick="playDemo('gestiona', this)" class="nav-card bg-gray-50 p-4 rounded-xl border border-gray-200 text-left transition-all hover:bg-white hover:shadow-md group">
+                        <h4 class="font-black text-[10px] uppercase tracking-tighter italic text-gray-400 group-hover:text-blue-600">Gestiona</h4>
+                    </button>
+                    <button onclick="playDemo('infra', this)" class="nav-card bg-gray-50 p-4 rounded-xl border border-gray-200 text-left transition-all hover:bg-white hover:shadow-md group">
+                        <h4 class="font-black text-[10px] uppercase tracking-tighter italic text-gray-400 group-hover:text-emerald-600">Infraestructuras</h4>
+                    </button>
+                    <button onclick="playDemo('catastro', this)" class="nav-card bg-gray-50 p-4 rounded-xl border border-gray-200 text-left transition-all hover:bg-white hover:shadow-md group">
+                        <h4 class="font-black text-[10px] uppercase tracking-tighter italic text-gray-400 group-hover:text-purple-600">Catastro</h4>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
