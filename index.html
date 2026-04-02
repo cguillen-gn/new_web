@@ -203,29 +203,28 @@
                     <h3 class="text-lg md:text-xl font-bold italic text-gray-700 leading-tight">Gestión Territorial Integrada</h3>
                 </div>
     
-                <div class="border-l-2 border-brandOrange pl-5 space-y-3">
-                    <p class="text-sm text-gray-600 font-medium italic leading-relaxed">Ecosistema SIG integral para la administración pública: Un entorno operativo eficiente para el personal técnico y una ventana de transparencia geoespacial avanzada para el ciudadano.</p>
+                <div class="border-l-2 border-brandOrange pl-5">
+                    <p class="text-sm text-gray-600 font-medium leading-relaxed">
+                        Ecosistema SIG integral para la administración pública: Un entorno operativo eficiente para el personal técnico y una ventana de transparencia geoespacial avanzada para el ciudadano.
+                    </p>
                 </div>
     
                 <div class="bg-gray-50 p-7 rounded-[2.5rem] border border-gray-100 space-y-7">
                     <div class="group">
                         <h5 class="text-[10px] font-black uppercase tracking-widest text-brandOrange mb-1 italic">/ 01 Gestión Dual y Roles</h5>
-                        <p class="text-[11px] text-gray-500 font-bold italic leading-tight">Acceso seguro para técnicos y transparencia total para la ciudadanía.</p>
+                        <p class="text-[11px] text-gray-500 font-medium leading-tight">Acceso seguro para técnicos y transparencia total para la ciudadanía.</p>
                     </div>
-                
                     <div class="group border-t border-gray-200 pt-5">
                         <h5 class="text-[10px] font-black uppercase tracking-widest text-brandOrange mb-1 italic">/ 02 Configuración a medida</h5>
-                        <p class="text-[11px] text-gray-500 font-bold italic leading-tight">Interfaz y capas 100% personalizables según las necesidades del municipio.</p>
+                        <p class="text-[11px] text-gray-500 font-medium leading-tight">Interfaz y capas 100% personalizables según las necesidades del municipio.</p>
                     </div>
-                
                     <div class="group border-t border-gray-200 pt-5">
                         <h5 class="text-[10px] font-black uppercase tracking-widest text-brandOrange mb-1 italic">/ 03 Conexión Administrativa</h5>
-                        <p class="text-[11px] text-gray-500 font-bold italic leading-tight">Integración directa con expedientes (Gestiona).</p>
+                        <p class="text-[11px] text-gray-500 font-medium leading-tight">Integración directa con flujos de expedientes (Gestiona).</p>
                     </div>
-                
                     <div class="group border-t border-gray-200 pt-5">
                         <h5 class="text-[10px] font-black uppercase tracking-widest text-brandOrange mb-1 italic">/ 04 Edición y Analítica</h5>
-                        <p class="text-[11px] text-gray-500 font-bold italic leading-tight">Cruces de datos complejos y edición de geometrías en tiempo real.</p>
+                        <p class="text-[11px] text-gray-500 font-medium leading-tight">Cruces de datos complejos y edición de geometrías en tiempo real.</p>
                     </div>
                 </div>
             </div>
@@ -237,76 +236,74 @@
                     </video>
                     <div class="absolute top-5 right-7 bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10 flex items-center gap-2.5">
                         <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-                        <span id="gis-label" class="text-[9px] font-black text-white uppercase tracking-widest italic">DEMO: PLANEAMIENTO URBANÍSTICO</span>
+                        <span id="gis-label" class="text-[9px] font-black text-white uppercase tracking-widest italic">MOD: PLANEAMIENTO</span>
                     </div>
                 </div>
-   
+    
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
-                    <button onclick="playDemo('planeamiento', this)" class="nav-card active-card flex flex-col justify-between h-full bg-gray-50 p-5 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white hover:border-brandOrange group">
-                        <div class="flex items-center gap-3">
-                            <span class="w-2.5 h-2.5 rounded-full bg-gray-300 group-[.active-card]:bg-brandOrange"></span>
-                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-brandDark transition-colors">01. Planeamiento Urbanístico</h4>
+                    <button onclick="playDemo('planeamiento', this)" class="nav-card active-card flex flex-col justify-start min-h-[115px] bg-gray-50 p-4 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white group">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[10px] font-black text-brandOrange italic">01.</span>
+                            <h4 class="font-black text-[10px] uppercase tracking-wider italic text-gray-400 group-[.active-card]:text-brandOrange transition-colors leading-tight">Planeamiento</h4>
                         </div>
-                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-700 mt-2 font-bold italic leading-tight transition-colors">Normativa y parámetros urbanísticos integrados.</p>
+                        <p class="text-[10px] text-gray-400 group-[.active-card]:text-gray-600 font-medium leading-snug transition-colors">Normativa y parámetros urbanísticos integrados.</p>
                     </button>
-
-                    <button onclick="playDemo('catastro', this)" class="nav-card flex flex-col justify-between h-full bg-gray-50 p-5 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white hover:border-brandOrange group">
-                        <div class="flex items-center gap-3">
-                            <span class="w-2.5 h-2.5 rounded-full bg-gray-300 group-[.active-card]:bg-brandOrange"></span>
-                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-brandDark transition-colors">02. Catastro</h4>
+    
+                    <button onclick="playDemo('catastro', this)" class="nav-card flex flex-col justify-start min-h-[115px] bg-gray-50 p-4 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white group">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[10px] font-black text-brandOrange italic">02.</span>
+                            <h4 class="font-black text-[10px] uppercase tracking-wider italic text-gray-400 group-[.active-card]:text-brandOrange transition-colors leading-tight">Catastro</h4>
                         </div>
-                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-700 mt-2 font-bold italic leading-tight transition-colors">Cartografía catastral e información alfanumérica asociada.</p>
+                        <p class="text-[10px] text-gray-400 group-[.active-card]:text-gray-600 font-medium leading-snug transition-colors">Cartografía y datos alfanuméricos asociados.</p>
                     </button>
-                    
-                    <button onclick="playDemo('callejero', this)" class="nav-card flex flex-col justify-between h-full bg-gray-50 p-5 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white hover:border-brandOrange group">
-                        <div class="flex items-center gap-3">
-                            <span class="w-2.5 h-2.5 rounded-full bg-gray-300 group-[.active-card]:bg-brandOrange"></span>
-                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-brandDark transition-colors">03. Callejero</h4>
+    
+                    <button onclick="playDemo('callejero', this)" class="nav-card flex flex-col justify-start min-h-[115px] bg-gray-50 p-4 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white group">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[10px] font-black text-brandOrange italic">03.</span>
+                            <h4 class="font-black text-[10px] uppercase tracking-wider italic text-gray-400 group-[.active-card]:text-brandOrange transition-colors leading-tight">Callejero</h4>
                         </div>
-                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-700 mt-2 font-bold italic leading-tight transition-colors">Callejero homogéneo con asignación de numeros de policia.</p>
+                        <p class="text-[10px] text-gray-400 group-[.active-card]:text-gray-600 font-medium leading-snug transition-colors">Viario oficial y números de policía georreferenciados.</p>
                     </button>
-
-                    <button onclick="playDemo('infraestructuras', this)" class="nav-card flex flex-col justify-between h-full bg-gray-50 p-5 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white hover:border-brandOrange group">
-                        <div class="flex items-center gap-3">
-                            <span class="w-2.5 h-2.5 rounded-full bg-gray-300 group-[.active-card]:bg-brandOrange"></span>
-                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-brandDark transition-colors">04. Infraestructuras</h4>
+    
+                    <button onclick="playDemo('infra', this)" class="nav-card flex flex-col justify-start min-h-[115px] bg-gray-50 p-4 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white group">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[10px] font-black text-brandOrange italic">04.</span>
+                            <h4 class="font-black text-[10px] uppercase tracking-wider italic text-gray-400 group-[.active-card]:text-brandOrange transition-colors leading-tight">Infraestructuras</h4>
                         </div>
-                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-700 mt-2 font-bold italic leading-tight transition-colors">Redes de abastecimiento y saneamiento de agua, alumbrado público y otros servicios urbanos.</p>
+                        <p class="text-[10px] text-gray-400 group-[.active-card]:text-gray-600 font-medium leading-snug transition-colors">Inventario de redes de abastecimiento y servicios.</p>
                     </button>
-                    
-                    <button onclick="playDemo('mobiliario', this)" class="nav-card flex flex-col justify-between h-full bg-gray-50 p-5 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white hover:border-brandOrange group">
-                        <div class="flex items-center gap-3">
-                            <span class="w-2.5 h-2.5 rounded-full bg-gray-300 group-[.active-card]:bg-brandOrange"></span>
-                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-brandDark transition-colors">05. Mobiliario urbano</h4>
+    
+                    <button onclick="playDemo('mobiliario', this)" class="nav-card flex flex-col justify-start min-h-[115px] bg-gray-50 p-4 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white group">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[10px] font-black text-brandOrange italic">05.</span>
+                            <h4 class="font-black text-[10px] uppercase tracking-wider italic text-gray-400 group-[.active-card]:text-brandOrange transition-colors leading-tight">Mobiliario</h4>
                         </div>
-                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-700 mt-2 font-bold italic leading-tight transition-colors">Ubicación de bancos, papeleras y otros elementos de la vía pública.</p>
+                        <p class="text-[10px] text-gray-400 group-[.active-card]:text-gray-600 font-medium leading-snug transition-colors">Gestión y mantenimiento de elementos urbanos.</p>
                     </button>
-                
-                    <button onclick="playDemo('mambiente', this)" class="nav-card flex flex-col justify-between h-full bg-gray-50 p-5 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white hover:border-brandOrange group">
-                        <div class="flex items-center gap-3">
-                            <span class="w-2.5 h-2.5 rounded-full bg-gray-300 group-[.active-card]:bg-brandOrange"></span>
-                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-brandDark transition-colors">06. Medio Ambiente</h4>
+    
+                    <button onclick="playDemo('mambiente', this)" class="nav-card flex flex-col justify-start min-h-[115px] bg-gray-50 p-4 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white group">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[10px] font-black text-brandOrange italic">06.</span>
+                            <h4 class="font-black text-[10px] uppercase tracking-wider italic text-gray-400 group-[.active-card]:text-brandOrange transition-colors leading-tight">Medio Ambiente</h4>
                         </div>
-                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-700 mt-2 font-bold italic leading-tight transition-colors">Ordenación forestal y riesgos.</p>
+                        <p class="text-[10px] text-gray-400 group-[.active-card]:text-gray-600 font-medium leading-snug transition-colors">Ordenación forestal y análisis de riesgos naturales.</p>
                     </button>
-
-                    <button onclick="playDemo('turismo', this)" class="nav-card flex flex-col justify-between h-full bg-gray-50 p-5 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white hover:border-brandOrange group">
-                        <div class="flex items-center gap-3">
-                            <span class="w-2.5 h-2.5 rounded-full bg-gray-300 group-[.active-card]:bg-brandOrange"></span>
-                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-brandDark transition-colors">07. Turismo</h4>
+    
+                    <button onclick="playDemo('turismo', this)" class="nav-card flex flex-col justify-start min-h-[115px] bg-gray-50 p-4 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white group">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[10px] font-black text-brandOrange italic">07.</span>
+                            <h4 class="font-black text-[10px] uppercase tracking-wider italic text-gray-400 group-[.active-card]:text-brandOrange transition-colors leading-tight">Turismo</h4>
                         </div>
-                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-700 mt-2 font-bold italic leading-tight transition-colors">Puntos de interés y rutas destacadas.</p>
+                        <p class="text-[10px] text-gray-400 group-[.active-card]:text-gray-600 font-medium leading-snug transition-colors">Puntos de interés, patrimonio y rutas inteligentes.</p>
                     </button>
-
-                    <button onclick="playDemo('inventarios', this)" class="nav-card flex flex-col justify-between h-full bg-gray-50 p-5 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white hover:border-brandOrange group">
-                        <div class="flex items-center gap-3">
-                            <span class="w-2.5 h-2.5 rounded-full bg-gray-300 group-[.active-card]:bg-brandOrange"></span>
-                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-brandDark transition-colors">08. Inventarios</h4>
+    
+                    <button onclick="playDemo('inventarios', this)" class="nav-card flex flex-col justify-start min-h-[115px] bg-gray-50 p-4 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white group">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[10px] font-black text-brandOrange italic">08.</span>
+                            <h4 class="font-black text-[10px] uppercase tracking-wider italic text-gray-400 group-[.active-card]:text-brandOrange transition-colors leading-tight">Inventarios</h4>
                         </div>
-                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-700 mt-2 font-bold italic leading-tight transition-colors">Inventarios municipales y Encuesta de Infraestructura y Equipamientos Locales.</p>
+                        <p class="text-[10px] text-gray-400 group-[.active-card]:text-gray-600 font-medium leading-snug transition-colors">Encuestas EIEL y equipamientos municipales.</p>
                     </button>
-                   
-                    
                 </div>
             </div>
         </div>
