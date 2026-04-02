@@ -664,10 +664,13 @@
             // Transition
             video.style.opacity = '0';
             setTimeout(() => {
-                source.src = demos[type].video;
-                label.innerText = demos[type].label;
-                video.load();
-                video.play();
+                // Verificamos que el tipo existe para evitar errores
+                if(demos[type]) {
+                    source.src = demos[type].video;
+                    label.innerText = demos[type].label;
+                    video.load();
+                    video.play();
+                }
                 video.style.opacity = '1';
             }, 300);
         }
