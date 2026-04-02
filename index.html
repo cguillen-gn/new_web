@@ -238,15 +238,7 @@
                         <span id="gis-label" class="text-[9px] font-black text-white uppercase tracking-widest italic">MOD: PLANEAMIENTO</span>
                     </div>
                 </div>
-
-                <button onclick="playDemo('catastro', this)" class="nav-card flex flex-col justify-between h-full bg-gray-50 p-5 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white hover:border-blue-500 group">
-                        <div class="flex items-center gap-3">
-                            <span class="w-2.5 h-2.5 rounded-full bg-gray-300 group-[.active-card]:bg-blue-500"></span>
-                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-blue-600 transition-colors">01. Callejero</h4>
-                        </div>
-                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-700 mt-2 font-bold italic leading-tight transition-colors">Información catastral actualizada.</p>
-                    </button>
-    
+   
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
                     <button onclick="playDemo('planeamiento', this)" class="nav-card active-card flex flex-col justify-between h-full bg-gray-50 p-5 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white hover:border-brandOrange group">
                         <div class="flex items-center gap-3">
@@ -640,6 +632,10 @@
     
         // --- 3. LÓGICA VISOR GEOGIS (Global) ---
         const demos = {
+            planeamiento: { video: 'img/video.mp4', label: 'REC: Planeamiento' },
+            gestiona: { video: 'img/gestiona.mp4', label: 'REC: Gestión Administrativa' },
+            infra: { video: 'img/video_agua.mp4', label: 'REC: Infraestructuras' },
+            catastro: { video: 'img/video_medioambiente.mp4', label: 'REC: Análisis Catastral' }
             planeamiento: { video: 'img/video.mp4', label: 'REC: Planeamiento' },
             gestiona: { video: 'img/gestiona.mp4', label: 'REC: Gestión Administrativa' },
             infra: { video: 'img/video_agua.mp4', label: 'REC: Infraestructuras' },
