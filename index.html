@@ -243,9 +243,17 @@
                     <button onclick="playDemo('planeamiento', this)" class="nav-card active-card flex flex-col justify-between h-full bg-gray-50 p-5 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white hover:border-brandOrange group">
                         <div class="flex items-center gap-3">
                             <span class="w-2.5 h-2.5 rounded-full bg-gray-300 group-[.active-card]:bg-brandOrange"></span>
-                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-brandDark transition-colors">02. Planeamiento</h4>
+                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-brandDark transition-colors">01. Planeamiento</h4>
                         </div>
                         <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-700 mt-2 font-bold italic leading-tight transition-colors">Normativa y parámetros urbanísticos integrados.</p>
+                    </button>
+
+                    <button onclick="playDemo('catastro', this)" class="nav-card active-card flex flex-col justify-between h-full bg-gray-50 p-5 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white hover:border-brandOrange group">
+                        <div class="flex items-center gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-gray-300 group-[.active-card]:bg-brandOrange"></span>
+                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-brandDark transition-colors">02. Catastro</h4>
+                        </div>
+                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-700 mt-2 font-bold italic leading-tight transition-colors">Cartografía catastral e información alfanumérica asociada.</p>
                     </button>
                     
                     <button onclick="playDemo('callejero', this)" class="nav-card flex flex-col justify-between h-full bg-gray-50 p-5 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white hover:border-blue-500 group">
@@ -263,11 +271,19 @@
                         </div>
                         <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-700 mt-2 font-bold italic leading-tight transition-colors">Redes de abastecimiento y saneamiento de agua, alumbrado público y otros servicios urbanos.</p>
                     </button>
+
+                    <button onclick="playDemo('mobiliario', this)" class="nav-card flex flex-col justify-between h-full bg-gray-50 p-5 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white hover:border-purple-500 group">
+                        <div class="flex items-center gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-gray-300 group-[.active-card]:bg-purple-500"></span>
+                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-purple-600 transition-colors">05. Mobiliario urbano</h4>
+                        </div>
+                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-700 mt-2 font-bold italic leading-tight transition-colors">Ubicación de bancos, papeleras y otros elementos de la vía pública.</p>
+                    </button>
                 
                     <button onclick="playDemo('mambiente', this)" class="nav-card flex flex-col justify-between h-full bg-gray-50 p-5 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white hover:border-purple-500 group">
                         <div class="flex items-center gap-3">
                             <span class="w-2.5 h-2.5 rounded-full bg-gray-300 group-[.active-card]:bg-purple-500"></span>
-                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-purple-600 transition-colors">05. Medio Ambiente</h4>
+                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-purple-600 transition-colors">06. Medio Ambiente</h4>
                         </div>
                         <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-700 mt-2 font-bold italic leading-tight transition-colors">Ordenación forestal y riesgos.</p>
                     </button>
@@ -275,7 +291,7 @@
                     <button onclick="playDemo('turismo', this)" class="nav-card flex flex-col justify-between h-full bg-gray-50 p-5 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white hover:border-purple-500 group">
                         <div class="flex items-center gap-3">
                             <span class="w-2.5 h-2.5 rounded-full bg-gray-300 group-[.active-card]:bg-purple-500"></span>
-                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-purple-600 transition-colors">06. Turismo</h4>
+                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-purple-600 transition-colors">07. Turismo</h4>
                         </div>
                         <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-700 mt-2 font-bold italic leading-tight transition-colors">Puntos de interés y rutas destacadas.</p>
                     </button>
@@ -283,20 +299,11 @@
                     <button onclick="playDemo('inventarios', this)" class="nav-card flex flex-col justify-between h-full bg-gray-50 p-5 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white hover:border-purple-500 group">
                         <div class="flex items-center gap-3">
                             <span class="w-2.5 h-2.5 rounded-full bg-gray-300 group-[.active-card]:bg-purple-500"></span>
-                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-purple-600 transition-colors">07. Inventarios</h4>
+                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-purple-600 transition-colors">08. Inventarios</h4>
                         </div>
-                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-700 mt-2 font-bold italic leading-tight transition-colors">Inventarios municipales.</p>
+                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-700 mt-2 font-bold italic leading-tight transition-colors">Inventarios municipales y Encuesta de Infraestructura y Equipamientos Locales.</p>
                     </button>
-
-                    <button onclick="playDemo('eiel', this)" class="nav-card flex flex-col justify-between h-full bg-gray-50 p-5 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white hover:border-purple-500 group">
-                        <div class="flex items-center gap-3">
-                            <span class="w-2.5 h-2.5 rounded-full bg-gray-300 group-[.active-card]:bg-purple-500"></span>
-                            <h4 class="font-black text-xs uppercase tracking-widest italic text-gray-400 group-[.active-card]:text-purple-600 transition-colors">08. EIEL</h4>
-                        </div>
-                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-700 mt-2 font-bold italic leading-tight transition-colors">Datos de la última Encuesta de Infraestructura y Equipamientos Locales.</p>
-                    </button>
-
-                    
+                   
                     
                 </div>
             </div>
