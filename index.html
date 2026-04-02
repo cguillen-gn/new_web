@@ -512,102 +512,142 @@
         </div>
     </section>
 
-    <section id="noticias" class="py-32 px-8 bg-brandLight">
+    <section id="noticias" class="py-24 px-8 bg-white">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-extrabold mb-8 text-brandDark italic uppercase tracking-tighter">Actualidad y <span class="text-brandOrange">Compromiso</span></h2>
-                <p class="text-lg text-gray-600 leading-relaxed italic font-medium max-w-3xl mx-auto">Noticias y actividad de la institución en el territorio provincial.</p>
+                <span class="text-brandOrange font-black text-[10px] uppercase tracking-[0.5em] mb-4 block italic">Actividad Institucional</span>
+                <h2 class="text-4xl md:text-6xl font-extrabold mb-8 text-brandDark italic uppercase tracking-tighter leading-none">
+                    Actualidad y <span class="text-brandOrange text-shadow-glow">Compromiso</span>
+                </h2>
+                <p class="text-gray-500 text-sm md:text-base leading-relaxed italic font-medium max-w-2xl mx-auto">
+                    Noticias y actividad de la institución en el territorio provincial.
+                </p>
             </div>
     
             <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
                 
-                <article class="news-card group bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between"
+                <article class="news-card group bg-gray-50 rounded-[3rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col justify-between"
                     data-tag="Institucional" data-img="img/noticia_convenio.jpg" data-title="La Diputación impulsa GeoGIS en la provincia"
                     data-full-text="La Diputación de Alicante ha impulsado la implantación de GeoGIS como herramienta estándar para la gestión de servicios municipales.">
-                    <div class="aspect-video bg-gray-100 overflow-hidden"><img src="img/noticia_convenio.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"></div>
-                    <div class="p-8 pb-4">
-                        <span class="inline-block bg-brandOrange/10 text-brandOrange px-3 py-1 rounded-md text-[10px] font-black uppercase mb-6 italic tracking-widest">Institucional</span>
-                        <h3 class="text-xl font-extrabold mb-4 italic uppercase leading-tight text-brandDark">La Diputación facilita la implantación de GeoGIS</h3>
-                        <p class="text-sm text-gray-700 font-bold leading-relaxed">Convenio marco para facilitar que los municipios de Alicante accedan a tecnología avanzada.</p>
+                    <div class="relative aspect-video overflow-hidden">
+                        <img src="img/noticia_convenio.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-brandOrange text-white text-[8px] font-black uppercase px-2 py-1 rounded-md italic tracking-widest">Reporte #01</span>
+                        </div>
                     </div>
-                    <div class="p-8 pt-4 border-t border-gray-50 flex justify-between items-center text-[10px] font-black italic uppercase">
-                        <span class="text-gray-400">15 Nov 2025</span><span class="text-brandOrange">Leer más +</span>
+                    <div class="p-8 pb-4">
+                        <span class="inline-block text-brandOrange text-[9px] font-black uppercase mb-4 italic tracking-widest">Institucional</span>
+                        <h3 class="text-lg font-extrabold mb-4 italic uppercase leading-tight text-brandDark group-hover:text-brandOrange transition-colors">La Diputación facilita la implantación de GeoGIS</h3>
+                        <p class="text-xs text-gray-500 font-medium leading-relaxed">Convenio marco para facilitar que los municipios de Alicante accedan a tecnología avanzada.</p>
+                    </div>
+                    <div class="p-8 pt-4 border-t border-gray-200/50 flex justify-between items-center text-[10px] font-black italic uppercase">
+                        <span class="text-gray-400">15 Nov 2025</span>
+                        <span class="text-brandOrange group-hover:translate-x-1 transition-transform">Leer más +</span>
                     </div>
                 </article>
     
-                <article class="news-card group bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between"
+                <article class="news-card group bg-gray-50 rounded-[3rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col justify-between"
                     data-tag="Implantación" data-img="img/noticia_santapola.jpg" data-title="Santa Pola digitaliza su territorio"
                     data-full-text="Nueva etapa en la gestión de servicios públicos mediante tecnología geoespacial de última generación en Santa Pola.">
-                    <div class="aspect-video bg-gray-100 overflow-hidden"><img src="img/noticia_santapola.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"></div>
-                    <div class="p-8 pb-4">
-                        <span class="inline-block bg-brandOrange/10 text-brandOrange px-3 py-1 rounded-md text-[10px] font-black uppercase mb-6 italic tracking-widest">Implantación</span>
-                        <h3 class="text-xl font-extrabold mb-4 italic uppercase leading-tight text-brandDark">Santa Pola digitaliza su territorio con GeoGIS</h3>
-                        <p class="text-sm text-gray-700 font-bold leading-relaxed">Modernización de servicios públicos mediante tecnología geoespacial de última generación.</p>
+                    <div class="relative aspect-video overflow-hidden">
+                        <img src="img/noticia_santapola.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-brandOrange text-white text-[8px] font-black uppercase px-2 py-1 rounded-md italic tracking-widest">Reporte #02</span>
+                        </div>
                     </div>
-                    <div class="p-8 pt-4 border-t border-gray-50 flex justify-between items-center text-[10px] font-black italic uppercase">
-                        <span class="text-gray-400">10 Jul 2025</span><span class="text-brandOrange">Leer más +</span>
+                    <div class="p-8 pb-4">
+                        <span class="inline-block text-brandOrange text-[9px] font-black uppercase mb-4 italic tracking-widest">Implantación</span>
+                        <h3 class="text-lg font-extrabold mb-4 italic uppercase leading-tight text-brandDark group-hover:text-brandOrange transition-colors">Santa Pola digitaliza su territorio con GeoGIS</h3>
+                        <p class="text-xs text-gray-500 font-medium leading-relaxed">Modernización de servicios públicos mediante tecnología geoespacial de última generación.</p>
+                    </div>
+                    <div class="p-8 pt-4 border-t border-gray-200/50 flex justify-between items-center text-[10px] font-black italic uppercase">
+                        <span class="text-gray-400">10 Jul 2025</span>
+                        <span class="text-brandOrange group-hover:translate-x-1 transition-transform">Leer más +</span>
                     </div>
                 </article>
     
-                <article class="news-card group bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between"
+                <article class="news-card group bg-gray-50 rounded-[3rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col justify-between"
                     data-tag="Implantación" data-img="img/noticia_orihuela.jpg" data-title="Orihuela adopta GeoGIS"
                     data-full-text="Unificación de cartografía e inventario de infraestructuras en un entorno único para el Ayuntamiento de Orihuela.">
-                    <div class="aspect-video bg-gray-100 overflow-hidden"><img src="img/noticia_orihuela.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"></div>
-                    <div class="p-8 pb-4">
-                        <span class="inline-block bg-brandOrange/10 text-brandOrange px-3 py-1 rounded-md text-[10px] font-black uppercase mb-6 italic tracking-widest">Implantación</span>
-                        <h3 class="text-xl font-extrabold mb-4 italic uppercase leading-tight text-brandDark">Orihuela adopta GeoGIS para su gestión técnica</h3>
-                        <p class="text-sm text-gray-700 font-bold leading-relaxed">Unificación de cartografía e inventario de infraestructuras en un entorno de trabajo único.</p>
+                    <div class="relative aspect-video overflow-hidden">
+                        <img src="img/noticia_orihuela.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-brandOrange text-white text-[8px] font-black uppercase px-2 py-1 rounded-md italic tracking-widest">Reporte #03</span>
+                        </div>
                     </div>
-                    <div class="p-8 pt-4 border-t border-gray-50 flex justify-between items-center text-[10px] font-black italic uppercase">
-                        <span class="text-gray-400">16 May 2025</span><span class="text-brandOrange">Leer más +</span>
+                    <div class="p-8 pb-4">
+                        <span class="inline-block text-brandOrange text-[9px] font-black uppercase mb-4 italic tracking-widest">Implantación</span>
+                        <h3 class="text-lg font-extrabold mb-4 italic uppercase leading-tight text-brandDark group-hover:text-brandOrange transition-colors">Orihuela adopta GeoGIS para su gestión técnica</h3>
+                        <p class="text-xs text-gray-500 font-medium leading-relaxed">Unificación de cartografía e inventario de infraestructuras en un entorno de trabajo único.</p>
+                    </div>
+                    <div class="p-8 pt-4 border-t border-gray-200/50 flex justify-between items-center text-[10px] font-black italic uppercase">
+                        <span class="text-gray-400">16 May 2025</span>
+                        <span class="text-brandOrange group-hover:translate-x-1 transition-transform">Leer más +</span>
                     </div>
                 </article>
     
-                <article class="news-card group bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between"
+                <article class="news-card group bg-gray-50 rounded-[3rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col justify-between"
                     data-tag="Implantación" data-img="img/noticia_calp.jpg" data-title="Calp incorpora GeoGIS" data-full-text="Reducción de costes municipales mediante la plataforma GeoGIS.">
-                    <div class="aspect-video bg-gray-100 overflow-hidden"><img src="img/noticia_calp.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0"></div>
-                    <div class="p-8 pb-4">
-                        <span class="inline-block bg-brandOrange/10 text-brandOrange px-3 py-1 rounded-md text-[10px] font-black uppercase mb-6 italic">Implantación</span>
-                        <h3 class="text-xl font-extrabold mb-4 italic uppercase leading-tight text-brandDark">Calp incorpora GeoGIS para reducir costes</h3>
-                        <p class="text-sm text-gray-700 font-bold leading-relaxed">Mejora de la eficiencia administrativa y servicios urbanos.</p>
+                    <div class="relative aspect-video overflow-hidden">
+                        <img src="img/noticia_calp.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-brandOrange text-white text-[8px] font-black uppercase px-2 py-1 rounded-md italic tracking-widest">Reporte #04</span>
+                        </div>
                     </div>
-                    <div class="p-8 pt-4 border-t border-gray-50 flex justify-between items-center text-[10px] font-black italic uppercase">
-                        <span class="text-gray-400">16 Jun 2021</span><span class="text-brandOrange">Leer más +</span>
+                    <div class="p-8 pb-4">
+                        <span class="inline-block text-brandOrange text-[9px] font-black uppercase mb-4 italic tracking-widest">Implantación</span>
+                        <h3 class="text-lg font-extrabold mb-4 italic uppercase leading-tight text-brandDark group-hover:text-brandOrange transition-colors">Calp incorpora GeoGIS para reducir costes</h3>
+                        <p class="text-xs text-gray-500 font-medium leading-relaxed">Mejora de la eficiencia administrativa y servicios urbanos.</p>
+                    </div>
+                    <div class="p-8 pt-4 border-t border-gray-200/50 flex justify-between items-center text-[10px] font-black italic uppercase">
+                        <span class="text-gray-400">16 Jun 2021</span>
+                        <span class="text-brandOrange group-hover:translate-x-1 transition-transform">Leer más +</span>
                     </div>
                 </article>
     
-                <article class="news-card news-item-extra hidden group bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between"
+                <article class="news-card news-item-extra hidden group bg-gray-50 rounded-[3rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col justify-between"
                     data-tag="Implantación" data-img="img/noticia_altea.jpg" data-title="Altea digitaliza servicios" data-full-text="Colaboración institucional para la modernización geográfica en Altea.">
-                    <div class="aspect-video bg-gray-100 overflow-hidden"><img src="img/noticia_altea.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0"></div>
-                    <div class="p-8 pb-4">
-                        <span class="inline-block bg-brandOrange/10 text-brandOrange px-3 py-1 rounded-md text-[10px] font-black uppercase mb-6 italic">Implantación</span>
-                        <h3 class="text-xl font-extrabold mb-4 italic uppercase leading-tight text-brandDark">Altea digitaliza sus servicios con GeoGIS</h3>
-                        <p class="text-sm text-gray-700 font-bold leading-relaxed">Modernización de la gestión geográfica municipal.</p>
+                    <div class="relative aspect-video overflow-hidden">
+                        <img src="img/noticia_altea.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-brandOrange text-white text-[8px] font-black uppercase px-2 py-1 rounded-md italic tracking-widest">Reporte #05</span>
+                        </div>
                     </div>
-                    <div class="p-8 pt-4 border-t border-gray-50 flex justify-between items-center text-[10px] font-black italic uppercase">
-                        <span class="text-gray-400">22 Dic 2020</span><span class="text-brandOrange">Leer más +</span>
+                    <div class="p-8 pb-4">
+                        <span class="inline-block text-brandOrange text-[9px] font-black uppercase mb-4 italic tracking-widest">Implantación</span>
+                        <h3 class="text-lg font-extrabold mb-4 italic uppercase leading-tight text-brandDark group-hover:text-brandOrange transition-colors">Altea digitaliza sus servicios con GeoGIS</h3>
+                        <p class="text-xs text-gray-500 font-medium leading-relaxed">Modernización de la gestión geográfica municipal.</p>
+                    </div>
+                    <div class="p-8 pt-4 border-t border-gray-200/50 flex justify-between items-center text-[10px] font-black italic uppercase">
+                        <span class="text-gray-400">22 Dic 2020</span>
+                        <span class="text-brandOrange group-hover:translate-x-1 transition-transform">Leer más +</span>
                     </div>
                 </article>
-
-                <article class="news-card news-item-extra hidden group bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between"
+    
+                <article class="news-card news-item-extra hidden group bg-gray-50 rounded-[3rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col justify-between"
                     data-tag="Implantación" data-img="img/noticia_teulada.jpg" data-title="Hito en Teulada Moraira"
                     data-full-text="Primer municipio de la provincia en permitir el cruce de datos georreferenciados para uso público.">
-                    <div class="aspect-video bg-gray-100 overflow-hidden"><img src="img/noticia_teulada.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"></div>
-                    <div class="p-8 pb-4">
-                        <span class="inline-block bg-brandOrange/10 text-brandOrange px-3 py-1 rounded-md text-[10px] font-black uppercase mb-6 italic tracking-widest">Referente</span>
-                        <h3 class="text-xl font-extrabold mb-4 italic uppercase leading-tight text-brandDark">Teulada, primer municipio en implantar GeoGIS</h3>
-                        <p class="text-sm text-gray-700 font-bold leading-relaxed">Pioneros en la provincia al permitir el cruce de datos georreferenciados para uso público.</p>
+                    <div class="relative aspect-video overflow-hidden">
+                        <img src="img/noticia_teulada.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-brandOrange text-white text-[8px] font-black uppercase px-2 py-1 rounded-md italic tracking-widest">Reporte #06</span>
+                        </div>
                     </div>
-                    <div class="p-8 pt-4 border-t border-gray-50 flex justify-between items-center text-[10px] font-black italic uppercase">
-                        <span class="text-gray-400">22 Nov 2017</span><span class="text-brandOrange">Leer más +</span>
+                    <div class="p-8 pb-4">
+                        <span class="inline-block text-brandOrange text-[9px] font-black uppercase mb-4 italic tracking-widest">Referente</span>
+                        <h3 class="text-lg font-extrabold mb-4 italic uppercase leading-tight text-brandDark group-hover:text-brandOrange transition-colors">Teulada, primer municipio en implantar GeoGIS</h3>
+                        <p class="text-xs text-gray-500 font-medium leading-relaxed">Pioneros en la provincia al permitir el cruce de datos georreferenciados para uso público.</p>
+                    </div>
+                    <div class="p-8 pt-4 border-t border-gray-200/50 flex justify-between items-center text-[10px] font-black italic uppercase">
+                        <span class="text-gray-400">22 Nov 2017</span>
+                        <span class="text-brandOrange group-hover:translate-x-1 transition-transform">Leer más +</span>
                     </div>
                 </article>
-                
             </div>
     
             <div class="mt-20 text-center">
-                <button id="btn-load-more" class="group inline-flex items-center gap-4 bg-white border border-gray-200 text-brandDark px-10 py-4 rounded-xl font-extrabold uppercase text-[10px] tracking-[0.2em] italic hover:border-brandOrange hover:text-brandOrange transition-all shadow-sm">
-                    <span id="btn-text">Ver más</span>
+                <button id="btn-load-more" class="group inline-flex items-center gap-4 bg-brandDark text-white border border-brandDark px-10 py-4 rounded-2xl font-extrabold uppercase text-[10px] tracking-widest italic hover:bg-brandOrange hover:border-brandOrange transition-all shadow-xl">
+                    <span id="btn-text">Ver más actualidad</span>
                     <svg id="btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-500"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
             </div>
@@ -628,37 +668,64 @@
         </div>
     </section>
 
-    <section id="contacto" class="py-32 px-8 bg-white">
-        <div class="max-w-4xl mx-auto border border-gray-100 rounded-[3rem] p-12 md:p-20 shadow-sm bg-gray-50/50">
-            <div class="text-center">
-                <span class="text-brandOrange font-black text-[10px] uppercase tracking-[0.4em] mb-6 block italic">Contacto</span>
-                <h2 class="text-4xl md:text-6xl font-extrabold mb-12 italic uppercase tracking-tighter text-brandDark leading-tight">¿Hablamos sobre <br>tu <span class="text-brandOrange">municipio</span>?</h2>
+    <section id="contacto" class="py-24 px-4 md:px-8 bg-brandLight">
+        <div class="max-w-7xl mx-auto border border-gray-100 rounded-[4rem] p-12 md:p-20 shadow-sm bg-white relative overflow-hidden">
+            
+            <div class="absolute top-10 right-10 opacity-[0.03] pointer-events-none">
+                <svg width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="brandDark" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
             </div>
     
-            <div class="grid md:grid-cols-2 gap-12 items-start mt-16">
-                <div class="space-y-10">
-                    <div>
-                        <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-3 italic">Oficina</p>
-                        <p class="text-base font-bold text-brandDark italic leading-relaxed">Calle Ausó y Monzó, 16, 4ª planta<br>Edificio Hispania<br>03006 Alicante, España</p>
-                    </div>
-                    <div>
-                        <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-3 italic">Atención Directa</p>
-                        <p class="text-base font-bold text-brandDark italic">96 514 22 66</p>
-                        <p class="text-base font-bold text-brandDark italic">geonet@geonet.es</p>
+            <div class="grid lg:grid-cols-2 gap-16 items-center relative z-10">
+                <div class="text-left">
+                    <span class="text-brandOrange font-black text-[10px] uppercase tracking-[0.5em] mb-6 block italic">Canales de Atención</span>
+                    <h2 class="text-4xl md:text-7xl font-extrabold mb-10 italic uppercase tracking-tighter text-brandDark leading-none">¿Hablamos sobre <br>tu <span class="text-brandOrange text-shadow-glow">municipio</span>?</h2>
+                    <div class="border-l-2 border-brandOrange pl-6 max-w-md">
+                        <p class="text-gray-500 text-sm md:text-base font-medium leading-relaxed italic">Acompañamos a las administraciones en su proceso de transformación digital geoespacial.</p>
                     </div>
                 </div>
     
-                <div class="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm">
-                    <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-6 italic">Canales Digitales</p>
-                    <div class="flex gap-4 mb-8">
-                        <a href="https://www.linkedin.com/company/geonet-territorial-sau" target="_blank" class="group flex items-center justify-center w-12 h-12 rounded-xl bg-gray-50 border border-gray-100 text-gray-400 hover:text-white hover:bg-[#0077b5] transition-all duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                        </a>
-                        <a href="https://www.youtube.com/channel/UCypX9l8CwIBKcyeQEVEmryA/featured" target="_blank" class="group flex items-center justify-center w-12 h-12 rounded-xl bg-gray-50 border border-gray-100 text-gray-400 hover:text-white hover:bg-[#ff0000] transition-all duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.11 1 12 1 12s0 3.89.46 5.58a2.78 2.78 0 0 0 1.94 2c1.72.42 8.6.42 8.6.42s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.89 23 12 23 12s0-3.89-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
-                        </a>
+                <div class="grid gap-12">
+                    <div class="flex gap-6 group">
+                        <div class="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center border border-gray-100 group-hover:border-brandOrange transition-all duration-300">
+                            <span class="text-[12px] font-black text-brandOrange italic">/ 01</span>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-2 italic">Oficina Central</p>
+                            <p class="text-lg font-bold text-brandDark italic leading-relaxed">
+                                Calle Ausó y Monzó, 16, 4ª planta<br>
+                                Edificio Hispania<br>
+                                03006 Alicante, España
+                            </p>
+                        </div>
                     </div>
-                    <p class="text-[11px] text-gray-400 italic leading-relaxed">Nuestra metodología de trabajo es principalmente remota y presencial en sede de cliente.</p>
+    
+                    <div class="flex gap-6 group">
+                        <div class="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center border border-gray-100 group-hover:border-brandOrange transition-all duration-300">
+                            <span class="text-[12px] font-black text-brandOrange italic">/ 02</span>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-2 italic">Atención Directa</p>
+                            <p class="text-xl font-bold text-brandDark italic mb-1">96 514 22 66</p>
+                            <p class="text-xl font-bold text-brandOrange italic">geonet@geonet.es</p>
+                        </div>
+                    </div>
+    
+                    <div class="flex gap-6 group">
+                        <div class="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center border border-gray-100 group-hover:border-brandOrange transition-all duration-300">
+                            <span class="text-[12px] font-black text-brandOrange italic">/ 03</span>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-4 italic">Ecosistema Digital</p>
+                            <div class="flex gap-4">
+                                <a href="https://www.linkedin.com/company/geonet-territorial-sau" target="_blank" class="group flex items-center justify-center w-12 h-12 rounded-xl bg-brandDark text-white hover:bg-brandOrange transition-all duration-300 shadow-lg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                                </a>
+                                <a href="https://www.youtube.com/channel/UCypX9l8CwIBKcyeQEVEmryA/featured" target="_blank" class="group flex items-center justify-center w-12 h-12 rounded-xl bg-brandDark text-white hover:bg-brandOrange transition-all duration-300 shadow-lg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.11 1 12 1 12s0 3.89.46 5.58a2.78 2.78 0 0 0 1.94 2c1.72.42 8.6.42 8.6.42s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.89 23 12 23 12s0-3.89-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
