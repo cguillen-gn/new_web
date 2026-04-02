@@ -432,46 +432,82 @@
         </div>
     </section>
 
-    <section id="visores" class="bg-gray-100 py-32 px-8 border-t border-gray-200">
-        <div class="max-w-6xl mx-auto">
+    <section id="visores" class="bg-gray-50 py-24 px-8 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto">
             <div class="text-left mb-16">
-                <h2 class="text-4xl font-extrabold mb-6 italic uppercase tracking-tighter text-brandDark">Herramientas de <span class="text-brandOrange">Datos Abiertos</span></h2>
-                <p class="text-lg text-gray-500 leading-relaxed italic font-medium max-w-3xl">Aplicaciones útiles y sencillas para consulta de datos abiertos.</p>
+                <span class="text-brandOrange font-black text-[10px] uppercase tracking-[0.5em] mb-4 block italic">Open Data</span>
+                <h2 class="text-4xl md:text-6xl font-extrabold mb-6 italic uppercase tracking-tighter text-brandDark leading-none">
+                    Herramientas de <span class="text-brandOrange">Datos Abiertos</span>
+                </h2>
+                <div class="border-l-2 border-brandOrange pl-6 max-w-3xl">
+                    <p class="text-lg text-gray-500 leading-relaxed italic font-medium">
+                        Aplicaciones especializadas para la consulta y análisis de información geoespacial pública de la provincia de Alicante.
+                    </p>
+                </div>
             </div>
+    
             <div class="grid md:grid-cols-3 gap-8">
-                <a href="https://visor.geonet.es/" target="_blank" class="group bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all flex flex-col">
-                    <div class="aspect-video bg-gray-200 overflow-hidden border-b border-gray-100 relative">
+                
+                <a href="https://visor.geonet.es/" target="_blank" class="group bg-white rounded-[3rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col border border-gray-100">
+                    <div class="relative aspect-video overflow-hidden border-b border-gray-100">
                         <img src="img/visor_provincial.png" alt="Visor Provincial" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-brandOrange/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute inset-0 bg-brandDark/20 group-hover:bg-transparent transition-all duration-500"></div>
+                        <div class="absolute top-4 right-6">
+                            <span class="text-[11px] font-black text-white italic drop-shadow-md">/ 01</span>
+                        </div>
                     </div>
-                    <div class="p-8">
-                        <h3 class="font-black text-xl mb-2 italic uppercase">Visor Provincial</h3>
-                        <p class="text-xs text-gray-400 mb-6 italic">Visualización de capas estratégicas provinciales.</p>
-                        <span class="text-brandOrange font-black text-[10px] uppercase italic">Explorar Herramienta →</span>
+                    <div class="p-8 flex flex-col justify-between flex-grow">
+                        <div>
+                            <h3 class="font-black text-xl mb-2 italic uppercase text-brandDark">Visor Provincial</h3>
+                            <p class="text-xs text-gray-400 mb-6 italic leading-relaxed">Infraestructura de datos espaciales para la visualización de capas estratégicas.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-50">
+                            <span class="text-brandOrange font-black text-[10px] uppercase italic tracking-widest group-hover:translate-x-2 transition-transform duration-300">Acceder al Portal →</span>
+                            <span class="text-[8px] font-black text-gray-300 uppercase italic">v.2026</span>
+                        </div>
                     </div>
                 </a>
-                <a href="https://callejero.geonet.es/" target="_blank" class="group bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all flex flex-col">
-                    <div class="aspect-video bg-gray-200 overflow-hidden border-b border-gray-100 relative">
+    
+                <a href="https://callejero.geonet.es/" target="_blank" class="group bg-white rounded-[3rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col border border-gray-100">
+                    <div class="relative aspect-video overflow-hidden border-b border-gray-100">
                         <img src="img/callejero.jpg" alt="Callejero" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-brandOrange/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute inset-0 bg-brandDark/20 group-hover:bg-transparent transition-all duration-500"></div>
+                        <div class="absolute top-4 right-6">
+                            <span class="text-[11px] font-black text-white italic drop-shadow-md">/ 02</span>
+                        </div>
                     </div>
-                    <div class="p-8">
-                        <h3 class="font-black text-xl mb-2 italic uppercase">Callejero</h3>
-                        <p class="text-xs text-gray-400 mb-6 italic">Buscador avanzado de viario municipal.</p>
-                        <span class="text-brandOrange font-black text-[10px] uppercase italic">Explorar Herramienta →</span>
+                    <div class="p-8 flex flex-col justify-between flex-grow">
+                        <div>
+                            <h3 class="font-black text-xl mb-2 italic uppercase text-brandDark">Callejero</h3>
+                            <p class="text-xs text-gray-400 mb-6 italic leading-relaxed">Buscador avanzado y georreferenciación de viales y números de policía.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-50">
+                            <span class="text-brandOrange font-black text-[10px] uppercase italic tracking-widest group-hover:translate-x-2 transition-transform duration-300">Acceder al Portal →</span>
+                            <span class="text-[8px] font-black text-gray-300 uppercase italic">v.2026</span>
+                        </div>
                     </div>
                 </a>
-                <a href="https://multivisor.geonet.es/" target="_blank" class="group bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all flex flex-col">
-                    <div class="aspect-video bg-gray-200 overflow-hidden border-b border-gray-100 relative">
+    
+                <a href="https://multivisor.geonet.es/" target="_blank" class="group bg-white rounded-[3rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col border border-gray-100">
+                    <div class="relative aspect-video overflow-hidden border-b border-gray-100">
                         <img src="img/multivisor.jpg" alt="Multivisor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-brandOrange/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute inset-0 bg-brandDark/20 group-hover:bg-transparent transition-all duration-500"></div>
+                        <div class="absolute top-4 right-6">
+                            <span class="text-[11px] font-black text-white italic drop-shadow-md">/ 03</span>
+                        </div>
                     </div>
-                    <div class="p-8">
-                        <h3 class="font-black text-xl mb-2 italic uppercase">Multivisor</h3>
-                        <p class="text-xs text-gray-400 mb-6 italic">Comparativa histórica mediante ortofotografías.</p>
-                        <span class="text-brandOrange font-black text-[10px] uppercase italic">Explorar Herramienta →</span>
+                    <div class="p-8 flex flex-col justify-between flex-grow">
+                        <div>
+                            <h3 class="font-black text-xl mb-2 italic uppercase text-brandDark">Multivisor</h3>
+                            <p class="text-xs text-gray-400 mb-6 italic leading-relaxed">Análisis evolutivo del territorio mediante comparativa de ortofotografías históricas.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-50">
+                            <span class="text-brandOrange font-black text-[10px] uppercase italic tracking-widest group-hover:translate-x-2 transition-transform duration-300">Acceder al Portal →</span>
+                            <span class="text-[8px] font-black text-gray-300 uppercase italic">v.2026</span>
+                        </div>
                     </div>
                 </a>
+    
             </div>
         </div>
     </section>
