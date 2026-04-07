@@ -52,19 +52,28 @@
 
         .active-card span { box-shadow: 0 0 10px currentColor; }
 
-        /* Filtro para que los logos se vean grises y al pasar el ratón cobren color */
-        .logo-link .logo-carousel {
+        /* Contenedor del logo (el enlace) */
+        .logo-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+        
+        /* La imagen (que es BLANCA original) */
+        .logo-carousel {
             height: 50px;
             width: auto;
             object-fit: contain;
-            filter: grayscale(1) opacity(0.5); /* Se ven grises y suaves */
-            transition: all 0.4s ease;
             padding: 0 20px;
+            /* INVERT(1) es lo que hace que el blanco se vea negro */
+            filter: invert(1) opacity(0.4); 
+            transition: all 0.4s ease;
         }
         
-        /* Cuando pasas el ratón por el Enlace (a), la imagen cambia */
+        /* Efecto Hover: Cuando tocas el enlace, la imagen se vuelve negra pura */
         .logo-link:hover .logo-carousel {
-            filter: grayscale(0) opacity(1); /* Recupera su color original y brillo */
+            filter: invert(1) opacity(1);
             transform: scale(1.1);
         }
 
