@@ -52,20 +52,19 @@
 
         .active-card span { box-shadow: 0 0 10px currentColor; }
 
-        /* Animación del scroll infinito */
-        .logo-carousel {
+        /* Filtro para que los logos se vean grises y al pasar el ratón cobren color */
+        .logo-link .logo-carousel {
             height: 50px;
             width: auto;
             object-fit: contain;
-            filter: invert(1) brightness(0.4);
-            opacity: 0.5;
+            filter: grayscale(1) opacity(0.5); /* Se ven grises y suaves */
             transition: all 0.4s ease;
             padding: 0 20px;
         }
-
-        .logo-carousel:hover {
-            filter: invert(1) brightness(0);
-            opacity: 1;
+        
+        /* Cuando pasas el ratón por el Enlace (a), la imagen cambia */
+        .logo-link:hover .logo-carousel {
+            filter: grayscale(0) opacity(1); /* Recupera su color original y brillo */
             transform: scale(1.1);
         }
 
@@ -130,9 +129,19 @@
             <p class="text-center text-xs font-black text-gray-400 uppercase tracking-[0.4em] mb-10 italic">Organismos que ya gestionan sus datos con Geogis</p>
             <div class="relative flex overflow-hidden group">
                 <div class="flex gap-16 md:gap-24 animate-scroll items-center whitespace-nowrap">
-                    <a href="https://geoportal.teuladamoraira.org/" target="_blank"><img src="img/teulada.png" alt="Teulada" class="logo-carousel"></a>
-                    <img src="img/altea.png" alt="Altea" class="logo-carousel"><img src="img/calp.png" alt="Calp" class="logo-carousel"><img src="img/ibi.png" alt="Ibi" class="logo-carousel"><img src="img/santapola.png" alt="Santa Pola" class="logo-carousel"><img src="img/finestrat.png" alt="Finestrat" class="logo-carousel">
-                    <img src="img/teulada.png" alt="Teulada" class="logo-carousel"><img src="img/altea.png" alt="Altea" class="logo-carousel"><img src="img/calp.png" alt="Calp" class="logo-carousel"><img src="img/ibi.png" alt="Ibi" class="logo-carousel"><img src="img/santapola.png" alt="Santa Pola" class="logo-carousel"><img src="img/finestrat.png" alt="Finestrat" class="logo-carousel">
+                    <a href="https://geoportal.teuladamoraira.org/" target="_blank" class="logo-link"><img src="img/teulada.png" alt="Teulada" class="logo-carousel"></a>
+                    <a href="https://geoportal.altea.es/" target="_blank" class="logo-link"><img src="img/altea.png" alt="Altea" class="logo-carousel"></a>
+                    <a href="https://geoportal.calp.es/" target="_blank" class="logo-link"><img src="img/calp.png" alt="Calp" class="logo-carousel"></a>
+                    <a href="https://geoportal.ibi.es/" target="_blank" class="logo-link"><img src="img/ibi.png" alt="Ibi" class="logo-carousel"></a>
+                    <a href="https://geoportalsantapola.geonet.es/" target="_blank" class="logo-link"><img src="img/santapola.png" alt="Santa Pola" class="logo-carousel"></a>
+                    <a href="https://geoportal.finestrat.org/" target="_blank" class="logo-link"><img src="img/finestrat.png" alt="Finestrat" class="logo-carousel"></a>
+                
+                    <a href="https://geoportal.teuladamoraira.org/" target="_blank" class="logo-link"><img src="img/teulada.png" alt="Teulada" class="logo-carousel"></a>
+                    <a href="https://geoportal.altea.es/" target="_blank" class="logo-link"><img src="img/altea.png" alt="Altea" class="logo-carousel"></a>
+                    <a href="https://geoportal.calp.es/" target="_blank" class="logo-link"><img src="img/calp.png" alt="Calp" class="logo-carousel"></a>
+                    <a href="https://geoportal.ibi.es/" target="_blank" class="logo-link"><img src="img/ibi.png" alt="Ibi" class="logo-carousel"></a>
+                    <a href="https://geoportalsantapola.geonet.es/" target="_blank" class="logo-link"><img src="img/santapola.png" alt="Santa Pola" class="logo-carousel"></a>
+                    <a href="https://geoportal.finestrat.org/" target="_blank" class="logo-link"><img src="img/finestrat.png" alt="Finestrat" class="logo-carousel"></a>
                 </div>
             </div>
         </div>
