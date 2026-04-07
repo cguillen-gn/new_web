@@ -52,31 +52,21 @@
 
         .active-card span { box-shadow: 0 0 10px currentColor; }
 
-        /* 1. Contenedor del logo (el enlace) */
-        .logo-link {
-            display: inline-flex; /* Forzamos a que el link abrace a la imagen */
-            align-items: center;
-            justify-content: center;
-            transition: all 0.4s ease;
-            vertical-align: middle;
-        }
-        
-        /* 2. La imagen (Blanca original) */
         .logo-carousel {
             height: 50px;
             width: auto;
             object-fit: contain;
             padding: 0 20px;
-            /* Brightness(0) convierte CUALQUIER color (incluido blanco) en NEGRO */
-            /* Opacity(0.4) lo convierte en un gris suave para que no "chille" */
-            filter: brightness(0) opacity(0.4); 
+        
+            filter: invert(1) brightness(0.4);
+            opacity: 0.5;
+        
             transition: all 0.4s ease;
-            display: block;
         }
         
-        /* 3. Efecto al pasar el ratón por el enlace */
         .logo-link:hover .logo-carousel {
-            filter: brightness(0) opacity(1); /* Negro puro al 100% */
+            filter: invert(1) brightness(0);
+            opacity: 1;
             transform: scale(1.1);
         }
 
