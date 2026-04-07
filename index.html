@@ -52,28 +52,31 @@
 
         .active-card span { box-shadow: 0 0 10px currentColor; }
 
-        /* Contenedor del logo (el enlace) */
+        /* 1. Contenedor del logo (el enlace) */
         .logo-link {
-            display: inline-flex;
+            display: inline-flex; /* Forzamos a que el link abrace a la imagen */
             align-items: center;
             justify-content: center;
             transition: all 0.4s ease;
+            vertical-align: middle;
         }
         
-        /* La imagen (que es BLANCA original) */
+        /* 2. La imagen (Blanca original) */
         .logo-carousel {
             height: 50px;
             width: auto;
             object-fit: contain;
             padding: 0 20px;
-            /* INVERT(1) es lo que hace que el blanco se vea negro */
-            filter: invert(1) opacity(0.4); 
+            /* Brightness(0) convierte CUALQUIER color (incluido blanco) en NEGRO */
+            /* Opacity(0.4) lo convierte en un gris suave para que no "chille" */
+            filter: brightness(0) opacity(0.4); 
             transition: all 0.4s ease;
+            display: block;
         }
         
-        /* Efecto Hover: Cuando tocas el enlace, la imagen se vuelve negra pura */
+        /* 3. Efecto al pasar el ratón por el enlace */
         .logo-link:hover .logo-carousel {
-            filter: invert(1) opacity(1);
+            filter: brightness(0) opacity(1); /* Negro puro al 100% */
             transform: scale(1.1);
         }
 
@@ -134,27 +137,29 @@
     </section>
 
     <section id="clientes" class="py-12 bg-white border-b border-gray-100 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-8">
-            <p class="text-center text-xs font-black text-gray-400 uppercase tracking-[0.4em] mb-10 italic">Organismos que ya gestionan sus datos con Geogis</p>
-            <div class="relative flex overflow-hidden group">
-                <div class="flex gap-16 md:gap-24 animate-scroll items-center whitespace-nowrap">
-                    <a href="https://geoportal.teuladamoraira.org/" target="_blank" class="logo-link"><img src="img/teulada.png" alt="Teulada" class="logo-carousel"></a>
-                    <a href="https://geoportal.altea.es/" target="_blank" class="logo-link"><img src="img/altea.png" alt="Altea" class="logo-carousel"></a>
-                    <a href="https://geoportal.calp.es/" target="_blank" class="logo-link"><img src="img/calp.png" alt="Calp" class="logo-carousel"></a>
-                    <a href="https://geoportal.ibi.es/" target="_blank" class="logo-link"><img src="img/ibi.png" alt="Ibi" class="logo-carousel"></a>
-                    <a href="https://geoportalsantapola.geonet.es/" target="_blank" class="logo-link"><img src="img/santapola.png" alt="Santa Pola" class="logo-carousel"></a>
-                    <a href="https://geoportal.finestrat.org/" target="_blank" class="logo-link"><img src="img/finestrat.png" alt="Finestrat" class="logo-carousel"></a>
+    <div class="max-w-7xl mx-auto px-8">
+        <p class="text-center text-xs font-black text-gray-400 uppercase tracking-[0.4em] mb-10 italic">Organismos que ya gestionan sus datos con Geogis</p>
+        <div class="relative flex overflow-hidden group">
+            <div class="flex gap-16 md:gap-24 animate-scroll items-center whitespace-nowrap">
                 
-                    <a href="https://geoportal.teuladamoraira.org/" target="_blank" class="logo-link"><img src="img/teulada.png" alt="Teulada" class="logo-carousel"></a>
-                    <a href="https://geoportal.altea.es/" target="_blank" class="logo-link"><img src="img/altea.png" alt="Altea" class="logo-carousel"></a>
-                    <a href="https://geoportal.calp.es/" target="_blank" class="logo-link"><img src="img/calp.png" alt="Calp" class="logo-carousel"></a>
-                    <a href="https://geoportal.ibi.es/" target="_blank" class="logo-link"><img src="img/ibi.png" alt="Ibi" class="logo-carousel"></a>
-                    <a href="https://geoportalsantapola.geonet.es/" target="_blank" class="logo-link"><img src="img/santapola.png" alt="Santa Pola" class="logo-carousel"></a>
-                    <a href="https://geoportal.finestrat.org/" target="_blank" class="logo-link"><img src="img/finestrat.png" alt="Finestrat" class="logo-carousel"></a>
-                </div>
+                <a href="https://geoportal.teuladamoraira.org/" target="_blank" class="logo-link"><img src="img/teulada.png" alt="Teulada" class="logo-carousel"></a>
+                <a href="https://geoportal.altea.es/" target="_blank" class="logo-link"><img src="img/altea.png" alt="Altea" class="logo-carousel"></a>
+                <a href="https://geoportal.calp.es/" target="_blank" class="logo-link"><img src="img/calp.png" alt="Calp" class="logo-carousel"></a>
+                <a href="https://geoportal.ibi.es/" target="_blank" class="logo-link"><img src="img/ibi.png" alt="Ibi" class="logo-carousel"></a>
+                <a href="https://geoportalsantapola.geonet.es/" target="_blank" class="logo-link"><img src="img/santapola.png" alt="Santa Pola" class="logo-carousel"></a>
+                <a href="https://geoportal.finestrat.org/" target="_blank" class="logo-link"><img src="img/finestrat.png" alt="Finestrat" class="logo-carousel"></a>
+
+                <a href="https://geoportal.teuladamoraira.org/" target="_blank" class="logo-link"><img src="img/teulada.png" alt="Teulada" class="logo-carousel"></a>
+                <a href="https://geoportal.altea.es/" target="_blank" class="logo-link"><img src="img/altea.png" alt="Altea" class="logo-carousel"></a>
+                <a href="https://geoportal.calp.es/" target="_blank" class="logo-link"><img src="img/calp.png" alt="Calp" class="logo-carousel"></a>
+                <a href="https://geoportal.ibi.es/" target="_blank" class="logo-link"><img src="img/ibi.png" alt="Ibi" class="logo-carousel"></a>
+                <a href="https://geoportalsantapola.geonet.es/" target="_blank" class="logo-link"><img src="img/santapola.png" alt="Santa Pola" class="logo-carousel"></a>
+                <a href="https://geoportal.finestrat.org/" target="_blank" class="logo-link"><img src="img/finestrat.png" alt="Finestrat" class="logo-carousel"></a>
+                
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <section id="nosotros" class="py-24 px-8 max-w-7xl mx-auto">
         <div class="text-center mb-20">
