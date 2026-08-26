@@ -1,843 +1,246 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geonet Territorial SAU</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brandOrange: '#f46600',
-                        brandDark: '#1a1d23',
-                        brandLight: '#f8f9fa',
-                    },
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        html { scroll-behavior: smooth; }
-
-        /* Estilos base para las tarjetas de navegación */
-        .nav-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-
-        .nav-card:hover:not(.active-card) {
-            background-color: #ffffff;
-            border-color: #f46600;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
-        }
-
-        .nav-card.active-card {
-            ring: 3px solid #f46600;
-            border-color: #f46600;
-            transform: scale(1.03);
-            box-shadow: 0 20px 25px -5px rgba(244, 102, 0, 0.1);
-            z-index: 10;
-        }
-
-        .active-card span { box-shadow: 0 0 10px currentColor; }
-
-        .logo-carousel {
-            height: 50px;
-            width: auto;
-            object-fit: contain;
-            filter: invert(1) brightness(0.4);
-            opacity: 0.5;
-            transition: all 0.4s ease;
-            padding: 0 20px;
-        }
-
-        .logo-carousel:hover {
-            filter: invert(1) brightness(0);
-            opacity: 1;
-            transform: scale(1.1);
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .animate-scroll {
-            display: flex;
-            width: max-content;
-            animation: scroll 40s linear infinite;
-        }
-
-        .group:hover .animate-scroll { animation-play-state: paused; }
-
-        .animate-pulse-soft { animation: pulse-soft 3s infinite ease-in-out; }
-        @keyframes pulse-soft {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.1; }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GeoNet Territorial | Información geográfica para los ayuntamientos de Alicante</title>
+  <meta name="description" content="Geonet Territorial, medio propio de la Diputación de Alicante y de Suma, desarrolla GeoGIS, la plataforma de información geográfica de los municipios de la provincia.">
+  <link rel="canonical" href="https://www.geonet.es/">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#ff7700">
+  <meta property="og:title" content="GeoNet Territorial | Información geográfica para los ayuntamientos de Alicante">
+  <meta property="og:description" content="Geonet Territorial, medio propio de la Diputación de Alicante y de Suma, desarrolla GeoGIS, la plataforma de información geográfica de los municipios de la provincia.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <link rel="stylesheet" href="css/main.css">
 </head>
-<body class="bg-brandLight text-brandDark antialiased font-sans">
-
-    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 py-4 px-8 flex justify-between items-center">
-        <div class="flex items-center gap-2">
-            <img src="img/geonet.png" alt="Logo Geonet" class="h-10 w-auto object-contain">
-        </div>
-        
-        <div class="hidden lg:flex gap-8 font-bold text-[10px] uppercase tracking-[0.2em] text-gray-500">
-            <a href="#nosotros" class="hover:text-brandOrange transition-colors">NOSOTROS</a>
-            <a href="#geogis" class="hover:text-brandOrange transition-colors">GEOGIS</a>
-            <a href="#consultoria" class="hover:text-brandOrange transition-colors">CONSULTORÍA</a>
-            <a href="#visores" class="hover:text-brandOrange transition-colors">VISORES</a>
-            <a href="#noticias" class="hover:text-brandOrange transition-colors">ACTUALIDAD</a>
-            <a href="#empleo" class="hover:text-brandOrange transition-colors">EMPLEO</a>
-            <a href="#contacto" class="hover:text-brandOrange transition-colors">CONTACTO</a>
-        </div>
-    </nav>
-
-    <section class="relative h-[85vh] flex items-center overflow-hidden bg-brandDark text-white px-8">
-        <video autoplay muted loop playsinline class="absolute inset-0 z-0 w-full h-full object-cover opacity-60">
-            <source src="img/video.mp4" type="video/mp4">
-        </video>
-        <div class="absolute inset-0 z-10" style="background: linear-gradient(to right, rgba(26, 29, 35, 0.85) 20%, rgba(26, 29, 35, 0.1) 100%);"></div>
-
-        <div class="max-w-7xl mx-auto relative z-20 grid md:grid-cols-2 gap-16 items-center w-full">
-            <div class="text-left">
-                <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.05] mb-8 uppercase tracking-tighter italic">Estrategia <br> <span class="text-brandOrange">Territorial</span> Avanzada</h1>
-                <p class="text-gray-300 text-lg mb-10 leading-relaxed max-w-lg font-medium italic">Servicios geoespaciales especializados para la administración pública. Optimizamos la gestión municipal mediante soluciones técnicas que transforman el dato en decisión.</p>
-                <div class="flex flex-wrap gap-5">
-                    <a href="#geogis" class="bg-brandOrange text-white px-10 py-4 rounded-xl font-extrabold hover:scale-105 transition-transform text-center uppercase text-xs tracking-widest italic">Explorar GeoGIS</a>
-                    <a href="#visores" class="border border-white/30 text-white px-10 py-4 rounded-xl font-extrabold hover:bg-white hover:text-brandDark transition-all text-center uppercase text-xs tracking-widest italic">Visores Públicos</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="clientes" class="py-12 bg-white border-b border-gray-100 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-8">
-            <p class="text-center text-xs font-black text-gray-400 uppercase tracking-[0.4em] mb-10 italic">Administraciones que ya gestionan sus datos con Geogis</p>
-            <div class="relative flex overflow-hidden group">
-                <div class="flex gap-16 md:gap-24 animate-scroll items-center whitespace-nowrap">
-                    <img src="img/teulada.png" alt="Teulada" class="logo-carousel"><img src="img/altea.png" alt="Altea" class="logo-carousel"><img src="img/calp.png" alt="Calp" class="logo-carousel"><img src="img/ibi.png" alt="Ibi" class="logo-carousel"><img src="img/santapola.png" alt="Santa Pola" class="logo-carousel"><img src="img/finestrat.png" alt="Finestrat" class="logo-carousel">
-                    <img src="img/teulada.png" alt="Teulada" class="logo-carousel"><img src="img/altea.png" alt="Altea" class="logo-carousel"><img src="img/calp.png" alt="Calp" class="logo-carousel"><img src="img/ibi.png" alt="Ibi" class="logo-carousel"><img src="img/santapola.png" alt="Santa Pola" class="logo-carousel"><img src="img/finestrat.png" alt="Finestrat" class="logo-carousel">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="nosotros" class="py-24 px-8 max-w-7xl mx-auto">
-        <div class="text-center mb-20">
-            <span class="text-brandOrange font-black text-[10px] uppercase tracking-[0.5em] mb-4 block italic">Nosotros</span>
-            <h2 class="text-4xl md:text-6xl font-extrabold italic uppercase text-brandDark tracking-tighter leading-none mb-8">
-                Expertos en Gestión de <br><span class="text-brandOrange">Información Geoespacial</span>
-            </h2>
-            <div class="max-w-3xl mx-auto">
-                <p class="text-lg md:text-xl font-bold text-brandDark leading-tight border-b-2 border-brandOrange/30 pb-6 mb-6">
-                    GeoNet Territorial S.A.U. es una sociedad <span class="text-brandOrange underline decoration-2 underline-offset-4">100% pública</span>, medio propio de la Diputación de Alicante y de Suma.
-                </p>
-                <p class="text-gray-500 text-sm md:text-base leading-relaxed font-medium">
-                    Actuamos como oficina técnica externa para ayuntamientos, asegurando la soberanía del dato y la calidad técnica en cada desafío territorial.
-                </p>
-            </div>
-        </div>
-    
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            <div class="bg-white border border-gray-100 p-8 rounded-[3rem] shadow-sm flex flex-col justify-between min-h-[280px] hover:shadow-xl transition-all duration-500">
-                <div>
-                    <div class="flex justify-between items-start mb-6">
-                        <span class="text-brandOrange font-black text-[10px] uppercase tracking-widest italic">Soberanía</span>
-                    </div>
-                    <h4 class="text-xl font-black text-brandDark uppercase italic mb-4">Control total</h4>
-                    <p class="text-sm text-gray-500 font-medium leading-relaxed">
-                        El municipio es siempre el único dueño de su información territorial, sin dependencias externas.
-                    </p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-gray-50">
-                    <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest italic">Garantía del Dato</span>
-                </div>
-            </div>
-    
-            <div class="bg-brandDark p-8 rounded-[3rem] shadow-2xl flex flex-col justify-between min-h-[280px] border-2 border-brandOrange relative overflow-hidden group">
-                <div class="absolute -right-4 -top-4 w-24 h-24 bg-brandOrange/10 rounded-full blur-3xl group-hover:bg-brandOrange/20 transition-all"></div>
-                <div class="relative z-10">
-                    <div class="flex justify-between items-start mb-6">
-                        <span class="text-brandOrange font-black text-[10px] uppercase tracking-widest italic">Confianza</span>
-                    </div>
-                    <h4 class="text-xl font-black text-white uppercase italic mb-4">Medio Propio</h4>
-                    <p class="text-sm text-gray-300 font-medium leading-relaxed">
-                        Seguridad jurídica total y agilidad en la contratación administrativa directa.
-                    </p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-white/10 relative z-10">
-                    <span class="text-[9px] font-black text-brandOrange uppercase tracking-widest italic">Marco Institucional</span>
-                </div>
-            </div>
-    
-            <div class="bg-white border border-gray-100 p-8 rounded-[3rem] shadow-sm flex flex-col justify-between min-h-[280px] hover:shadow-xl transition-all duration-500">
-                <div>
-                    <div class="flex justify-between items-start mb-6">
-                        <span class="text-brandOrange font-black text-[10px] uppercase tracking-widest italic">Capacidad</span>
-                    </div>
-                    <h4 class="text-xl font-black text-brandDark uppercase italic mb-4">Especialización</h4>
-                    <p class="text-sm text-gray-500 font-medium leading-relaxed">
-                        Equipo multidisciplinar de técnicos enfocado exclusivamente a la administración local.
-                    </p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-gray-50">
-                    <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest italic">Capital Humano</span>
-                </div>
-            </div>
-    
-            <div class="bg-white border border-gray-100 p-8 rounded-[3rem] shadow-sm flex flex-col justify-between min-h-[280px] hover:shadow-xl transition-all duration-500">
-                <div>
-                    <div class="flex justify-between items-start mb-6">
-                        <span class="text-brandOrange font-black text-[10px] uppercase tracking-widest italic">Sostenibilidad</span>
-                    </div>
-                    <h4 class="text-xl font-black text-brandDark uppercase italic mb-4">Estándares</h4>
-                    <p class="text-sm text-gray-500 font-medium leading-relaxed">
-                        Apostamos por formatos abiertos e interoperabilidad total.
-                    </p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-gray-50">
-                    <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest italic">Tecnología Abierta</span>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="geogis" class="py-10 px-4 md:px-8 max-w-7xl mx-auto bg-white rounded-[4rem] shadow-sm border border-gray-100">
-        <div class="grid lg:grid-cols-12 gap-8 items-start">
-            
-            <div class="lg:col-span-4 flex flex-col h-full">
-                <div class="space-y-6">
-                    <div>
-                        <span class="text-brandOrange font-black text-[10px] uppercase tracking-[0.5em] mb-3 block italic">Geogis</span>
-                        <h2 class="text-5xl md:text-6xl font-extrabold italic text-brandDark uppercase tracking-tighter leading-none mb-4">
-                            <span class="text-brandOrange text-shadow-glow">GEOGIS</span>
-                        </h2>
-                        <h3 class="text-base md:text-lg font-bold italic text-gray-700 leading-tight">Gestión Territorial Integrada</h3>
-                    </div>
-    
-                    <div class="border-l-2 border-brandOrange pl-5">
-                        <p class="text-sm text-gray-600 font-medium leading-relaxed">
-                            Ecosistema SIG integral para la administración pública: Un entorno operativo eficiente para el personal técnico y una ventana de transparencia al ciudadano.
-                        </p>
-                    </div>
-    
-                    <div class="bg-gray-50 p-5 rounded-[2.5rem] border border-gray-100 space-y-4">
-                        <div class="group">
-                            <h5 class="text-[11px] font-black uppercase tracking-widest text-brandOrange mb-1 italic">/ 01 Gestión Dual y Roles</h5>
-                            <p class="text-xs text-gray-500 font-medium leading-tight">Acceso seguro con roles específicos para proteger la información municipal.</p>
-                        </div>
-                        <div class="group border-t border-gray-200 pt-4">
-                            <h5 class="text-[11px] font-black uppercase tracking-widest text-brandOrange mb-1 italic">/ 02 Configuración a medida</h5>
-                            <p class="text-xs text-gray-500 font-medium leading-tight">Interfaz y capas 100% personalizables según la necesidad de cada área.</p>
-                        </div>
-                        <div class="group border-t border-gray-200 pt-4">
-                            <h5 class="text-[11px] font-black uppercase tracking-widest text-brandOrange mb-1 italic">/ 03 Conexión Administrativa</h5>
-                            <p class="text-xs text-gray-500 font-medium leading-tight">Integración directa con <strong>gestor de expedientes</strong>.</p>
-                        </div>
-                        <div class="group border-t border-gray-200 pt-4">
-                            <h5 class="text-[11px] font-black uppercase tracking-widest text-brandOrange mb-1 italic">/ 04 Edición y Analítica</h5>
-                            <p class="text-xs text-gray-500 font-medium leading-tight">Cruces de datos complejos y edición de geometrías en tiempo real.</p>
-                        </div>
-                    </div>
-    
-                    <div class="mt-4">
-                        <p class="text-[9px] text-gray-400 uppercase font-black tracking-[0.2em] mb-3 italic ml-1">¿Tu municipio aún no dispone de GeoGIS?</p>
-                        <a href="https://diputacionalicante.sedelectronica.es/catalog/t/8ff8d527-d4d7-4e11-ac62-8fef8490ba5a" target="_blank" class="group flex items-center justify-between bg-brandOrange text-white px-5 py-4 rounded-2xl font-extrabold uppercase text-[10px] tracking-widest italic hover:scale-[1.02] transition-all duration-300 shadow-lg shadow-brandOrange/20">
-                            <span>Tramitar Convenio</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
-                                <path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="lg:col-span-8">
-                <div class="relative aspect-video bg-brandDark rounded-[2.5rem] overflow-hidden shadow-2xl border-[6px] border-white ring-1 ring-gray-200">
-                    <video id="gis-video" autoplay muted loop playsinline class="w-full h-full object-cover">
-                        <source id="video-src" src="img/video_demo_planeamiento.mp4" type="video/mp4">
-                    </video>
-                    <div class="absolute top-5 right-7 bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10 flex items-center gap-2.5">
-                        <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-                        <span id="gis-label" class="text-[9px] font-black text-white uppercase tracking-widest italic">MOD: PLANEAMIENTO</span>
-                    </div>
-                </div>
-    
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-8">
-                    <button onclick="playDemo('planeamiento', this)" class="nav-card active-card flex flex-col justify-start min-h-[105px] bg-gray-50 p-4 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white group">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="text-[11px] font-black text-brandOrange italic transition-all">01.</span>
-                            <h4 class="font-black text-[11px] uppercase tracking-wider italic text-gray-400 group-[.active-card]:text-brandOrange transition-colors leading-tight">Planeamiento</h4>
-                        </div>
-                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-600 font-medium leading-snug transition-colors">Normativa y parámetros urbanísticos integrados.</p>
-                    </button>
-    
-                    <button onclick="playDemo('catastro', this)" class="nav-card flex flex-col justify-start min-h-[105px] bg-gray-50 p-4 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white group">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="text-[11px] font-black text-brandOrange italic transition-all">02.</span>
-                            <h4 class="font-black text-[11px] uppercase tracking-wider italic text-gray-400 group-[.active-card]:text-brandOrange transition-colors leading-tight">Catastro</h4>
-                        </div>
-                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-600 font-medium leading-snug transition-colors">Cartografía y datos alfanuméricos asociados.</p>
-                    </button>
-    
-                    <button onclick="playDemo('callejero', this)" class="nav-card flex flex-col justify-start min-h-[105px] bg-gray-50 p-4 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white group">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="text-[11px] font-black text-brandOrange italic transition-all">03.</span>
-                            <h4 class="font-black text-[11px] uppercase tracking-wider italic text-gray-400 group-[.active-card]:text-brandOrange transition-colors leading-tight">Callejero</h4>
-                        </div>
-                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-600 font-medium leading-snug transition-colors">Viario oficial y números de policía georreferenciados.</p>
-                    </button>
-    
-                    <button onclick="playDemo('infraestructuras', this)" class="nav-card flex flex-col justify-start min-h-[105px] bg-gray-50 p-4 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white group">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="text-[11px] font-black text-brandOrange italic transition-all">04.</span>
-                            <h4 class="font-black text-[11px] uppercase tracking-wider italic text-gray-400 group-[.active-card]:text-brandOrange transition-colors leading-tight">Infraestructuras</h4>
-                        </div>
-                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-600 font-medium leading-snug transition-colors">Inventario de redes de abastecimiento, saneamiento y otros servicios.</p>
-                    </button>
-    
-                    <button onclick="playDemo('mobiliario', this)" class="nav-card flex flex-col justify-start min-h-[105px] bg-gray-50 p-4 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white group">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="text-[11px] font-black text-brandOrange italic transition-all">05.</span>
-                            <h4 class="font-black text-[11px] uppercase tracking-wider italic text-gray-400 group-[.active-card]:text-brandOrange transition-colors leading-tight">Mobiliario</h4>
-                        </div>
-                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-600 font-medium leading-snug transition-colors">Gestión y mantenimiento de elementos urbanos.</p>
-                    </button>
-    
-                    <button onclick="playDemo('mambiente', this)" class="nav-card flex flex-col justify-start min-h-[105px] bg-gray-50 p-4 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white group">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="text-[11px] font-black text-brandOrange italic transition-all">06.</span>
-                            <h4 class="font-black text-[11px] uppercase tracking-wider italic text-gray-400 group-[.active-card]:text-brandOrange transition-colors leading-tight">M. Ambiente</h4>
-                        </div>
-                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-600 font-medium leading-snug transition-colors">Ordenación forestal y análisis de riesgos naturales.</p>
-                    </button>
-    
-                    <button onclick="playDemo('turismo', this)" class="nav-card flex flex-col justify-start min-h-[105px] bg-gray-50 p-4 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white group">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="text-[11px] font-black text-brandOrange italic transition-all">07.</span>
-                            <h4 class="font-black text-[11px] uppercase tracking-wider italic text-gray-400 group-[.active-card]:text-brandOrange transition-colors leading-tight">Turismo</h4>
-                        </div>
-                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-600 font-medium leading-snug transition-colors">Puntos de interés, patrimonio y rutas recomendadas.</p>
-                    </button>
-    
-                    <button onclick="playDemo('inventarios', this)" class="nav-card flex flex-col justify-start min-h-[105px] bg-gray-50 p-4 rounded-2xl border border-gray-200 text-left transition-all hover:bg-white group">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="text-[11px] font-black text-brandOrange italic transition-all">08.</span>
-                            <h4 class="font-black text-[11px] uppercase tracking-wider italic text-gray-400 group-[.active-card]:text-brandOrange transition-colors leading-tight">Inventarios</h4>
-                        </div>
-                        <p class="text-[11px] text-gray-400 group-[.active-card]:text-gray-600 font-medium leading-snug transition-colors">Inventarios municipales y EIEL.</p>
-                    </button>
-                    
-                    </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="consultoria" class="py-24 px-8 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-left mb-16">
-                <span class="text-brandOrange font-black text-[10px] uppercase tracking-[0.5em] mb-4 block italic">Área de Consultoría</span>
-                <h2 class="text-4xl md:text-6xl font-extrabold text-brandDark italic uppercase tracking-tighter mb-6 leading-none">
-                    Asistencia Técnica <span class="text-brandOrange">SIG</span>
-                </h2>
-                <div class="border-l-2 border-brandOrange pl-6 max-w-3xl">
-                    <p class="text-lg text-gray-600 font-medium leading-relaxed">
-                        Aportamos la solvencia técnica necesaria para la gestión del dato geoespacial, asegurando la precisión técnica y el cumplimiento normativo en cada fase administrativa.
-                    </p>
-                </div>
-            </div>
-    
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="group p-10 rounded-[3rem] bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-2xl hover:border-brandOrange/20 transition-all duration-500 flex flex-col justify-between min-h-[350px]">
-                    <div>
-                        <div class="flex justify-between items-start mb-8">
-                            <div class="w-12 h-12 bg-brandOrange/10 text-brandOrange rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
-                            </div>
-                        </div>
-                        <h4 class="text-xl font-black mb-4 italic uppercase text-brandDark tracking-tight">Gestión del Suelo e Inventarios</h4>
-                        <p class="text-sm text-gray-500 font-medium leading-relaxed">Asesoramiento especializado en la vertiente GIS del planeamiento urbanístico y ejecución integral de inventarios municipales técnicos.</p>
-                    </div>
-                    <div class="mt-8 pt-6 border-t border-gray-200/60">
-                        <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest italic">Área de Gestión Territorial</span>
-                    </div>
-                </div>
-    
-                <div class="group p-10 rounded-[3rem] bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-2xl hover:border-brandOrange/20 transition-all duration-500 flex flex-col justify-between min-h-[350px]">
-                    <div>
-                        <div class="flex justify-between items-start mb-8">
-                            <div class="w-12 h-12 bg-brandOrange/10 text-brandOrange rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
-                            </div>
-                        </div>
-                        <h4 class="text-xl font-black mb-4 italic uppercase text-brandDark tracking-tight">Ingeniería del Dato y Geolocalización</h4>
-                        <p class="text-sm text-gray-500 font-medium leading-relaxed">Tratamiento, normalización y migración masiva de datos territoriales junto con servicios avanzados de geolocalización de recursos públicos.</p>
-                    </div>
-                    <div class="mt-8 pt-6 border-t border-gray-200/60">
-                        <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest italic">Operaciones de Datos</span>
-                    </div>
-                </div>
-    
-                <div class="group p-10 rounded-[3rem] bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-2xl hover:border-brandOrange/20 transition-all duration-500 flex flex-col justify-between min-h-[350px]">
-                    <div>
-                        <div class="flex justify-between items-start mb-8">
-                            <div class="w-12 h-12 bg-brandOrange/10 text-brandOrange rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.1 6.3a2 2 0 0 0 0 3.4l9.07 4.12a2 2 0 0 0 1.66 0l9.07-4.12a2 2 0 0 0 0-3.4Z"/><path d="m2.1 12.76 9.07 4.12a2 2 0 0 0 1.66 0l9.07-4.12"/><path d="m2.1 17.76 9.07 4.12a2 2 0 0 0 1.66 0l9.07-4.12"/></svg>
-                            </div>
-                        </div>
-                        <h4 class="text-xl font-black mb-4 italic uppercase text-brandDark tracking-tight">Ecosistemas SIG y Aplicaciones</h4>
-                        <p class="text-sm text-gray-500 font-medium leading-relaxed">Implantación de geoportales y visores institucionales, así como el desarrollo de aplicaciones personalizadas para la gestión municipal.</p>
-                    </div>
-                    <div class="mt-8 pt-6 border-t border-gray-200/60">
-                        <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest italic">Sistemas de Información</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="visores" class="bg-gray-50 py-24 px-8 border-t border-gray-100">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-left mb-16">
-                <span class="text-brandOrange font-black text-[10px] uppercase tracking-[0.5em] mb-4 block italic">Visores</span>
-                <h2 class="text-4xl md:text-6xl font-extrabold mb-6 italic uppercase tracking-tighter text-brandDark leading-none">
-                    Herramientas de <span class="text-brandOrange">Datos Abiertos</span>
-                </h2>
-                <div class="border-l-2 border-brandOrange pl-6 max-w-3xl">
-                    <p class="text-lg text-gray-500 leading-relaxed italic font-medium">
-                        Aplicaciones útiles y sencillas de consulta se datos abiertos de la provincia de Alicante.
-                    </p>
-                </div>
-            </div>
-    
-            <div class="grid md:grid-cols-3 gap-8">
-                
-                <a href="https://visor.geonet.es/" target="_blank" class="group bg-white rounded-[3rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col border border-gray-100">
-                    <div class="relative aspect-video overflow-hidden border-b border-gray-100">
-                        <img src="img/visor_provincial.png" alt="Visor Provincial" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-brandDark/20 group-hover:bg-transparent transition-all duration-500"></div>
-                    </div>
-                    <div class="p-8 flex flex-col justify-between flex-grow">
-                        <div>
-                            <h3 class="font-black text-xl mb-2 italic uppercase text-brandDark">Visor Provincial</h3>
-                            <p class="text-xs text-gray-400 mb-6 italic leading-relaxed">Visor de información geográfica de las principales fuentes de datos abiertos.</p>
-                        </div>
-                        <div class="flex items-center justify-between pt-4 border-t border-gray-50">
-                            <span class="text-brandOrange font-black text-[10px] uppercase italic tracking-widest group-hover:translate-x-2 transition-transform duration-300">Acceder al Portal →</span>
-                        </div>
-                    </div>
-                </a>
-    
-                <a href="https://callejero.geonet.es/" target="_blank" class="group bg-white rounded-[3rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col border border-gray-100">
-                    <div class="relative aspect-video overflow-hidden border-b border-gray-100">
-                        <img src="img/callejero.jpg" alt="Callejero" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-brandDark/20 group-hover:bg-transparent transition-all duration-500"></div>
-                    </div>
-                    <div class="p-8 flex flex-col justify-between flex-grow">
-                        <div>
-                            <h3 class="font-black text-xl mb-2 italic uppercase text-brandDark">Callejero</h3>
-                            <p class="text-xs text-gray-400 mb-6 italic leading-relaxed">Localizador de viales y números de policía.</p>
-                        </div>
-                        <div class="flex items-center justify-between pt-4 border-t border-gray-50">
-                            <span class="text-brandOrange font-black text-[10px] uppercase italic tracking-widest group-hover:translate-x-2 transition-transform duration-300">Acceder al Portal →</span>
-                        </div>
-                    </div>
-                </a>
-    
-                <a href="https://multivisor.geonet.es/" target="_blank" class="group bg-white rounded-[3rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col border border-gray-100">
-                    <div class="relative aspect-video overflow-hidden border-b border-gray-100">
-                        <img src="img/multivisor.jpg" alt="Multivisor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-brandDark/20 group-hover:bg-transparent transition-all duration-500"></div>
-                    </div>
-                    <div class="p-8 flex flex-col justify-between flex-grow">
-                        <div>
-                            <h3 class="font-black text-xl mb-2 italic uppercase text-brandDark">Multivisor</h3>
-                            <p class="text-xs text-gray-400 mb-6 italic leading-relaxed">Análisis evolutivo del territorio mediante comparativa de ortofotografías históricas, fotografías oblicuas e imágenes a pie de calle.</p>
-                        </div>
-                        <div class="flex items-center justify-between pt-4 border-t border-gray-50">
-                            <span class="text-brandOrange font-black text-[10px] uppercase italic tracking-widest group-hover:translate-x-2 transition-transform duration-300">Acceder al Portal →</span>
-                        </div>
-                    </div>
-                </a>
-    
-            </div>
-        </div>
-    </section>
-
-    <section id="noticias" class="py-24 px-8 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="text-brandOrange font-black text-[10px] uppercase tracking-[0.5em] mb-4 block italic">Noticias</span>
-                <h2 class="text-4xl md:text-6xl font-extrabold mb-8 text-brandDark italic uppercase tracking-tighter leading-none">
-                    Actualidad y <span class="text-brandOrange text-shadow-glow">Compromiso</span>
-                </h2>
-                <p class="text-gray-500 text-sm md:text-base leading-relaxed italic font-medium max-w-2xl mx-auto">
-                    Noticias y actividad de la institución.
-                </p>
-            </div>
-    
-            <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-                
-                <article class="news-card group bg-gray-50 rounded-[3rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col justify-between"
-                    data-tag="Implantación" data-img="img/noticia_pilar_mutxamel.jpeg" data-title="Pilar de la Horadada y Mutxamel, en el sistema de información geográfica GeoGIS"
-                    data-full-text="Los Ayuntamientos de Pilar de la Horadada y Mutxamel han sido los primeros en adherirse al convenio marco impulsado por la Diputación de Alicante para la implantación, desarrollo y mantenimiento del Sistema de Información Geográfica GeoGIS.
-
-Esta solución informática, coordinada por el Área de Arquitectura y prestada a través Geonet, permite a los consistorios consultar y analizar la totalidad de los datos espaciales y geográficos existentes en sus municipios con el fin de mejorar la gestión del territorio, la toma de decisiones y la prestación de servicios.">
-                    <div class="relative aspect-video overflow-hidden">
-                        <img src="img/noticia_pilar_mutxamel.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                        <div class="absolute top-4 left-4">
-                        </div>
-                    </div>
-                    <div class="p-8 pb-4">
-                        <span class="inline-block text-brandOrange text-[9px] font-black uppercase mb-4 italic tracking-widest">Implantación</span>
-                        <h3 class="text-lg font-extrabold mb-4 italic uppercase leading-tight text-brandDark group-hover:text-brandOrange transition-colors">Pilar de la Horadada y Mutxamel se sucriben al convenio GeoGIS</h3>
-                        <p class="text-xs text-gray-500 font-medium leading-relaxed">Primeros municipios que suscriben el convenio marco para contar con esta herramienta</p>
-                    </div>
-                    <div class="p-8 pt-4 border-t border-gray-200/50 flex justify-between items-center text-[10px] font-black italic uppercase">
-                        <span class="text-gray-400">9 Jun 2026</span>
-                        <span class="text-brandOrange group-hover:translate-x-1 transition-transform">Leer más +</span>
-                    </div>
-                </article>
-                
-                <article class="news-card group bg-gray-50 rounded-[3rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col justify-between"
-                    data-tag="Institucional" data-img="img/noticia_convenio.jpg" data-title="La Diputación impulsa GeoGIS en la provincia"
-                    data-full-text="La Diputación de Alicante ha impulsado la implantación de GeoGIS como herramienta estándar para la gestión de servicios municipales.">
-                    <div class="relative aspect-video overflow-hidden">
-                        <img src="img/noticia_convenio.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                        <div class="absolute top-4 left-4">
-                        </div>
-                    </div>
-                    <div class="p-8 pb-4">
-                        <span class="inline-block text-brandOrange text-[9px] font-black uppercase mb-4 italic tracking-widest">Institucional</span>
-                        <h3 class="text-lg font-extrabold mb-4 italic uppercase leading-tight text-brandDark group-hover:text-brandOrange transition-colors">La Diputación facilita la implantación de GeoGIS</h3>
-                        <p class="text-xs text-gray-500 font-medium leading-relaxed">Convenio marco para facilitar que los municipios de Alicante accedan a tecnología avanzada.</p>
-                    </div>
-                    <div class="p-8 pt-4 border-t border-gray-200/50 flex justify-between items-center text-[10px] font-black italic uppercase">
-                        <span class="text-gray-400">15 Nov 2025</span>
-                        <span class="text-brandOrange group-hover:translate-x-1 transition-transform">Leer más +</span>
-                    </div>
-                </article>
-    
-                <article class="news-card group bg-gray-50 rounded-[3rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col justify-between"
-                    data-tag="Implantación" data-img="img/noticia_santapola.jpg" data-title="Santa Pola digitaliza su territorio"
-                    data-full-text="Nueva etapa en la gestión de servicios públicos mediante tecnología geoespacial de última generación en Santa Pola.">
-                    <div class="relative aspect-video overflow-hidden">
-                        <img src="img/noticia_santapola.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                        <div class="absolute top-4 left-4">
-                        </div>
-                    </div>
-                    <div class="p-8 pb-4">
-                        <span class="inline-block text-brandOrange text-[9px] font-black uppercase mb-4 italic tracking-widest">Implantación</span>
-                        <h3 class="text-lg font-extrabold mb-4 italic uppercase leading-tight text-brandDark group-hover:text-brandOrange transition-colors">Santa Pola digitaliza su territorio con GeoGIS</h3>
-                        <p class="text-xs text-gray-500 font-medium leading-relaxed">Modernización de servicios públicos mediante tecnología geoespacial de última generación.</p>
-                    </div>
-                    <div class="p-8 pt-4 border-t border-gray-200/50 flex justify-between items-center text-[10px] font-black italic uppercase">
-                        <span class="text-gray-400">10 Jul 2025</span>
-                        <span class="text-brandOrange group-hover:translate-x-1 transition-transform">Leer más +</span>
-                    </div>
-                </article>
-    
-                <article class="news-card group bg-gray-50 rounded-[3rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col justify-between"
-                    data-tag="Implantación" data-img="img/noticia_orihuela.jpg" data-title="Orihuela adopta GeoGIS"
-                    data-full-text="Unificación de cartografía e inventario de infraestructuras en un entorno único para el Ayuntamiento de Orihuela.">
-                    <div class="relative aspect-video overflow-hidden">
-                        <img src="img/noticia_orihuela.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                    </div>
-                    <div class="p-8 pb-4">
-                        <span class="inline-block text-brandOrange text-[9px] font-black uppercase mb-4 italic tracking-widest">Implantación</span>
-                        <h3 class="text-lg font-extrabold mb-4 italic uppercase leading-tight text-brandDark group-hover:text-brandOrange transition-colors">Orihuela adopta GeoGIS para su gestión técnica</h3>
-                        <p class="text-xs text-gray-500 font-medium leading-relaxed">Unificación de cartografía e inventario de infraestructuras en un entorno de trabajo único.</p>
-                    </div>
-                    <div class="p-8 pt-4 border-t border-gray-200/50 flex justify-between items-center text-[10px] font-black italic uppercase">
-                        <span class="text-gray-400">16 May 2025</span>
-                        <span class="text-brandOrange group-hover:translate-x-1 transition-transform">Leer más +</span>
-                    </div>
-                </article>
-    
-                <article class="news-card group bg-gray-50 rounded-[3rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col justify-between"
-                    data-tag="Implantación" data-img="img/noticia_calp.jpg" data-title="Calp incorpora GeoGIS" data-full-text="Reducción de costes municipales mediante la plataforma GeoGIS.">
-                    <div class="relative aspect-video overflow-hidden">
-                        <img src="img/noticia_calp.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                    </div>
-                    <div class="p-8 pb-4">
-                        <span class="inline-block text-brandOrange text-[9px] font-black uppercase mb-4 italic tracking-widest">Implantación</span>
-                        <h3 class="text-lg font-extrabold mb-4 italic uppercase leading-tight text-brandDark group-hover:text-brandOrange transition-colors">Calp incorpora GeoGIS para reducir costes</h3>
-                        <p class="text-xs text-gray-500 font-medium leading-relaxed">Mejora de la eficiencia administrativa y servicios urbanos.</p>
-                    </div>
-                    <div class="p-8 pt-4 border-t border-gray-200/50 flex justify-between items-center text-[10px] font-black italic uppercase">
-                        <span class="text-gray-400">16 Jun 2021</span>
-                        <span class="text-brandOrange group-hover:translate-x-1 transition-transform">Leer más +</span>
-                    </div>
-                </article>
-    
-                <article class="news-card news-item-extra hidden group bg-gray-50 rounded-[3rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col justify-between"
-                    data-tag="Implantación" data-img="img/noticia_altea.jpg" data-title="Altea digitaliza servicios" data-full-text="Colaboración institucional para la modernización geográfica en Altea.">
-                    <div class="relative aspect-video overflow-hidden">
-                        <img src="img/noticia_altea.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                    </div>
-                    <div class="p-8 pb-4">
-                        <span class="inline-block text-brandOrange text-[9px] font-black uppercase mb-4 italic tracking-widest">Implantación</span>
-                        <h3 class="text-lg font-extrabold mb-4 italic uppercase leading-tight text-brandDark group-hover:text-brandOrange transition-colors">Altea digitaliza sus servicios con GeoGIS</h3>
-                        <p class="text-xs text-gray-500 font-medium leading-relaxed">Modernización de la gestión geográfica municipal.</p>
-                    </div>
-                    <div class="p-8 pt-4 border-t border-gray-200/50 flex justify-between items-center text-[10px] font-black italic uppercase">
-                        <span class="text-gray-400">22 Dic 2020</span>
-                        <span class="text-brandOrange group-hover:translate-x-1 transition-transform">Leer más +</span>
-                    </div>
-                </article>
-    
-                <article class="news-card news-item-extra hidden group bg-gray-50 rounded-[3rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col justify-between"
-                    data-tag="Implantación" data-img="img/noticia_teulada.jpg" data-title="Hito en Teulada Moraira"
-                    data-full-text="Primer municipio de la provincia en permitir el cruce de datos georreferenciados para uso público.">
-                    <div class="relative aspect-video overflow-hidden">
-                        <img src="img/noticia_teulada.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                    </div>
-                    <div class="p-8 pb-4">
-                        <span class="inline-block text-brandOrange text-[9px] font-black uppercase mb-4 italic tracking-widest">Referente</span>
-                        <h3 class="text-lg font-extrabold mb-4 italic uppercase leading-tight text-brandDark group-hover:text-brandOrange transition-colors">Teulada, primer municipio en implantar GeoGIS</h3>
-                        <p class="text-xs text-gray-500 font-medium leading-relaxed">Pioneros en la provincia al permitir el cruce de datos georreferenciados para uso público.</p>
-                    </div>
-                    <div class="p-8 pt-4 border-t border-gray-200/50 flex justify-between items-center text-[10px] font-black italic uppercase">
-                        <span class="text-gray-400">22 Nov 2017</span>
-                        <span class="text-brandOrange group-hover:translate-x-1 transition-transform">Leer más +</span>
-                    </div>
-                </article>
-            </div>
-    
-            <div class="mt-20 text-center">
-                <button id="btn-load-more" class="group inline-flex items-center gap-4 bg-brandDark text-white border border-brandDark px-10 py-4 rounded-2xl font-extrabold uppercase text-[10px] tracking-widest italic hover:bg-brandOrange hover:border-brandOrange transition-all shadow-xl">
-                    <span id="btn-text">Ver más actualidad</span>
-                    <svg id="btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-500"><path d="m6 9 6 6 6-6"/></svg>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <section id="empleo" class="py-24 px-8 bg-brandDark text-white">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div>
-                <span class="text-brandOrange font-black text-[10px] uppercase tracking-widest mb-4 block italic">Empleo</span>
-                <h2 class="text-3xl font-extrabold italic uppercase mb-8">Únete al <span class="text-brandOrange">equipo</span></h2>
-                <a href="mailto:rrhh@geonet.es" class="inline-block bg-white text-brandDark px-8 py-3 rounded-xl font-extrabold uppercase text-xs italic tracking-widest">Enviar CV</a>
-            </div>
-            <div class="bg-white/5 border border-white/10 p-8 rounded-[2.5rem]">
-                <h3 class="text-sm font-bold uppercase italic mb-4">Puestos vacantes</h3>
-                <p class="text-xs text-gray-400 italic">Aceptamos candidaturas espontáneas de perfiles técnicos especializados.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contacto" class="py-24 px-4 md:px-8 bg-brandLight">
-        <div class="max-w-7xl mx-auto border border-gray-100 rounded-[4rem] p-12 md:p-20 shadow-sm bg-white relative overflow-hidden">
-            
-            <div class="absolute top-10 right-10 opacity-[0.03] pointer-events-none">
-                <svg width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="brandDark" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            </div>
-    
-            <div class="grid lg:grid-cols-2 gap-16 items-center relative z-10">
-                <div class="text-left">
-                    <span class="text-brandOrange font-black text-[10px] uppercase tracking-[0.5em] mb-6 block italic">Contacto</span>
-                    <h2 class="text-4xl md:text-7xl font-extrabold mb-10 italic uppercase tracking-tighter text-brandDark leading-none">¿Hablamos sobre <br>tu <span class="text-brandOrange text-shadow-glow">municipio</span>?</h2>
-                    <div class="border-l-2 border-brandOrange pl-6 max-w-md">
-                        <p class="text-gray-500 text-sm md:text-base font-medium leading-relaxed italic">Acompañamos a las administraciones en su proceso de transformación digital geoespacial.</p>
-                    </div>
-                </div>
-    
-                <div class="grid gap-12">
-                    <div class="flex gap-6 group">
-                        <div>
-                            <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-2 italic">Oficina</p>
-                            <p class="text-lg font-bold text-brandDark italic leading-relaxed">
-                                Calle Ausó y Monzó, 16, 4ª planta<br>
-                                Edificio Hispania<br>
-                                03006 Alicante, España
-                            </p>
-                        </div>
-                    </div>
-    
-                    <div class="flex gap-6 group">
-                        <div>
-                            <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-2 italic">Atención Directa</p>
-                            <p class="text-xl font-bold text-brandDark italic mb-1">96 514 22 66</p>
-                            <p class="text-xl font-bold text-brandOrange italic">geonet@geonet.es</p>
-                        </div>
-                    </div>
-    
-                    <div class="flex gap-6 group">
-                        <div>
-                            <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-4 italic">Redes Sociales</p>
-                            <div class="flex gap-4">
-                                <a href="https://www.linkedin.com/company/geonet-territorial-sau" target="_blank" class="group flex items-center justify-center w-12 h-12 rounded-xl bg-brandDark text-white hover:bg-brandOrange transition-all duration-300 shadow-lg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                                </a>
-                                <a href="https://www.youtube.com/channel/UCypX9l8CwIBKcyeQEVEmryA/featured" target="_blank" class="group flex items-center justify-center w-12 h-12 rounded-xl bg-brandDark text-white hover:bg-brandOrange transition-all duration-300 shadow-lg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.11 1 12 1 12s0 3.89.46 5.58a2.78 2.78 0 0 0 1.94 2c1.72.42 8.6.42 8.6.42s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.89 23 12 23 12s0-3.89-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-brandDark text-white py-12 px-8 border-t border-white/5">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex flex-wrap justify-center md:justify-start items-center gap-12 mb-16 opacity-40 hover:opacity-100 transition-opacity duration-500">
-                <span class="text-[9px] font-black text-gray-500 uppercase tracking-[0.3em] italic w-full md:w-auto text-center md:text-left">Organismos vinculados:</span>
-                <a href="https://www.diputacionalicante.es/" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-105"><img src="img/logo_dipu.png" alt="Diputación" class="h-10 w-auto filter grayscale brightness-0 invert"></a>
-                <a href="https://www.suma.es/" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-105"><img src="img/logo_suma.png" alt="Suma" class="h-8 w-auto filter grayscale brightness-0 invert"></a>
-            </div>
-
-            <div class="flex flex-col md:flex-row justify-between items-center gap-10">
-                <img src="img/geonet.png" alt="Logo GeoNet" class="h-8 brightness-0 invert">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4 text-[9px] font-black text-gray-500 uppercase tracking-widest italic text-center md:text-left">
-                    <a href="https://abierta.geonet.es/" class="hover:text-brandOrange">Portal de Transparencia</a>
-                    <a href="https://geonet.sedelectronica.es/" class="hover:text-brandOrange">Sede Electrónica</a>
-                    <a href="https://contrataciondelestado.es/..." class="hover:text-brandOrange">Perfil del Contratante</a>
-                    <a href="https://www.geonet.es/legal.html" class="hover:text-brandOrange">Aviso Legal y Privacidad</a>
-                </div>
-            </div>
-
-            <div class="mt-16 pt-8 border-t border-white/5 text-center text-[8px] text-gray-600 font-bold uppercase tracking-[0.5em] italic">
-                © 2026 Geonet Territorial SAU
-            </div>
-        </div>
-    </footer>
-
-    <div id="news-modal" class="fixed inset-0 z-[100] hidden overflow-y-auto">
-        <div class="fixed inset-0 bg-black/80 backdrop-blur-sm"></div>
-        <div class="flex min-h-full items-center justify-center p-4 relative z-20">
-            <div class="relative bg-white rounded-[3rem] overflow-hidden shadow-2xl w-full max-w-4xl">
-                <button id="close-modal" class="absolute top-6 right-6 z-30 bg-black/20 p-2 rounded-full text-white">X</button>
-                <div class="relative aspect-[21/9] w-full"><img id="modal-img" src="" class="w-full h-full object-cover"></div>
-                <div class="p-10 lg:p-16">
-                    <h1 id="modal-title" class="text-2xl font-black italic uppercase text-brandDark mb-6 border-b pb-6"></h1>
-                    <div id="modal-full-text" class="text-gray-600 leading-relaxed italic text-sm"></div>
-                    <div class="mt-10 pt-8 border-t text-center"><button id="close-modal-bottom" class="text-brandOrange font-black text-[10px] uppercase italic">← Volver</button></div>
-                </div>
-            </div>
-        </div>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <div class="site-header__bar">
+        <a class="logo" href="index.html">
+          <img src="img/geonet_negro.png" width="270" height="73" alt="GeoNet Territorial, inicio">
+        </a>
+        <button class="nav-toggle" type="button" aria-controls="menu-principal" aria-expanded="false">Menú</button>
+        <nav id="menu-principal" class="site-nav" aria-label="Principal">
+          <a href="index.html" aria-current="page">Inicio</a>
+          <a href="geogis.html">GeoGIS</a>
+          <a href="geoportales.html">Geoportales</a>
+          <a href="herramientas.html">Herramientas</a>
+          <a href="nosotros.html">Geonet</a>
+          <a href="actualidad.html">Actualidad</a>
+          <a href="empleo.html">Empleo</a>
+          <a href="contacto.html">Contacto</a>
+        </nav>
+      </div>
     </div>
+  </header>
+  <main id="contenido">
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- 1. LÓGICA DE NOTICIAS (MODAL) ---
-            const modal = document.getElementById('news-modal');
-            const cards = document.querySelectorAll('.news-card');
-            
-            const closeModal = () => { 
-                modal.classList.add('hidden'); 
-                document.body.style.overflow = 'auto'; 
-            };
-    
-            // Abrir noticia
-            cards.forEach(card => {
-                card.addEventListener('click', () => {
-                    const data = card.dataset;
-                    document.getElementById('modal-img').src = data.img;
-                    document.getElementById('modal-title').innerHTML = data.title;
-                    document.getElementById('modal-full-text').innerHTML = data.fullText;
-                    modal.classList.remove('hidden');
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-    
-            // Eventos de Cierre
-            document.getElementById('close-modal').onclick = closeModal;
-            document.getElementById('close-modal-bottom').onclick = closeModal;
-    
-            // CERRAR AL PULSAR FUERA (Método infalible)
-            modal.addEventListener('click', (e) => {
-                // Si el clic NO ha sido en la caja blanca (.bg-white) ni en nada dentro de ella
-                if (!e.target.closest('.bg-white')) {
-                    closeModal();
-                }
-            });
-    
-            // Cerrar con Escape
-            document.addEventListener('keydown', (e) => {
-                if (e.key === "Escape" && !modal.classList.contains('hidden')) {
-                    closeModal();
-                }
-            });
-    
-            // --- 2. LÓGICA DE "VER MÁS NOTICIAS" ---
-            const btnLoadMore = document.getElementById('btn-load-more');
-            const btnText = document.getElementById('btn-text');
-            const btnIcon = document.getElementById('btn-icon');
-            const extraNews = document.querySelectorAll('.news-item-extra');
-    
-            if (btnLoadMore) {
-                btnLoadMore.addEventListener('click', () => {
-                    const isHidden = extraNews[0].classList.contains('hidden');
-                    
-                    extraNews.forEach(item => {
-                        if (isHidden) {
-                            item.classList.remove('hidden');
-                        } else {
-                            item.classList.add('hidden');
-                        }
-                    });
-    
-                    btnText.innerText = isHidden ? 'Ver menos' : 'Ver más actualidad';
-                    btnIcon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
-                });
-            }
-        });
-    
-        // --- 3. LÓGICA VISOR GEOGIS (Global) ---
-        const demos = {
-            planeamiento: { video: 'img/video_demo_planeamiento.mp4', label: 'DEMO: Planeamiento Urbanístico' },
-            catastro: { video: 'img/video_demo_catastro.mp4', label: 'DEMO: Catastro' },
-            callejero: { video: 'img/video_demo_callejero.mp4', label: 'DEMO: Callejero' },
-            infraestructuras: { video: 'img/video_demo_infraestructuras.mp4', label: 'DEMO: Infraestructuras' },
-            mobiliario: { video: 'img/video_demo_mobiliario.mp4', label: 'DEMO: Mobiliario urbano' },
-            mambiente: { video: 'img/video_demo_mambiente.mp4', label: 'DEMO: Medio Ambiente' },
-            turismo: { video: 'img/video_demo_turismo.mp4', label: 'DEMO: Turismo' },
-            inventarios: { video: 'img/video_demo_inventarios.mp4', label: 'DEMO: Inventarios' }
-        };
-    
-        function playDemo(type, element) {
-            const video = document.getElementById('gis-video');
-            const source = document.getElementById('video-src');
-            const label = document.getElementById('gis-label');
-            const cards = document.querySelectorAll('.nav-card');
-    
-            if (element.classList.contains('active-card')) return;
-    
-            // UI Update
-            cards.forEach(c => c.classList.remove('active-card'));
-            element.classList.add('active-card');
-    
-            // Transition
-            video.style.opacity = '0';
-            setTimeout(() => {
-                // Verificamos que el tipo existe para evitar errores
-                if(demos[type]) {
-                    source.src = demos[type].video;
-                    label.innerText = demos[type].label;
-                    video.load();
-                    video.play();
-                }
-                video.style.opacity = '1';
-            }, 300);
-        }
-    </script>
+<section class="hero">
+  <img class="hero__media" src="img/hero-territorio.jpg" width="1920" height="1080" alt="">
+  <div class="hero__shade" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="hero__kicker">Geonet Territorial S.A.U.</p>
+    <h1>GeoGIS, la plataforma de información geográfica de los ayuntamientos de Alicante</h1>
+    <p>Sociedad de capital íntegramente público y medio propio de la Diputación Provincial de Alicante y de Suma Gestión Tributaria. Implantamos GeoGIS en cada municipio como un geoportal propio, con la información que el ayuntamiento decide publicar.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="geoportales.html">Consultar un geoportal municipal</a>
+      <a class="btn btn-secondary" href="geogis.html#adhesion">Implantar GeoGIS en mi ayuntamiento</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <p class="kicker">Cómo se usa</p>
+    <h2>El geoportal es la puerta. GeoGIS es el visor.</h2>
+    <p class="lead">Cada ayuntamiento tiene su geoportal. En la portada se elige una temática —planeamiento, catastro, infraestructuras u otras— o se entra al visor sin capas activas. GeoGIS abre entonces el mapa de ese municipio.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step__num" aria-hidden="true">1</div>
+        <h3>Portada del geoportal</h3>
+        <p>El ciudadano elige qué quiere consultar. También puede entrar al visor sin precargar ninguna capa.</p>
+      </div>
+      <div class="step">
+        <div class="step__num" aria-hidden="true">2</div>
+        <h3>GeoGIS con lo publicado</h3>
+        <p>Se ve sin registro todo lo que el ayuntamiento ha decidido mostrar: capas de dominio público y capas municipales abiertas.</p>
+      </div>
+      <div class="step">
+        <div class="step__num" aria-hidden="true">3</div>
+        <h3>Identificación, solo si hace falta</h3>
+        <p>El personal municipal se identifica para ver capas no publicadas: datos sensibles, información no definitiva o de uso interno.</p>
+      </div>
+    </div>
+    <div class="mosaic" aria-hidden="true">
+      <img src="img/hero-territorio-b.jpg" alt="">
+      <img src="img/modulos/planeamiento.jpg" alt="">
+      <img src="img/modulos/catastro.jpg" alt="">
+      <img src="img/modulos/infraestructuras.jpg" alt="">
+      <img src="img/modulos/mambiente.jpg" alt="">
+    </div>
+    <p class="meta" style="margin-top:0.8rem">Portada de un geoportal y el visor GeoGIS con capas de planeamiento, catastro, infraestructuras y medio ambiente.</p>
+  </div>
+</section>
+
+<section class="section section--papel">
+  <div class="wrap">
+    <p class="kicker">Geoportales publicados</p>
+    <h2>Entre al geoportal de su municipio</h2>
+    <p class="lead">Solo se listan geoportales ya publicados en el dominio del ayuntamiento. Si el suyo no aparece, puede consultar el visor de capas públicas o preguntar al consistorio.</p>
+    <ul class="portal-grid">
+      <li>
+        <a class="portal-card" href="https://geoportal.altea.es/" rel="noopener noreferrer">
+          <img class="portal-card__map" src="img/modulos/turismo.jpg" alt="">
+          <div class="portal-card__shade"></div>
+          <div class="portal-card__body">
+            <img class="portal-card__crest" src="img/altea.png" width="80" height="80" alt="">
+            <h3>Altea</h3>
+            <p>geoportal.altea.es</p>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="portal-card" href="https://geoportal.calp.es/" rel="noopener noreferrer">
+          <img class="portal-card__map" src="img/modulos/planeamiento.jpg" alt="">
+          <div class="portal-card__shade"></div>
+          <div class="portal-card__body">
+            <img class="portal-card__crest" src="img/calp.png" width="80" height="80" alt="">
+            <h3>Calp</h3>
+            <p>geoportal.calp.es</p>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="portal-card" href="https://geoportal.teuladamoraira.org/" rel="noopener noreferrer">
+          <img class="portal-card__map" src="img/modulos/callejero.jpg" alt="">
+          <div class="portal-card__shade"></div>
+          <div class="portal-card__body">
+            <img class="portal-card__crest" src="img/teulada.png" width="80" height="80" alt="">
+            <h3>Teulada Moraira</h3>
+            <p>geoportal.teuladamoraira.org</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+    <p style="margin-top:1.25rem"><a href="geoportales.html">Ver el directorio de geoportales</a></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <p class="kicker">Consulta provincial</p>
+    <h2>Herramientas de información geográfica</h2>
+    <p class="lead">El visor de Geonet muestra capas de dominio público, sin información propia de ningún ayuntamiento. El callejero y el multivisor son utilidades provinciales distintas de GeoGIS.</p>
+    <div class="grid-3">
+      <a class="card card--link card--media" href="https://visor.geonet.es/" rel="noopener noreferrer">
+        <img src="img/visor-publico.jpg" width="1400" height="788" alt="Mapa de la provincia de Alicante en el visor de capas públicas">
+        <h3>Visor de capas públicas</h3>
+        <p>GeoGIS provincial, solo con información de dominio público.</p>
+      </a>
+      <a class="card card--link card--media" href="https://callejero.geonet.es/" rel="noopener noreferrer">
+        <img src="img/callejero-web.jpg" width="1200" height="675" alt="Callejero con viario y números de policía">
+        <h3>Callejero</h3>
+        <p>Localización de viales y números de policía.</p>
+      </a>
+      <a class="card card--link card--media" href="https://multivisor.geonet.es/" rel="noopener noreferrer">
+        <img src="img/multivisor-web.jpg" width="1200" height="675" alt="Comparación de ortofotografías en el multivisor">
+        <h3>Multivisor</h3>
+        <p>Comparación de ortofotos, oblicuas e imágenes a pie de calle.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--oscuro" id="medio-propio">
+  <div class="wrap">
+    <p class="kicker">Medio propio</p>
+    <h2>Encargo directo a una empresa pública de la Diputación</h2>
+    <p class="lead">Los ayuntamientos de la provincia pueden adherirse al convenio marco impulsado por la Diputación de Alicante para implantar, desarrollar y mantener GeoGIS. El servicio lo presta Geonet.</p>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Contratación administrativa</h3>
+        <p>Como medio propio, el encargo se articula por convenio, sin licitación de un sistema SIG de terceros.</p>
+      </div>
+      <div class="card">
+        <h3>Geoportal a medida</h3>
+        <p>No hay un GeoGIS único para todos. Cada ayuntamiento tiene su instancia, sus capas y, en producción, su dominio.</p>
+      </div>
+      <div class="card">
+        <h3>Soporte y formación</h3>
+        <p>La implantación incluye migración de datos, mantenimiento y formación del personal municipal.</p>
+      </div>
+    </div>
+    <p class="actions" style="margin-top:1.75rem">
+      <a class="btn btn-primary" href="https://diputacionalicante.sedelectronica.es/catalog/t/8ff8d527-d4d7-4e11-ac62-8fef8490ba5a" rel="noopener noreferrer">Tramitar la adhesión al convenio</a>
+      <a class="btn btn-secondary" href="geogis.html">Qué incluye GeoGIS</a>
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <p class="kicker">Actualidad</p>
+    <h2>Adhesiones al convenio GeoGIS</h2>
+    <a class="news-feature" href="noticias/pilar-mutxamel.html">
+      <img src="img/noticia_pilar_mutxamel.jpeg" width="960" height="640" alt="Firma del convenio de adhesión a GeoGIS con Pilar de la Horadada y Mutxamel">
+      <div class="news-feature__body">
+        <time datetime="2026-06-08">8 de junio de 2026</time>
+        <h3>Pilar de la Horadada y Mutxamel se adhieren al convenio marco de GeoGIS</h3>
+        <p>Son los primeros ayuntamientos que formalizan la adhesión al convenio impulsado por la Diputación de Alicante.</p>
+      </div>
+    </a>
+    <p style="margin-top:1.1rem"><a href="actualidad.html">Más actualidad</a></p>
+  </div>
+</section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a class="logo" href="index.html">
+            <img src="img/geonet.png" width="346" height="92" alt="GeoNet Territorial">
+          </a>
+          <p>Sociedad de capital íntegramente público. Medio propio de la Diputación Provincial de Alicante y de Suma Gestión Tributaria.</p>
+          <div class="footer-orgs">
+            <a href="https://www.diputacionalicante.es/" rel="noopener noreferrer">
+              <img src="img/logo_dipu.png" alt="Diputación de Alicante">
+            </a>
+            <a href="https://www.suma.es/" rel="noopener noreferrer">
+              <img src="img/logo_suma.png" alt="Suma Gestión Tributaria">
+            </a>
+          </div>
+        </div>
+        <div>
+          <h2>Sede y transparencia</h2>
+          <ul>
+            <li><a href="https://geonet.sedelectronica.es/" rel="noopener noreferrer">Sede electrónica</a></li>
+            <li><a href="https://abierta.geonet.es/" rel="noopener noreferrer">Portal de transparencia</a></li>
+            <li><a href="https://contrataciondelestado.es/wps/poc?uri=deeplink%3AperfilContratante&amp;idBp=grYUH%2FbI4aQQK2TEfXGy%2BA%3D%3D" rel="noopener noreferrer">Perfil de contratante</a></li>
+            <li><a href="https://diputacionalicante.sedelectronica.es/catalog/t/8ff8d527-d4d7-4e11-ac62-8fef8490ba5a" rel="noopener noreferrer">Convenio GeoGIS</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contacto</h2>
+          <ul>
+            <li>Calle Ausó y Monzó, 16, 4.ª planta<br>Edificio Hispania<br>03006 Alicante</li>
+            <li><a href="tel:+34965142266">96 514 22 66</a></li>
+            <li><a href="mailto:geonet@geonet.es">geonet@geonet.es</a></li>
+            <li><a href="https://www.linkedin.com/company/geonet-territorial-sau" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://www.youtube.com/channel/UCypX9l8CwIBKcyeQEVEmryA/featured" rel="noopener noreferrer">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <span>© 2026 Geonet Territorial S.A.U. NIF A53726741</span>
+        <a href="aviso-legal.html">Aviso legal y privacidad</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="accesibilidad.html">Accesibilidad</a>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
 </body>
 </html>
