@@ -768,10 +768,16 @@ dl.facts dd { margin: 0.2rem 0 0; color: var(--tinta-suave); }
 .logo-track-wrap:hover .logo-track { animation-play-state: paused; }
 
 .logo-track img {
-  height: 3rem;
+  height: 3.35rem;
   width: auto;
-  opacity: 0.55;
-  filter: grayscale(1);
+  max-width: 11rem;
+  object-fit: contain;
+  filter: invert(1);
+  opacity: 0.88;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-track { animation: none; }
 }
 
 .news-grid {
