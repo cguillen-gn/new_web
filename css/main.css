@@ -209,6 +209,20 @@ a:hover { color: var(--tinta); }
   color: var(--blanco);
 }
 
+.btn-muted,
+.btn-muted:disabled {
+  background: transparent;
+  color: var(--muted);
+  border-color: #cfc6ba;
+  cursor: not-allowed;
+}
+
+.section--oscuro .btn-muted,
+.section--oscuro .btn-muted:disabled {
+  color: rgba(255, 252, 248, 0.55);
+  border-color: rgba(255, 252, 248, 0.28);
+}
+
 .hero {
   position: relative;
   isolation: isolate;
@@ -370,6 +384,38 @@ a:hover { color: var(--tinta); }
 }
 
 .card p { margin: 0; color: var(--tinta-suave); }
+
+.card--via {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.card--via p { margin-bottom: 1.25rem; }
+
+.card--via > .btn {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.adhesion-scope {
+  margin-top: 2rem;
+  max-width: 46rem;
+}
+
+.adhesion-scope h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.05rem;
+}
+
+.adhesion-scope p {
+  margin: 0;
+  color: var(--tinta-suave);
+}
+
+.adhesion-scope p + p { margin-top: 0.7rem; }
+
+.section--oscuro .adhesion-scope p { color: #d8d1c8; }
 
 .card--link {
   color: inherit;
