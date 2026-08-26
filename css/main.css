@@ -232,6 +232,17 @@ a:hover { color: var(--tinta); }
   object-fit: cover;
   object-position: 70% center;
   z-index: -2;
+  pointer-events: none;
+}
+
+.hero__video {
+  z-index: -1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__video {
+    display: none;
+  }
 }
 
 .hero__shade {
@@ -242,6 +253,8 @@ a:hover { color: var(--tinta); }
 }
 
 .hero .wrap {
+  position: relative;
+  z-index: 1;
   padding: 5.5rem 0 4rem;
 }
 
