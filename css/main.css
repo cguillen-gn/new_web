@@ -629,6 +629,34 @@ a:hover { color: var(--tinta); }
 
 .site-footer a { color: #fafaf9; }
 .site-footer a:hover { color: var(--naranja); }
+.site-footer .map-pin { color: var(--naranja); }
+
+.footer-social {
+  display: flex;
+  gap: 0.65rem;
+  margin-top: 0.9rem;
+}
+
+.footer-social a {
+  display: grid;
+  place-items: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  color: #fafaf9;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  text-decoration: none;
+}
+
+.footer-social a:hover {
+  color: var(--naranja);
+  border-color: var(--naranja);
+}
+
+.footer-social svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
 
 .footer-grid {
   display: grid;
@@ -888,7 +916,8 @@ dl.facts dd { margin: 0.2rem 0 0; color: var(--tinta-suave); }
   color: var(--tinta-suave);
 }
 
-section[id] { scroll-margin-top: 5rem; }
+section[id],
+#contacto { scroll-margin-top: 5rem; }
 
 @keyframes logos {
   from { transform: translateX(0); }
