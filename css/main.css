@@ -767,6 +767,17 @@ dl.facts dd { margin: 0.2rem 0 0; color: var(--tinta-suave); }
 
 .logo-track-wrap:hover .logo-track { animation-play-state: paused; }
 
+.logo-track a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-track a:hover img,
+.logo-track a:focus-visible img {
+  opacity: 1;
+}
+
 .logo-track img {
   height: 3.35rem;
   width: auto;
