@@ -596,6 +596,8 @@ a:hover { color: var(--tinta); }
   border-radius: 0 12px 12px 0;
 }
 
+.section--papel .note { background: var(--blanco); }
+
 .prose { max-width: 46rem; }
 .prose h1 { font-size: clamp(1.9rem, 3.2vw, 2.6rem); line-height: 1.15; letter-spacing: -0.03em; }
 .prose h2 { margin-top: 2rem; }
