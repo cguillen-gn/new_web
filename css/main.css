@@ -398,24 +398,19 @@ a:hover { color: var(--tinta); }
   align-self: flex-start;
 }
 
-.adhesion-scope {
+.follow {
   margin-top: 2rem;
   max-width: 46rem;
-}
-
-.adhesion-scope h3 {
-  margin: 0 0 0.45rem;
-  font-size: 1.05rem;
-}
-
-.adhesion-scope p {
-  margin: 0;
   color: var(--tinta-suave);
 }
 
-.adhesion-scope p + p { margin-top: 0.7rem; }
+.follow + .follow { margin-top: 0.7rem; }
 
-.section--oscuro .adhesion-scope p { color: #d8d1c8; }
+.section--oscuro .follow { color: #d8d1c8; }
+
+.section--oscuro a:not(.btn) { color: var(--naranja); }
+
+.section--oscuro a:not(.btn):hover { color: var(--blanco); }
 
 .card--link {
   color: inherit;
