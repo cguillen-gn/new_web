@@ -745,6 +745,92 @@ dl.facts dd { margin: 0.2rem 0 0; color: var(--tinta-suave); }
 .modules div { padding: 0.85rem 0.95rem 1.05rem; }
 .modules strong { display: block; margin-bottom: 0.2rem; }
 
+.logo-band {
+  padding: 1.6rem 0 1.8rem;
+  border-bottom: 1px solid var(--linea);
+  overflow: hidden;
+}
+
+.logo-band__label {
+  margin: 0 0 1rem;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.logo-track-wrap { overflow: hidden; }
+
+.logo-track {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+  width: max-content;
+  animation: logos 42s linear infinite;
+}
+
+.logo-track-wrap:hover .logo-track { animation-play-state: paused; }
+
+.logo-track img {
+  height: 3rem;
+  width: auto;
+  opacity: 0.55;
+  filter: grayscale(1);
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.1rem;
+  margin-top: 1.25rem;
+}
+
+.news-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background: var(--papel);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.news-card:hover { color: inherit; }
+
+.news-card img {
+  width: 100%;
+  height: 8.5rem;
+  object-fit: cover;
+}
+
+.news-card div { padding: 0.9rem 1rem 1.15rem; }
+
+.news-card time {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.news-card h3 {
+  margin: 0.35rem 0 0.4rem;
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.news-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--tinta-suave);
+}
+
+section[id] { scroll-margin-top: 5rem; }
+
+@keyframes logos {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 @media (max-width: 860px) {
   .nav-toggle { display: inline-flex; }
   .site-nav {
@@ -776,6 +862,7 @@ dl.facts dd { margin: 0.2rem 0 0; color: var(--tinta-suave); }
     grid-template-rows: 9rem 9rem 9rem;
   }
   .mosaic img:first-child { grid-row: auto; }
+  .news-grid { grid-template-columns: 1fr; }
   .hero { min-height: 34rem; }
   .hero h1 { max-width: none; }
 }
