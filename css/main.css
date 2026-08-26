@@ -310,7 +310,7 @@ a:hover { color: var(--tinta); }
 
 .lead {
   font-size: 1.15rem;
-  max-width: 44rem;
+  max-width: none;
   color: var(--tinta-suave);
 }
 
