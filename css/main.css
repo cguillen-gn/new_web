@@ -334,6 +334,10 @@ a:hover { color: var(--tinta); }
 
 .section--oscuro .card h3 { color: var(--blanco); }
 .section--oscuro .card p { color: #d8d1c8; }
+.section--oscuro .note {
+  background: rgba(255, 252, 248, 0.08);
+  color: #d8d1c8;
+}
 
 .grid-2,
 .grid-3 {
@@ -712,6 +716,31 @@ dl.facts dt {
   margin-top: 0.9rem;
 }
 dl.facts dd { margin: 0.2rem 0 0; color: var(--tinta-suave); }
+
+.map-pin {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.35rem;
+  color: var(--naranja-oscuro);
+  vertical-align: -0.2em;
+  text-decoration: none;
+}
+
+.map-pin:hover { color: var(--naranja); }
+
+.org-lockup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+  margin-top: 0.9rem;
+}
+
+.org-lockup img {
+  height: 2.5rem;
+  width: auto;
+  filter: invert(1);
+}
 
 .modules {
   display: grid;
