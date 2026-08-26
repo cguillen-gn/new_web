@@ -728,16 +728,21 @@ dl.facts dd { margin: 0.2rem 0 0; color: var(--tinta-suave); }
 
 .map-pin:hover { color: var(--naranja); }
 
+#nosotros p { max-width: 44rem; }
+
 .org-lockup {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 1.75rem 2.25rem;
   align-items: center;
-  margin-top: 0.9rem;
+  margin-top: 1.75rem;
+  padding-top: 1.35rem;
+  max-width: 44rem;
+  border-top: 1px solid var(--linea);
 }
 
 .org-lockup img {
-  height: 2.5rem;
+  height: 2.75rem;
   width: auto;
   filter: invert(1);
 }
