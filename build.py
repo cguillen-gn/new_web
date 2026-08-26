@@ -9,7 +9,7 @@ PAGES = SRC / "pages"
 header = (SRC / "partials" / "header.html").read_text(encoding="utf-8")
 footer = (SRC / "partials" / "footer.html").read_text(encoding="utf-8")
 
-NAV_ITEMS = ("inicio", "geogis", "geoportales", "herramientas", "nosotros", "actualidad", "empleo", "contacto")
+NAV_ITEMS = ("inicio", "geogis", "herramientas", "nosotros", "actualidad", "empleo", "contacto")
 
 
 def parse_page(text: str, path: Path):

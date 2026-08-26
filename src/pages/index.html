@@ -5,41 +5,49 @@ active: inicio
 canonical: https://www.geonet.es/
 ---
 <section class="hero">
-  <img class="hero__media" src="img/hero-territorio.jpg" width="1920" height="1080" alt="">
+  <img class="hero__media hero__poster" src="img/hero-territorio.jpg" width="1920" height="1080" alt="">
+  <video class="hero__media hero__video" autoplay muted loop playsinline preload="metadata" poster="img/hero-territorio.jpg" aria-hidden="true">
+    <source src="img/hero.mp4" type="video/mp4">
+  </video>
   <div class="hero__shade" aria-hidden="true"></div>
   <div class="wrap">
     <p class="hero__kicker">Geonet Territorial S.A.U.</p>
     <h1>GeoGIS, la plataforma de información geográfica de los ayuntamientos de Alicante</h1>
-    <p>Sociedad de capital íntegramente público y medio propio de la Diputación Provincial de Alicante y de Suma Gestión Tributaria. Implantamos GeoGIS en cada municipio como un geoportal propio, con la información que el ayuntamiento decide publicar.</p>
+    <p>Planeamiento, catastro, redes, callejero, patrimonio e inventario, juntos en un visor hecho para cada municipio. Geonet es la sociedad pública de la Diputación de Alicante y de Suma que lo desarrolla y lo mantiene.</p>
     <div class="actions">
-      <a class="btn btn-primary" href="geoportales.html">Consultar un geoportal municipal</a>
-      <a class="btn btn-secondary" href="geogis.html#adhesion">Implantar GeoGIS en mi ayuntamiento</a>
+      <a class="btn btn-primary" href="#geogis">Conocer GeoGIS</a>
+      <a class="btn btn-secondary" href="#adhesion">Adherirse al convenio</a>
     </div>
   </div>
 </section>
 
-<section class="section">
+<section class="logo-band" aria-label="Ayuntamientos que trabajan con GeoGIS">
   <div class="wrap">
-    <p class="kicker">Cómo se usa</p>
-    <h2>El geoportal es la puerta. GeoGIS es el visor.</h2>
-    <p class="lead">Cada ayuntamiento tiene su geoportal. En la portada se elige una temática —planeamiento, catastro, infraestructuras u otras— o se entra al visor sin capas activas. GeoGIS abre entonces el mapa de ese municipio.</p>
-    <div class="steps">
-      <div class="step">
-        <div class="step__num" aria-hidden="true">1</div>
-        <h3>Portada del geoportal</h3>
-        <p>El ciudadano elige qué quiere consultar. También puede entrar al visor sin precargar ninguna capa.</p>
-      </div>
-      <div class="step">
-        <div class="step__num" aria-hidden="true">2</div>
-        <h3>GeoGIS con lo publicado</h3>
-        <p>Se ve sin registro todo lo que el ayuntamiento ha decidido mostrar: capas de dominio público y capas municipales abiertas.</p>
-      </div>
-      <div class="step">
-        <div class="step__num" aria-hidden="true">3</div>
-        <h3>Identificación, solo si hace falta</h3>
-        <p>El personal municipal se identifica para ver capas no publicadas: datos sensibles, información no definitiva o de uso interno.</p>
+    <p class="logo-band__label">Ayuntamientos que ya trabajan con GeoGIS</p>
+    <div class="logo-track-wrap">
+      <div class="logo-track">
+        <img src="img/teulada.png" alt="Teulada Moraira">
+        <img src="img/altea.png" alt="Altea">
+        <img src="img/calp.png" alt="Calp">
+        <img src="img/ibi.png" alt="Ibi">
+        <img src="img/santapola.png" alt="Santa Pola">
+        <img src="img/finestrat.png" alt="Finestrat">
+        <img src="img/teulada.png" alt="">
+        <img src="img/altea.png" alt="">
+        <img src="img/calp.png" alt="">
+        <img src="img/ibi.png" alt="">
+        <img src="img/santapola.png" alt="">
+        <img src="img/finestrat.png" alt="">
       </div>
     </div>
+  </div>
+</section>
+
+<section class="section" id="geogis">
+  <div class="wrap">
+    <p class="kicker">El producto</p>
+    <h2>El territorio del municipio, en un solo visor</h2>
+    <p class="lead">GeoGIS concentra las capas con las que trabaja un ayuntamiento: urbanismo, catastro, infraestructuras, medio ambiente, turismo, mobiliario e inventarios. No es un mapa genérico de la provincia. Es el geoportal de ese municipio, con su imagen y sus datos, para que el técnico gestione y el vecino consulte.</p>
     <div class="mosaic" aria-hidden="true">
       <img src="img/hero-territorio-b.jpg" alt="">
       <img src="img/modulos/planeamiento.jpg" alt="">
@@ -47,69 +55,58 @@ canonical: https://www.geonet.es/
       <img src="img/modulos/infraestructuras.jpg" alt="">
       <img src="img/modulos/mambiente.jpg" alt="">
     </div>
-    <p class="meta" style="margin-top:0.8rem">Portada de un geoportal y el visor GeoGIS con capas de planeamiento, catastro, infraestructuras y medio ambiente.</p>
-  </div>
-</section>
-
-<section class="section section--papel">
-  <div class="wrap">
-    <p class="kicker">Geoportales publicados</p>
-    <h2>Entre al geoportal de su municipio</h2>
-    <p class="lead">Solo se listan geoportales ya publicados en el dominio del ayuntamiento. Si el suyo no aparece, puede consultar el visor de capas públicas o preguntar al consistorio.</p>
-    <ul class="portal-grid">
+    <ul class="modules">
       <li>
-        <a class="portal-card" href="https://geoportal.altea.es/" rel="noopener noreferrer">
-          <img class="portal-card__map" src="img/modulos/turismo.jpg" alt="">
-          <div class="portal-card__shade"></div>
-          <div class="portal-card__body">
-            <img class="portal-card__crest" src="img/altea.png" width="80" height="80" alt="">
-            <h3>Altea</h3>
-            <p>geoportal.altea.es</p>
-          </div>
-        </a>
+        <img src="img/modulos/planeamiento.jpg" alt="">
+        <div><strong>Planeamiento</strong> Normativa y parámetros urbanísticos ligados a cada parcela.</div>
       </li>
       <li>
-        <a class="portal-card" href="https://geoportal.calp.es/" rel="noopener noreferrer">
-          <img class="portal-card__map" src="img/modulos/planeamiento.jpg" alt="">
-          <div class="portal-card__shade"></div>
-          <div class="portal-card__body">
-            <img class="portal-card__crest" src="img/calp.png" width="80" height="80" alt="">
-            <h3>Calp</h3>
-            <p>geoportal.calp.es</p>
-          </div>
-        </a>
+        <img src="img/modulos/catastro.jpg" alt="">
+        <div><strong>Catastro</strong> Cartografía catastral y datos alfanuméricos asociados.</div>
       </li>
       <li>
-        <a class="portal-card" href="https://geoportal.teuladamoraira.org/" rel="noopener noreferrer">
-          <img class="portal-card__map" src="img/modulos/callejero.jpg" alt="">
-          <div class="portal-card__shade"></div>
-          <div class="portal-card__body">
-            <img class="portal-card__crest" src="img/teulada.png" width="80" height="80" alt="">
-            <h3>Teulada Moraira</h3>
-            <p>geoportal.teuladamoraira.org</p>
-          </div>
-        </a>
+        <img src="img/modulos/callejero.jpg" alt="">
+        <div><strong>Callejero</strong> Viario oficial y números de policía georreferenciados.</div>
+      </li>
+      <li>
+        <img src="img/modulos/infraestructuras.jpg" alt="">
+        <div><strong>Infraestructuras</strong> Redes de abastecimiento, saneamiento y otros servicios.</div>
+      </li>
+      <li>
+        <img src="img/modulos/mobiliario.jpg" alt="">
+        <div><strong>Mobiliario urbano</strong> Inventario y mantenimiento de elementos urbanos.</div>
+      </li>
+      <li>
+        <img src="img/modulos/mambiente.jpg" alt="">
+        <div><strong>Medio ambiente</strong> Protección, ordenación y análisis de riesgos.</div>
+      </li>
+      <li>
+        <img src="img/modulos/turismo.jpg" alt="">
+        <div><strong>Turismo y patrimonio</strong> Puntos de interés, rutas y bienes catalogados.</div>
+      </li>
+      <li>
+        <img src="img/modulos/inventarios.jpg" alt="">
+        <div><strong>Inventarios</strong> Inventario municipal y encuesta de infraestructuras locales.</div>
       </li>
     </ul>
-    <p style="margin-top:1.25rem"><a href="geoportales.html">Ver el directorio de geoportales</a></p>
+    <p class="note">Sin identificarse se consulta la información publicada: capas de dominio público y las municipales que el ayuntamiento ha abierto. El personal técnico se identifica para ver el resto —borradores, datos sensibles o de uso interno.</p>
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="herramientas">
   <div class="wrap">
     <p class="kicker">Consulta provincial</p>
-    <h2>Herramientas de información geográfica</h2>
-    <p class="lead">El visor de Geonet muestra capas de dominio público, sin información propia de ningún ayuntamiento. El callejero y el multivisor son utilidades provinciales distintas de GeoGIS.</p>
+    <h2>Visor, callejero y multivisor</h2>
     <div class="grid-3">
       <a class="card card--link card--media" href="https://visor.geonet.es/" rel="noopener noreferrer">
         <img src="img/visor-publico.jpg" width="1400" height="788" alt="Mapa de la provincia de Alicante en el visor de capas públicas">
         <h3>Visor de capas públicas</h3>
-        <p>GeoGIS provincial, solo con información de dominio público.</p>
+        <p>GeoGIS provincial, solo con información de dominio público. Ninguna capa propia de un ayuntamiento.</p>
       </a>
       <a class="card card--link card--media" href="https://callejero.geonet.es/" rel="noopener noreferrer">
         <img src="img/callejero-web.jpg" width="1200" height="675" alt="Callejero con viario y números de policía">
         <h3>Callejero</h3>
-        <p>Localización de viales y números de policía.</p>
+        <p>Localización de viales y números de policía en la provincia.</p>
       </a>
       <a class="card card--link card--media" href="https://multivisor.geonet.es/" rel="noopener noreferrer">
         <img src="img/multivisor-web.jpg" width="1200" height="675" alt="Comparación de ortofotografías en el multivisor">
@@ -120,44 +117,141 @@ canonical: https://www.geonet.es/
   </div>
 </section>
 
-<section class="section section--oscuro" id="medio-propio">
+<section class="section section--oscuro" id="adhesion">
   <div class="wrap">
-    <p class="kicker">Medio propio</p>
-    <h2>Encargo directo a una empresa pública de la Diputación</h2>
-    <p class="lead">Los ayuntamientos de la provincia pueden adherirse al convenio marco impulsado por la Diputación de Alicante para implantar, desarrollar y mantener GeoGIS. El servicio lo presta Geonet.</p>
+    <p class="kicker">Para el ayuntamiento</p>
+    <h2>Cómo puede tener GeoGIS su municipio</h2>
+    <p class="lead">La Diputación de Alicante ha impulsado un convenio marco. El ayuntamiento se adhiere y Geonet se encarga de implantar el geoportal, migrar los datos, formar al personal y mantener el sistema. Geonet es medio propio de la Diputación y de Suma: el encargo no pasa por licitar un SIG de mercado.</p>
     <div class="grid-3">
       <div class="card">
-        <h3>Contratación administrativa</h3>
-        <p>Como medio propio, el encargo se articula por convenio, sin licitación de un sistema SIG de terceros.</p>
+        <h3>Convenio de adhesión</h3>
+        <p>Cuatro años de vigencia, prorrogables. Un cauce único para todos los municipios de la provincia que quieran sumarse.</p>
       </div>
       <div class="card">
         <h3>Geoportal a medida</h3>
-        <p>No hay un GeoGIS único para todos. Cada ayuntamiento tiene su instancia, sus capas y, en producción, su dominio.</p>
+        <p>Cada ayuntamiento tiene su instancia, sus capas y, cuando el sistema está en producción, su propio dominio.</p>
       </div>
       <div class="card">
-        <h3>Soporte y formación</h3>
-        <p>La implantación incluye migración de datos, mantenimiento y formación del personal municipal.</p>
+        <h3>Formación y soporte</h3>
+        <p>Migración de la información municipal, actualizaciones y acompañamiento al equipo técnico.</p>
       </div>
     </div>
     <p class="actions" style="margin-top:1.75rem">
       <a class="btn btn-primary" href="https://diputacionalicante.sedelectronica.es/catalog/t/8ff8d527-d4d7-4e11-ac62-8fef8490ba5a" rel="noopener noreferrer">Tramitar la adhesión al convenio</a>
-      <a class="btn btn-secondary" href="geogis.html">Qué incluye GeoGIS</a>
+      <a class="btn btn-secondary" href="#contacto">Hablar con Geonet</a>
     </p>
   </div>
 </section>
 
-<section class="section">
+<section class="section section--papel" id="nosotros">
+  <div class="wrap split">
+    <div>
+      <p class="kicker">La empresa</p>
+      <h2>Sociedad 100% pública, al servicio de la administración local</h2>
+      <p class="lead">Geonet Territorial S.A.U. es medio propio de la Diputación Provincial de Alicante y de Suma Gestión Tributaria. Desarrollamos GeoGIS, implantamos geoportales municipales y mantenemos las herramientas provinciales de consulta.</p>
+      <p>Trabajamos con formatos abiertos e interoperables. El municipio es titular de sus datos. La información geográfica que se publica no sustituye a los documentos oficiales del órgano competente.</p>
+    </div>
+    <div class="card">
+      <h3>Datos identificativos</h3>
+      <dl class="facts">
+        <dt>Razón social</dt>
+        <dd>Geonet Territorial S.A.U.</dd>
+        <dt>NIF</dt>
+        <dd>A53726741</dd>
+        <dt>Domicilio</dt>
+        <dd>Calle Ausó y Monzó, 16, 4.ª planta<br>Edificio Hispania, 03006 Alicante</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="actualidad">
   <div class="wrap">
     <p class="kicker">Actualidad</p>
-    <h2>Adhesiones al convenio GeoGIS</h2>
+    <h2>Implantación de GeoGIS en la provincia</h2>
     <a class="news-feature" href="noticias/pilar-mutxamel.html">
       <img src="img/noticia_pilar_mutxamel.jpeg" width="960" height="640" alt="Firma del convenio de adhesión a GeoGIS con Pilar de la Horadada y Mutxamel">
       <div class="news-feature__body">
         <time datetime="2026-06-08">8 de junio de 2026</time>
         <h3>Pilar de la Horadada y Mutxamel se adhieren al convenio marco de GeoGIS</h3>
-        <p>Son los primeros ayuntamientos que formalizan la adhesión al convenio impulsado por la Diputación de Alicante.</p>
+        <p>Primeros ayuntamientos que formalizan la adhesión al convenio impulsado por la Diputación de Alicante.</p>
       </div>
     </a>
-    <p style="margin-top:1.1rem"><a href="actualidad.html">Más actualidad</a></p>
+    <div class="news-grid">
+      <a class="news-card" href="noticias/convenio-marco.html">
+        <img src="img/noticia_convenio.jpg" width="720" height="480" alt="">
+        <div>
+          <time datetime="2025-11-15">15 de noviembre de 2025</time>
+          <h3>La Diputación impulsa GeoGIS en los municipios</h3>
+          <p>Convenio marco para que los ayuntamientos de Alicante se adhieran a la plataforma.</p>
+        </div>
+      </a>
+      <a class="news-card" href="noticias/orihuela.html">
+        <img src="img/noticia_orihuela.jpg" width="720" height="480" alt="">
+        <div>
+          <time datetime="2025-05-16">16 de mayo de 2025</time>
+          <h3>Orihuela implanta GeoGIS para su gestión técnica</h3>
+          <p>El convenio permite unificar cartografía e inventario en un mismo entorno de trabajo.</p>
+        </div>
+      </a>
+      <a class="news-card" href="noticias/santapola.html">
+        <img src="img/noticia_santapola.jpg" width="720" height="480" alt="">
+        <div>
+          <time datetime="2025-07-10">10 de julio de 2025</time>
+          <h3>Santa Pola incorpora GeoGIS a su gestión territorial</h3>
+          <p>El ayuntamiento suma la plataforma a la administración de su información geográfica.</p>
+        </div>
+      </a>
+      <a class="news-card" href="noticias/calp.html">
+        <img src="img/noticia_calp.jpg" width="720" height="480" alt="">
+        <div>
+          <time datetime="2021-06-16">16 de junio de 2021</time>
+          <h3>Calp pone en marcha su geoportal municipal</h3>
+          <p>Consulta de planeamiento, medio ambiente, callejero y servicios urbanos en un visor propio.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--papel" id="empleo">
+  <div class="wrap split">
+    <div>
+      <p class="kicker">Empleo</p>
+      <h2>Únase al equipo</h2>
+      <p class="lead">En este momento no hay ningún proceso de selección abierto. Las convocatorias se publican en la sede electrónica y en este apartado.</p>
+      <p><a class="btn btn-primary" href="https://geonet.sedelectronica.es/" rel="noopener noreferrer">Tablón de la sede electrónica</a></p>
+    </div>
+    <div class="card">
+      <h3>Cómo se convoca</h3>
+      <p>Geonet es una sociedad pública. El acceso al empleo se realiza por convocatoria, con bases en la sede electrónica. La plantilla y las retribuciones están en el <a href="https://abierta.geonet.es/informacion-institucional/recursos-humanos/" rel="noopener noreferrer">portal de transparencia</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contacto">
+  <div class="wrap">
+    <p class="kicker">Contacto</p>
+    <h2>Oficinas en Alicante</h2>
+    <div class="grid-2">
+      <div>
+        <dl class="facts">
+          <dt>Dirección</dt>
+          <dd>Calle Ausó y Monzó, 16, 4.ª planta<br>Edificio Hispania<br>03006 Alicante</dd>
+          <dt>Teléfono</dt>
+          <dd><a href="tel:+34965142266">96 514 22 66</a></dd>
+          <dt>Correo</dt>
+          <dd><a href="mailto:geonet@geonet.es">geonet@geonet.es</a></dd>
+          <dt>Delegado de protección de datos</dt>
+          <dd><a href="mailto:dpd@geonet.es">dpd@geonet.es</a></dd>
+        </dl>
+        <p style="margin-top:1.5rem"><a href="https://callejero.geonet.es/Alicante_Alacant/?lat=38.3451990&amp;lng=-0.5063590" rel="noopener noreferrer">Ver la ubicación en el callejero</a></p>
+      </div>
+      <div class="card">
+        <h3>Adhesión a GeoGIS</h3>
+        <p>Los ayuntamientos de la provincia tramitan la adhesión al convenio marco en la sede electrónica de la Diputación de Alicante.</p>
+        <p style="margin-top:1rem"><a class="btn btn-primary" href="https://diputacionalicante.sedelectronica.es/catalog/t/8ff8d527-d4d7-4e11-ac62-8fef8490ba5a" rel="noopener noreferrer">Ir al trámite</a></p>
+      </div>
+    </div>
   </div>
 </section>
