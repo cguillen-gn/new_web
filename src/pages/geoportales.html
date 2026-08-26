@@ -4,7 +4,9 @@ description: Directorio de geoportales GeoGIS publicados en el dominio de cada a
 active: geoportales
 canonical: https://www.geonet.es/geoportales.html
 ---
-<div class="page-hero">
+<div class="page-hero page-hero--map">
+  <img class="hero__media" src="img/hero-territorio-b.jpg" width="1920" height="1080" alt="">
+  <div class="hero__shade" aria-hidden="true"></div>
   <div class="wrap">
     <p class="kicker">Directorio</p>
     <h1>Geoportales municipales</h1>
@@ -12,22 +14,46 @@ canonical: https://www.geonet.es/geoportales.html
   </div>
 </div>
 
-<section class="section" style="padding-top:0">
+<section class="section">
   <div class="wrap">
     <div class="search" role="search">
       <label for="filtro-geoportal">Municipio</label>
       <input id="filtro-geoportal" type="search" name="municipio" autocomplete="off" placeholder="Escriba el nombre del municipio">
     </div>
 
-    <ul class="geoportal-list">
+    <ul class="portal-grid">
       <li data-geoportal="altea">
-        <a href="https://geoportal.altea.es/" rel="noopener noreferrer">Altea <span>geoportal.altea.es — se abre en una ventana nueva</span></a>
+        <a class="portal-card" href="https://geoportal.altea.es/" rel="noopener noreferrer">
+          <img class="portal-card__map" src="img/modulos/turismo.jpg" alt="">
+          <div class="portal-card__shade"></div>
+          <div class="portal-card__body">
+            <img class="portal-card__crest" src="img/altea.png" width="80" height="80" alt="">
+            <h3>Altea</h3>
+            <p>geoportal.altea.es — se abre en una ventana nueva</p>
+          </div>
+        </a>
       </li>
       <li data-geoportal="calp calpe">
-        <a href="https://geoportal.calp.es/" rel="noopener noreferrer">Calp <span>geoportal.calp.es — se abre en una ventana nueva</span></a>
+        <a class="portal-card" href="https://geoportal.calp.es/" rel="noopener noreferrer">
+          <img class="portal-card__map" src="img/modulos/planeamiento.jpg" alt="">
+          <div class="portal-card__shade"></div>
+          <div class="portal-card__body">
+            <img class="portal-card__crest" src="img/calp.png" width="80" height="80" alt="">
+            <h3>Calp</h3>
+            <p>geoportal.calp.es — se abre en una ventana nueva</p>
+          </div>
+        </a>
       </li>
-      <li data-geoportal="teulada moraira teulada moraira">
-        <a href="https://geoportal.teuladamoraira.org/" rel="noopener noreferrer">Teulada Moraira <span>geoportal.teuladamoraira.org — se abre en una ventana nueva</span></a>
+      <li data-geoportal="teulada moraira">
+        <a class="portal-card" href="https://geoportal.teuladamoraira.org/" rel="noopener noreferrer">
+          <img class="portal-card__map" src="img/modulos/callejero.jpg" alt="">
+          <div class="portal-card__shade"></div>
+          <div class="portal-card__body">
+            <img class="portal-card__crest" src="img/teulada.png" width="80" height="80" alt="">
+            <h3>Teulada Moraira</h3>
+            <p>geoportal.teuladamoraira.org — se abre en una ventana nueva</p>
+          </div>
+        </a>
       </li>
     </ul>
     <p id="geoportal-vacio" hidden class="note">No hay un geoportal publicado con ese nombre. Puede usar el <a href="https://visor.geonet.es/" rel="noopener noreferrer">visor de capas públicas</a> o <a href="contacto.html">consultar a Geonet</a>.</p>

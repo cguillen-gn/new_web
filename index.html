@@ -39,6 +39,8 @@
   <main id="contenido">
 
 <section class="hero">
+  <img class="hero__media" src="img/hero-territorio.jpg" width="1920" height="1080" alt="">
+  <div class="hero__shade" aria-hidden="true"></div>
   <div class="wrap">
     <p class="hero__kicker">Geonet Territorial S.A.U.</p>
     <h1>GeoGIS, la plataforma de información geográfica de los ayuntamientos de Alicante</h1>
@@ -51,37 +53,35 @@
 </section>
 
 <section class="section">
-  <div class="wrap split">
-    <div>
-      <p class="kicker">Cómo se usa</p>
-      <h2>El geoportal es la puerta. GeoGIS es el visor.</h2>
-      <p class="lead">Cada ayuntamiento tiene su geoportal. En la portada se elige una temática —planeamiento, catastro, infraestructuras u otras— o se entra al visor sin capas activas. GeoGIS abre entonces el mapa de ese municipio.</p>
+  <div class="wrap">
+    <p class="kicker">Cómo se usa</p>
+    <h2>El geoportal es la puerta. GeoGIS es el visor.</h2>
+    <p class="lead">Cada ayuntamiento tiene su geoportal. En la portada se elige una temática —planeamiento, catastro, infraestructuras u otras— o se entra al visor sin capas activas. GeoGIS abre entonces el mapa de ese municipio.</p>
+    <div class="steps">
       <div class="step">
         <div class="step__num" aria-hidden="true">1</div>
-        <div>
-          <h3>Portada del geoportal</h3>
-          <p>El ciudadano elige qué quiere consultar. También puede entrar al visor sin precargar ninguna capa.</p>
-        </div>
+        <h3>Portada del geoportal</h3>
+        <p>El ciudadano elige qué quiere consultar. También puede entrar al visor sin precargar ninguna capa.</p>
       </div>
       <div class="step">
         <div class="step__num" aria-hidden="true">2</div>
-        <div>
-          <h3>GeoGIS con la información publicada</h3>
-          <p>Se ve sin registro todo lo que el ayuntamiento ha decidido mostrar: capas de dominio público y capas municipales abiertas.</p>
-        </div>
+        <h3>GeoGIS con lo publicado</h3>
+        <p>Se ve sin registro todo lo que el ayuntamiento ha decidido mostrar: capas de dominio público y capas municipales abiertas.</p>
       </div>
       <div class="step">
         <div class="step__num" aria-hidden="true">3</div>
-        <div>
-          <h3>Identificación, solo si hace falta</h3>
-          <p>El personal municipal se identifica para ver capas no publicadas: datos sensibles, información no definitiva o de uso interno.</p>
-        </div>
+        <h3>Identificación, solo si hace falta</h3>
+        <p>El personal municipal se identifica para ver capas no publicadas: datos sensibles, información no definitiva o de uso interno.</p>
       </div>
     </div>
-    <figure class="figure">
-      <img src="img/geogis-visor.jpg" width="1280" height="720" alt="Visor GeoGIS con cartografía y herramientas de consulta sobre el mapa">
-      <figcaption>GeoGIS es el visor. Cada geoportal municipal abre su propia instancia, con sus capas.</figcaption>
-    </figure>
+    <div class="mosaic" aria-hidden="true">
+      <img src="img/hero-territorio-b.jpg" alt="">
+      <img src="img/modulos/planeamiento.jpg" alt="">
+      <img src="img/modulos/catastro.jpg" alt="">
+      <img src="img/modulos/infraestructuras.jpg" alt="">
+      <img src="img/modulos/mambiente.jpg" alt="">
+    </div>
+    <p class="meta" style="margin-top:0.8rem">Portada de un geoportal y el visor GeoGIS con capas de planeamiento, catastro, infraestructuras y medio ambiente.</p>
   </div>
 </section>
 
@@ -90,12 +90,42 @@
     <p class="kicker">Geoportales publicados</p>
     <h2>Entre al geoportal de su municipio</h2>
     <p class="lead">Solo se listan geoportales ya publicados en el dominio del ayuntamiento. Si el suyo no aparece, puede consultar el visor de capas públicas o preguntar al consistorio.</p>
-    <ul class="geoportal-list">
-      <li><a href="https://geoportal.altea.es/" rel="noopener noreferrer">Altea <span>geoportal.altea.es</span></a></li>
-      <li><a href="https://geoportal.calp.es/" rel="noopener noreferrer">Calp <span>geoportal.calp.es</span></a></li>
-      <li><a href="https://geoportal.teuladamoraira.org/" rel="noopener noreferrer">Teulada Moraira <span>geoportal.teuladamoraira.org</span></a></li>
+    <ul class="portal-grid">
+      <li>
+        <a class="portal-card" href="https://geoportal.altea.es/" rel="noopener noreferrer">
+          <img class="portal-card__map" src="img/modulos/turismo.jpg" alt="">
+          <div class="portal-card__shade"></div>
+          <div class="portal-card__body">
+            <img class="portal-card__crest" src="img/altea.png" width="80" height="80" alt="">
+            <h3>Altea</h3>
+            <p>geoportal.altea.es</p>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="portal-card" href="https://geoportal.calp.es/" rel="noopener noreferrer">
+          <img class="portal-card__map" src="img/modulos/planeamiento.jpg" alt="">
+          <div class="portal-card__shade"></div>
+          <div class="portal-card__body">
+            <img class="portal-card__crest" src="img/calp.png" width="80" height="80" alt="">
+            <h3>Calp</h3>
+            <p>geoportal.calp.es</p>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="portal-card" href="https://geoportal.teuladamoraira.org/" rel="noopener noreferrer">
+          <img class="portal-card__map" src="img/modulos/callejero.jpg" alt="">
+          <div class="portal-card__shade"></div>
+          <div class="portal-card__body">
+            <img class="portal-card__crest" src="img/teulada.png" width="80" height="80" alt="">
+            <h3>Teulada Moraira</h3>
+            <p>geoportal.teuladamoraira.org</p>
+          </div>
+        </a>
+      </li>
     </ul>
-    <p><a href="geoportales.html">Ver el directorio de geoportales</a></p>
+    <p style="margin-top:1.25rem"><a href="geoportales.html">Ver el directorio de geoportales</a></p>
   </div>
 </section>
 
@@ -105,26 +135,20 @@
     <h2>Herramientas de información geográfica</h2>
     <p class="lead">El visor de Geonet muestra capas de dominio público, sin información propia de ningún ayuntamiento. El callejero y el multivisor son utilidades provinciales distintas de GeoGIS.</p>
     <div class="grid-3">
-      <a class="tool" href="https://visor.geonet.es/" rel="noopener noreferrer">
+      <a class="card card--link card--media" href="https://visor.geonet.es/" rel="noopener noreferrer">
         <img src="img/visor-publico.jpg" width="1400" height="788" alt="Mapa de la provincia de Alicante en el visor de capas públicas">
-        <div>
-          <h3>Visor de capas públicas</h3>
-          <p>GeoGIS provincial, solo con información de dominio público.</p>
-        </div>
+        <h3>Visor de capas públicas</h3>
+        <p>GeoGIS provincial, solo con información de dominio público.</p>
       </a>
-      <a class="tool" href="https://callejero.geonet.es/" rel="noopener noreferrer">
+      <a class="card card--link card--media" href="https://callejero.geonet.es/" rel="noopener noreferrer">
         <img src="img/callejero-web.jpg" width="1200" height="675" alt="Callejero con viario y números de policía">
-        <div>
-          <h3>Callejero</h3>
-          <p>Localización de viales y números de policía.</p>
-        </div>
+        <h3>Callejero</h3>
+        <p>Localización de viales y números de policía.</p>
       </a>
-      <a class="tool" href="https://multivisor.geonet.es/" rel="noopener noreferrer">
+      <a class="card card--link card--media" href="https://multivisor.geonet.es/" rel="noopener noreferrer">
         <img src="img/multivisor-web.jpg" width="1200" height="675" alt="Comparación de ortofotografías en el multivisor">
-        <div>
-          <h3>Multivisor</h3>
-          <p>Comparación de ortofotos, oblicuas e imágenes a pie de calle.</p>
-        </div>
+        <h3>Multivisor</h3>
+        <p>Comparación de ortofotos, oblicuas e imágenes a pie de calle.</p>
       </a>
     </div>
   </div>
@@ -160,17 +184,15 @@
   <div class="wrap">
     <p class="kicker">Actualidad</p>
     <h2>Adhesiones al convenio GeoGIS</h2>
-    <div class="news-list">
-      <a class="news-item" href="noticias/pilar-mutxamel.html">
-        <img src="img/noticia_pilar_mutxamel.jpeg" width="640" height="360" alt="Firma del convenio de adhesión a GeoGIS con Pilar de la Horadada y Mutxamel">
-        <div>
-          <time datetime="2026-06-08">8 de junio de 2026</time>
-          <h3>Pilar de la Horadada y Mutxamel se adhieren al convenio marco de GeoGIS</h3>
-          <p>Son los primeros ayuntamientos que formalizan la adhesión al convenio impulsado por la Diputación de Alicante.</p>
-        </div>
-      </a>
-    </div>
-    <p><a href="actualidad.html">Más actualidad</a></p>
+    <a class="news-feature" href="noticias/pilar-mutxamel.html">
+      <img src="img/noticia_pilar_mutxamel.jpeg" width="960" height="640" alt="Firma del convenio de adhesión a GeoGIS con Pilar de la Horadada y Mutxamel">
+      <div class="news-feature__body">
+        <time datetime="2026-06-08">8 de junio de 2026</time>
+        <h3>Pilar de la Horadada y Mutxamel se adhieren al convenio marco de GeoGIS</h3>
+        <p>Son los primeros ayuntamientos que formalizan la adhesión al convenio impulsado por la Diputación de Alicante.</p>
+      </div>
+    </a>
+    <p style="margin-top:1.1rem"><a href="actualidad.html">Más actualidad</a></p>
   </div>
 </section>
   </main>
