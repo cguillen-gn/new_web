@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <link rel="canonical" href="{{canonical}}">
+  <link rel="icon" href="{{base}}img/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#ff7700">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <link rel="stylesheet" href="{{base}}css/main.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <div class="site-header__bar">
+        <a class="logo" href="{{base}}index.html">
+          <img src="{{base}}img/geonet_negro.png" width="270" height="73" alt="GeoNet Territorial, inicio">
+        </a>
+        <button class="nav-toggle" type="button" aria-controls="menu-principal" aria-expanded="false">Menú</button>
+        <nav id="menu-principal" class="site-nav" aria-label="Principal">
+          <a href="{{base}}index.html"{{nav_inicio}}>Inicio</a>
+          <a href="{{base}}geogis.html"{{nav_geogis}}>GeoGIS</a>
+          <a href="{{base}}geoportales.html"{{nav_geoportales}}>Geoportales</a>
+          <a href="{{base}}herramientas.html"{{nav_herramientas}}>Herramientas</a>
+          <a href="{{base}}nosotros.html"{{nav_nosotros}}>Geonet</a>
+          <a href="{{base}}actualidad.html"{{nav_actualidad}}>Actualidad</a>
+          <a href="{{base}}empleo.html"{{nav_empleo}}>Empleo</a>
+          <a href="{{base}}contacto.html"{{nav_contacto}}>Contacto</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main id="contenido">
