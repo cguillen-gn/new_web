@@ -867,7 +867,7 @@ dl.facts dd { margin: 0.2rem 0 0; color: var(--tinta-suave); }
   align-items: center;
   gap: 3.5rem;
   width: max-content;
-  animation: logos 42s linear infinite;
+  animation: logos 80s linear infinite;
 }
 
 .logo-track-wrap:hover .logo-track { animation-play-state: paused; }
