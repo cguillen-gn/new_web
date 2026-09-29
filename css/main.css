@@ -290,6 +290,10 @@ a:hover { color: var(--tinta); }
   text-shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
 }
 
+.hero__tagline {
+  font-size: 1.32rem;
+}
+
 .hero__kicker {
   display: inline-block;
   margin-bottom: 0.9rem;
